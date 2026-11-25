@@ -1,4 +1,4 @@
 node_modules/
-site/dist/
+dist/
 .DS_Store
 Thumbs.db

@@ -5,7 +5,7 @@ A static, dependency-free demo landing page for the fictional **OptiLink** link-
 ## Structure
 
 ```
-site/
+./
 ├── src/            # source files (index.html, styles.css, main.js)
 ├── build.mjs       # build script: copies + minifies src/ into dist/
 ├── package.json
@@ -17,15 +17,15 @@ site/
 Requires Node.js 18+.
 
 ```bash
-cd site
-npm run build      # outputs to site/dist
-# open site/dist/index.html in a browser to preview
+cd .
+npm run build      # outputs to dist
+# open dist/index.html in a browser to preview
 ```
 
 ## Publish
 
-Pushing changes under `site/` to `main` triggers `.github/workflows/deploy-site.yml`,
-which builds the site and deploys `site/dist` to GitHub Pages.
+Pushing changes under `./` to `main` triggers `.github/workflows/deploy-site.yml`,
+which builds the site and deploys `dist` to GitHub Pages.
 
 One-time setup on GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
