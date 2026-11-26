@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../">
+  <title>Design: OptiLink</title>
+  <meta name="description" content="The OptiLink Lift enclosure: a screwless, hand-shaped case printed in three parts, with a keypad that follows the user.">
+  <meta name="theme-color" content="#0B0D10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Design: OptiLink">
+  <meta property="og:description" content="A screwless, hand-shaped case, printed in three parts.">
+  <meta property="og:image" content="assets/img/og-share-1200x630.jpg">
+  <link rel="icon" href="assets/img/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="shared/tokens.css">
+  <link rel="stylesheet" href="shared/base.css">
+  <link rel="stylesheet" href="shared/components.css">
+  <link rel="stylesheet" href="shared/anatomy/anatomy.css">
+  <style>
+    /* Page-scoped layout for /design/ (tokens only). */
+    .design-split { display: grid; gap: var(--s-7); align-items: start; }
+    .design-split > * { min-width: 0; }
+    .design-stack { display: grid; gap: var(--s-5); align-content: start; }
+    .design-stack > * { min-width: 0; }
+    .design-prose { display: grid; gap: var(--s-4); max-width: var(--measure); }
+    .design-prose p { margin: 0; }
+    .design-note { margin: 0; color: var(--text-muted); font-size: var(--fs-sm); max-width: var(--measure); }
+    .design-lead { margin: 0; color: var(--text-muted); max-width: var(--measure); }
+    .design-sub { margin-top: var(--s-8); }
+    .anatomy-grid { display: grid; gap: var(--s-6); }
+    .anatomy-grid > * { min-width: 0; }
+    .anatomy-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--s-4); align-items: center; padding: var(--s-5); }
+    .anatomy-pair picture:first-child img { max-height: 28rem; width: auto; margin-inline: auto; }
+    .media-frame figcaption { padding: var(--s-3) var(--s-5) var(--s-4); }
+    .media-frame picture img { display: block; }
+    .figure .figure-placeholder { border: 1px dashed var(--line-strong); border-radius: var(--r-md); padding: var(--s-6); color: var(--text-muted); }
+    .figure .figure-placeholder p { margin: 0 0 var(--s-2); }
+    .figure img { width: 100%; height: auto; }
+    .figure [hidden] { display: none !important; }
+    .label-list { list-style: none; margin: 0; padding: 0; }
+    .label-list li { padding: var(--s-3) 0; border-bottom: 1px solid var(--line); color: var(--text-muted); }
+    .label-list li:first-child { border-top: 1px solid var(--line); }
+    .label-list strong { font-weight: 500; color: var(--text); margin-right: var(--s-2); }
+    .requests { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2); }
+    .requests li { border: 1px solid var(--line-strong); border-radius: var(--r-pill); padding: var(--s-1) var(--s-4); font-size: var(--fs-sm); }
+    .manuals { display: grid; gap: var(--s-7); }
+    .manual { display: grid; gap: var(--s-4); align-content: start; padding-top: var(--s-5); border-top: 1px solid var(--line-strong); }
+    .manual h3, .manual p { margin: 0; }
+    .manual p { color: var(--text-muted); max-width: var(--measure); }
+    .manual-cover { max-width: 15rem; }
+    .design-cta { text-align: center; }
+    .design-cta h2 { margin-inline: auto; }
+    .design-cta .btn-row { justify-content: center; margin-top: var(--s-6); }
+    .table-wrap { border-top: 1px solid var(--line); }
+    table.compare { min-width: 38rem; }
+    table.compare th, table.compare td { padding-inline: var(--s-3); }
+    table.compare tbody th { text-align: left; font-weight: 400; color: var(--text-muted); white-space: nowrap; padding-left: 0; }
+    table.compare td { color: var(--text); }
+    table.compare thead th:first-child { padding-left: 0; }
+    @media (min-width: 640px) {
+      .anatomy-pair { padding: var(--s-6); }
+      .manuals { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-8); }
+    }
+    @media (min-width: 960px) {
+      .design-split { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-8); }
+      .design-split--wide-left { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+      .anatomy-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .anatomy-grid .anatomy-wide { grid-column: 1 / -1; }
+    }
+  </style>
+  <script src="shared/site.js" defer></script>
+  <script src="shared/anatomy/anatomy.js" defer></script>
+</head>
+<body class="has-glow">
+  <a class="sr-only" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container site-nav" aria-label="Main">
+      <a class="brand" href="./" aria-label="OptiLink home">
+        <img src="assets/brand/optilink_lockup_on_dark.svg" alt="OptiLink" width="140" height="31">
+      </a>
+      <ul class="nav-links">
+        <li><a href="why-optilink/">Why OptiLink</a></li>
+        <li><a href="technology/">Technology</a></li>
+        <li><a href="design/" aria-current="page">Design</a></li>
+        <li>
+          <details class="nav-more">
+            <summary>More</summary>
+            <div class="nav-menu">
+              <a href="team/">Team</a>
+              <a href="contact/">Contact</a>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <a class="btn btn--primary nav-cta" href="guides/quick-start/">Get started</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">
+        <span class="sr-only">Menu</span>
+        <span aria-hidden="true"></span>
+      </button>
+    </nav>
+    <div class="nav-panel container" id="nav-panel">
+      <ul>
+        <li><a href="./">Overview</a></li>
+        <li><a href="why-optilink/">Why OptiLink</a></li>
+        <li><a href="technology/">Technology</a></li>
+        <li><a href="design/" aria-current="page">Design</a></li>
+        <li><a href="guides/quick-start/">Quick start</a></li>
+        <li><a href="team/">Team</a></li>
+        <li><a href="contact/">Contact</a></li>
+      </ul>
+      <a class="btn btn--primary" href="guides/quick-start/">Get started</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Title block -->
+    <section class="section section--tight" aria-labelledby="design-title" data-motion="section-reveal">
+      <div class="container">
+        <header class="title-block">
+          <h1 id="design-title">Design</h1>
+          <p style="font-family: var(--font-display); font-size: var(--fs-lg); margin: var(--s-4) auto 0;">Made to be held.</p>
+          <p class="affiliation" style="margin: var(--s-3) auto 0; max-width: 46ch;">A screwless, hand-shaped case, printed in three parts. The same hand-held unit is used as the Doctor Station and as the Bed Unit.</p>
+        </header>
+      </div>
+    </section>
+
+    <!-- Anatomy -->
+    <section class="section" id="anatomy" aria-labelledby="anatomy-title" data-motion="section-reveal">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="anatomy-title">What is on the front</h2>
+          <p class="lead">Screen, switch, light, keypad, infrared window. Every opening has a job.</p>
+        </header>
+
+        <div class="anatomy-stack">
+<!-- BEGIN anatomy:anatomy-front (part 2c, web/shared/anatomy/partials/anatomy-front.html). Paste between these comments. Design page S2. Needs anatomy.css and anatomy.js. -->
+<figure class="anx" id="anx-front" aria-label="OptiLink front view with seven labelled parts" data-motion="hotspots" style="--anx-w:1200px;--anx-sar:1200/900;--anx-mar:1520/1990;--anx-cmax:420px;--bx:21.9917%;--by:1.1111%;--bw:56.0134%;--ix:-13.1579%;--iy:-10.0503%;--iw:126.3158%;--ih:120.603%;--anx-fx:16%;--anx-fy:7%">
+<div class="anx-plate">
+<div class="anx-corners" aria-hidden="true"><span class="anx-corner" data-corner="fig">Fig 17 · Front</span><span class="anx-corner" data-corner="hint"><span class="anx-hint-wide">Hover or tap a part</span><span class="anx-hint-compact">Tap a number</span></span><span class="anx-corner" data-corner="readout" data-anx-readout>162 × 95 × 36 mm · PLA+</span></div>
+<div class="anx-stage">
+<div class="anx-media">
+<div class="anx-photo">
+<picture><source type="image/avif" srcset="assets/img/P11_keypad-480.avif 480w, assets/img/P11_keypad-960.avif 960w, assets/img/P11_keypad-1440.avif 1440w, assets/img/P11_keypad-1920.avif 1920w" sizes="(min-width: 980px) 849px, min(531px, 126vw)"><source type="image/webp" srcset="assets/img/P11_keypad-480.webp 480w, assets/img/P11_keypad-960.webp 960w, assets/img/P11_keypad-1440.webp 1440w, assets/img/P11_keypad-1920.webp 1920w" sizes="(min-width: 980px) 849px, min(531px, 126vw)"><img src="assets/img/P11_keypad-1920.png" width="1920" height="2400" alt="The front of a unit: ivory face with a small screen listing Sinhala, Tamil and English, a red power switch, and a keypad of numbered grey keys with letters, green START, red STOP and blue F1 to F4." loading="lazy" decoding="async"></picture></div>
+<div class="anx-hotspots">
+<button type="button" class="anx-hot" data-part="ir" data-step="1" aria-pressed="false" aria-describedby="anx-front-ir" style="--x:50%;--y:7.4874%"><span class="anx-num" aria-hidden="true">1</span><span class="anx-sr">IR windows</span></button>
+<button type="button" class="anx-hot" data-part="oled" data-step="2" aria-pressed="false" aria-describedby="anx-front-oled" style="--x:27.2368%;--y:21.1055%"><span class="anx-num" aria-hidden="true">2</span><span class="anx-sr">OLED window</span></button>
+<button type="button" class="anx-hot" data-part="switch" data-step="3" data-tone="red" aria-pressed="false" aria-describedby="anx-front-switch" style="--x:69.2105%;--y:20.603%"><span class="anx-num" aria-hidden="true">3</span><span class="anx-sr">Switch opening</span></button>
+<button type="button" class="anx-hot" data-part="led" data-step="4" data-tone="red" aria-pressed="false" aria-describedby="anx-front-led" style="--x:68.75%;--y:36.7839%"><span class="anx-num" aria-hidden="true">4</span><span class="anx-sr">Low-battery light</span></button>
+<button type="button" class="anx-hot" data-part="front" data-step="5" aria-pressed="false" aria-describedby="anx-front-front" style="--x:23.6842%;--y:32.1608%"><span class="anx-num" aria-hidden="true">5</span><span class="anx-sr">Front shell</span></button>
+<button type="button" class="anx-hot" data-part="seam" data-step="6" aria-pressed="false" aria-describedby="anx-front-seam" style="--x:18.8158%;--y:49.2462%"><span class="anx-num" aria-hidden="true">6</span><span class="anx-sr">Seam</span></button>
+<button type="button" class="anx-hot" data-part="keypad" data-step="7" aria-pressed="false" aria-describedby="anx-front-keypad" style="--x:24.6711%;--y:64.3216%"><span class="anx-num" aria-hidden="true">7</span><span class="anx-sr">Keypad</span></button></div>
+</div>
+<svg class="anx-leaders" viewBox="0 0 1200 900" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+<g class="anx-leader" data-part="ir" data-step="1"><path class="anx-leader-halo" d="M602.5 73.4 L651.9 24.0 L880.0 24.0"/><path class="anx-leader-line" d="M602.5 73.4 L651.9 24.0 L880.0 24.0"/></g>
+<g class="anx-leader" data-part="oled" data-step="2"><path class="anx-leader-halo" d="M443.5 195.7 L320.0 195.7"/><path class="anx-leader-line" d="M443.5 195.7 L320.0 195.7"/></g>
+<g class="anx-leader" data-part="switch" data-step="3"><path class="anx-leader-halo" d="M732.6 191.3 L880.0 191.3"/><path class="anx-leader-line" d="M732.6 191.3 L880.0 191.3"/></g>
+<g class="anx-leader" data-part="led" data-step="4"><path class="anx-leader-halo" d="M729.5 333.7 L880.0 333.7"/><path class="anx-leader-line" d="M729.5 333.7 L880.0 333.7"/></g>
+<g class="anx-leader" data-part="front" data-step="5"><path class="anx-leader-halo" d="M419.6 293.0 L320.0 293.0"/><path class="anx-leader-line" d="M419.6 293.0 L320.0 293.0"/></g>
+<g class="anx-leader" data-part="seam" data-step="6"><path class="anx-leader-halo" d="M386.9 443.4 L320.0 443.4"/><path class="anx-leader-line" d="M386.9 443.4 L320.0 443.4"/></g>
+<g class="anx-leader" data-part="keypad" data-step="7"><path class="anx-leader-halo" d="M426.2 576.0 L320.0 576.0"/><path class="anx-leader-line" d="M426.2 576.0 L320.0 576.0"/></g></svg>
+<ol class="anx-labels">
+<li class="anx-label" id="anx-front-ir" data-part="ir" data-step="1" data-side="right" data-readout="IR windows · 38 kHz receiver · in the top end" style="--lx:73.3333%;--ly:2.6667%"><span class="anx-num" aria-hidden="true">1</span><span class="anx-text"><span class="anx-name">IR windows</span><span class="anx-spec">940 nm LED · VS1838B</span><span class="anx-more">38 kHz receiver · in the top end</span></span></li>
+<li class="anx-label" id="anx-front-oled" data-part="oled" data-step="2" data-side="left" data-readout="OLED window · 1.3&quot; SH1106 OLED · 128 × 64" style="--lx:26.6667%;--ly:21.7476%"><span class="anx-num" aria-hidden="true">2</span><span class="anx-text"><span class="anx-name">OLED window</span><span class="anx-spec">35.6 × 20.6 mm</span><span class="anx-more">1.3&quot; SH1106 OLED · 128 × 64</span></span></li>
+<li class="anx-label" id="anx-front-switch" data-part="switch" data-step="3" data-tone="red" data-side="right" data-readout="Switch opening · Holds the red rocker power switch" style="--lx:73.3333%;--ly:21.2563%"><span class="anx-num" aria-hidden="true">3</span><span class="anx-text"><span class="anx-name">Switch opening</span><span class="anx-spec">15.4 × 20.4 mm</span><span class="anx-more">Holds the red rocker power switch</span></span></li>
+<li class="anx-label" id="anx-front-led" data-part="led" data-step="4" data-tone="red" data-side="right" data-readout="Low-battery light · Beside the LOW BATTERY print" style="--lx:73.3333%;--ly:37.0776%"><span class="anx-num" aria-hidden="true">4</span><span class="anx-text"><span class="anx-name">Low-battery light</span><span class="anx-spec">Red LED</span><span class="anx-more">Beside the LOW BATTERY print</span></span></li>
+<li class="anx-label" id="anx-front-front" data-part="front" data-step="5" data-side="left" data-readout="Front shell · PLA+ · warm ivory" style="--lx:26.6667%;--ly:32.5572%"><span class="anx-num" aria-hidden="true">5</span><span class="anx-text"><span class="anx-name">Front shell</span><span class="anx-spec">162 × 95 × 9.0 mm</span><span class="anx-more">PLA+ · warm ivory</span></span></li>
+<li class="anx-label" id="anx-front-seam" data-part="seam" data-step="6" data-side="left" data-readout="Seam · No screws" style="--lx:26.6667%;--ly:49.263%"><span class="anx-num" aria-hidden="true">6</span><span class="anx-text"><span class="anx-name">Seam</span><span class="anx-spec">2 mm lip · foam tape</span><span class="anx-more">No screws</span></span></li>
+<li class="anx-label" id="anx-front-keypad" data-part="keypad" data-step="7" data-side="left" data-readout="Keypad · Bonded to the front · tail slot 24 × 5 mm" style="--lx:26.6667%;--ly:64.0034%"><span class="anx-num" aria-hidden="true">7</span><span class="anx-text"><span class="anx-name">Keypad</span><span class="anx-spec">4 × 4 membrane</span><span class="anx-more">Bonded to the front · tail slot 24 × 5 mm</span></span></li></ol>
+</div>
+</div>
+<figcaption class="anx-caption">Photo of the front. The same unit is used as the Doctor Station and the Bed Unit.</figcaption>
+</figure>
+<!-- END anatomy:anatomy-front -->
+
+<h3>Exploded view</h3>
+<!-- BEGIN anatomy:anatomy-exploded (part 2c, web/shared/anatomy/partials/anatomy-exploded.html). Paste between these comments. Design page S3. Static; part 3 animates [data-motion="explode"] [data-layer]. -->
+<div class="anx-set">
+<figure class="anx" id="anx-exploded" aria-label="OptiLink exploded view: front, body and battery cover, labelled" data-motion="explode" style="--anx-w:1200px;--anx-sar:1200/820;--anx-mar:2225/2224;--anx-cmax:520px;--bx:2.5%;--by:1.2195%;--bw:66.6966%;--ix:0%;--iy:0%;--iw:100%;--ih:100%">
+<div class="anx-plate">
+<div class="anx-corners" aria-hidden="true"><span class="anx-corner" data-corner="fig">Fig 18 · Exploded</span><span class="anx-corner" data-corner="hint"><span class="anx-hint-wide">Hover or tap a part</span><span class="anx-hint-compact">Tap a number</span></span><span class="anx-corner" data-corner="readout" data-anx-readout>Assembled 162 × 95 × 36 mm</span></div>
+<div class="anx-stage">
+<div class="anx-media">
+<div class="anx-photo anx-photo--layers">
+<div class="anx-stack" role="img" aria-label="An exploded CAD view of the enclosure showing the front shell, body shell and battery cover separated.">
+<picture><source type="image/webp" srcset="assets/img/optilink_layer_cover_exploded.webp"><img src="assets/img/optilink_layer_cover_exploded.png" width="2225" height="2224" alt="" class="anx-layer" data-layer="cover" data-depth="3" data-stack="0" data-move-x="0.76" data-move-y="-18.45" style="--mx:0.76%;--my:-18.45%" data-assembled-src="assets/img/optilink_layer_cover_assembled.png" loading="lazy" decoding="async"></picture>
+<picture><source type="image/webp" srcset="assets/img/optilink_layer_body_exploded.webp"><img src="assets/img/optilink_layer_body_exploded.png" width="2225" height="2224" alt="" class="anx-layer" data-layer="body" data-depth="2" data-stack="1" data-move-x="0.0" data-move-y="0.0" style="--mx:0.00%;--my:0.00%" data-assembled-src="assets/img/optilink_layer_body_assembled.png" loading="lazy" decoding="async"></picture>
+<picture><source type="image/webp" srcset="assets/img/optilink_layer_front_exploded.webp"><img src="assets/img/optilink_layer_front_exploded.png" width="2225" height="2224" alt="" class="anx-layer" data-layer="front" data-depth="0" data-stack="2" data-move-x="-0.19" data-move-y="16.91" style="--mx:-0.19%;--my:16.91%" data-assembled-src="assets/img/optilink_layer_front_assembled.png" loading="lazy" decoding="async"></picture></div>
+</div>
+<div class="anx-hotspots">
+<button type="button" class="anx-hot" data-part="front" data-layer="front" data-depth="0" data-move-x="-0.19" data-move-y="16.91" aria-pressed="false" aria-describedby="anx-exploded-front" style="--x:85.7079%;--y:28.5971%;--mx:-0.19%;--my:16.91%"><span class="anx-num" aria-hidden="true">1</span><span class="anx-sr">Front</span></button>
+<button type="button" class="anx-hot" data-part="body" data-layer="body" data-depth="2" data-move-x="0.0" data-move-y="0.0" aria-pressed="false" aria-describedby="anx-exploded-body" style="--x:92.8539%;--y:60.027%;--mx:0.00%;--my:0.00%"><span class="anx-num" aria-hidden="true">2</span><span class="anx-sr">Body</span></button>
+<button type="button" class="anx-hot" data-part="cover" data-layer="cover" data-depth="3" data-move-x="0.76" data-move-y="-18.45" aria-pressed="false" aria-describedby="anx-exploded-cover" style="--x:83.5955%;--y:78.4622%;--mx:0.76%;--my:-18.45%"><span class="anx-num" aria-hidden="true">3</span><span class="anx-sr">Battery cover</span></button></div>
+</div>
+<svg class="anx-leaders" viewBox="0 0 1200 820" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+<g class="anx-leader" data-part="front" data-layer="front" data-depth="0" data-move-x="-0.19" data-move-y="16.91" style="--gx:-1.52px;--gy:135.28px"><path class="anx-leader-halo" d="M719.5 238.8 L880.0 238.8"/><path class="anx-leader-line" d="M719.5 238.8 L880.0 238.8"/></g>
+<g class="anx-leader" data-part="body" data-layer="body" data-depth="2" data-move-x="0.0" data-move-y="0.0" style="--gx:0.00px;--gy:0.00px"><path class="anx-leader-halo" d="M776.7 490.2 L880.0 490.2"/><path class="anx-leader-line" d="M776.7 490.2 L880.0 490.2"/></g>
+<g class="anx-leader" data-part="cover" data-layer="cover" data-depth="3" data-move-x="0.76" data-move-y="-18.45" style="--gx:6.08px;--gy:-147.60px"><path class="anx-leader-halo" d="M702.6 637.7 L880.0 637.7"/><path class="anx-leader-line" d="M702.6 637.7 L880.0 637.7"/></g></svg>
+<ol class="anx-labels">
+<li class="anx-label" id="anx-exploded-front" data-part="front" data-layer="front" data-depth="0" data-move-x="-0.19" data-move-y="16.91" data-side="right" data-readout="Front · OLED window, switch opening, tail slot" style="--lx:73.3333%;--ly:29.1191%;--lmx:-0.13%;--lmy:16.50%"><span class="anx-num" aria-hidden="true">1</span><span class="anx-text"><span class="anx-name">Front</span><span class="anx-spec">162 × 95 × 9.0 mm</span><span class="anx-more">OLED window, switch opening, tail slot</span></span></li>
+<li class="anx-label" id="anx-exploded-body" data-part="body" data-layer="body" data-depth="2" data-move-x="0.0" data-move-y="0.0" data-side="right" data-readout="Body · Holds the PCB in printed guides · IR windows in the top end" style="--lx:73.3333%;--ly:59.7824%;--lmx:0.00%;--lmy:0.00%"><span class="anx-num" aria-hidden="true">2</span><span class="anx-text"><span class="anx-name">Body</span><span class="anx-spec">162 × 95 × 32.6 mm</span><span class="anx-more">Holds the PCB in printed guides · IR windows in the top end</span></span></li>
+<li class="anx-label" id="anx-exploded-cover" data-part="cover" data-layer="cover" data-depth="3" data-move-x="0.76" data-move-y="-18.45" data-side="right" data-readout="Battery cover · v5 spring latch · no screws or magnets" style="--lx:73.3333%;--ly:77.768%;--lmx:0.51%;--lmy:-18.00%"><span class="anx-num" aria-hidden="true">3</span><span class="anx-text"><span class="anx-name">Battery cover</span><span class="anx-spec">80 × 43.4 × 8.1 mm</span><span class="anx-more">v5 spring latch · no screws or magnets</span></span></li></ol>
+</div>
+</div>
+<figcaption class="anx-caption">CAD render of the three printed parts, PLA+. The PCB is not part of the 3D model, so it is shown separately below.</figcaption>
+</figure>
+<aside class="anx-card" data-anx-optional data-layer="pcb" data-depth="1" aria-labelledby="anx-pcb-name">
+<div class="anx-card-media"><img src="assets/img/vector/optilink_pcb_rev17_component_side.svg" width="518" height="356" loading="lazy" decoding="async" alt="Drawing of the PCB Rev 1.7 component side: a single-sided board with its parts and eight insulated wire links."></div>
+<div class="anx-card-text">
+<p class="anx-card-kicker">Shown separately</p><h3 class="anx-name" id="anx-pcb-name">PCB Rev 1.7</h3>
+<p class="anx-spec">103.3 × 70.1 mm · single-sided</p>
+<p class="anx-card-body">The board sits inside the body, held in printed guides. It is not part of the 3D model above, so it is drawn here on its own.</p></div>
+</aside></div>
+<!-- END anatomy:anatomy-exploded -->
+
+<h3>Side and back</h3>
+<!-- BEGIN anatomy:anatomy-side-back (part 2c, web/shared/anatomy/partials/anatomy-side-back.html). Paste between these comments. Design page S2 or S4. Four detail figures. -->
+<div class="anx-set">
+<div class="anx-set-row">
+<figure class="anx" id="anx-side" aria-label="OptiLink side detail with the front, seam and body labelled" data-motion="hotspots" style="--anx-w:1200px;--anx-sar:1200/350;--anx-mar:642/340;--anx-cmax:560px;--bx:24.1667%;--by:2.8571%;--bw:51.9265%;--ix:-74.7664%;--iy:-183.8235%;--iw:174.7664%;--ih:412.3529%;--anx-fx:10%;--anx-fy:16%">
+<div class="anx-plate">
+<div class="anx-corners" aria-hidden="true"><span class="anx-corner" data-corner="fig">Fig 17 · Side</span><span class="anx-corner" data-corner="hint"><span class="anx-hint-wide">Hover or tap a part</span><span class="anx-hint-compact">Tap a number</span></span><span class="anx-corner" data-corner="readout" data-anx-readout>162 × 95 × 36 mm</span></div>
+<div class="anx-stage">
+<div class="anx-media">
+<div class="anx-photo">
+<picture><source type="image/webp" srcset="assets/img/P07_side-480.webp 480w, assets/img/P07_side-960.webp 960w" sizes="(min-width: 980px) 1089px, min(979px, 175vw)"><img src="assets/img/P07_side-960.png" width="1122" height="1402" alt="Side view of the unit showing the ivory front, the blue-grey body and the seam between them." loading="lazy" decoding="async"></picture></div>
+<div class="anx-hotspots">
+<button type="button" class="anx-hot" data-part="front" data-step="1" aria-pressed="false" aria-describedby="anx-side-front" style="--x:9.3458%;--y:19.1176%"><span class="anx-num" aria-hidden="true">1</span><span class="anx-sr">Front shell</span></button>
+<button type="button" class="anx-hot" data-part="seam" data-step="2" aria-pressed="false" aria-describedby="anx-side-seam" style="--x:12.4611%;--y:40.8824%"><span class="anx-num" aria-hidden="true">2</span><span class="anx-sr">Seam</span></button>
+<button type="button" class="anx-hot" data-part="body" data-step="3" aria-pressed="false" aria-describedby="anx-side-body" style="--x:43.6137%;--y:57.3529%"><span class="anx-num" aria-hidden="true">3</span><span class="anx-sr">Body</span></button></div>
+</div>
+<svg class="anx-leaders" viewBox="0 0 1200 350" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+<g class="anx-leader" data-part="front" data-step="1"><path class="anx-leader-halo" d="M344.7 73.1 L250.0 73.1"/><path class="anx-leader-line" d="M344.7 73.1 L250.0 73.1"/></g>
+<g class="anx-leader" data-part="seam" data-step="2"><path class="anx-leader-halo" d="M364.1 144.9 L250.0 144.9"/><path class="anx-leader-line" d="M364.1 144.9 L250.0 144.9"/></g>
+<g class="anx-leader" data-part="body" data-step="3"><path class="anx-leader-halo" d="M565.3 199.3 L960.0 199.3"/><path class="anx-leader-line" d="M565.3 199.3 L960.0 199.3"/></g></svg>
+<ol class="anx-labels">
+<li class="anx-label" id="anx-side-front" data-part="front" data-step="1" data-side="left" data-readout="Front shell · PLA+ · warm ivory" style="--lx:20.8333%;--ly:20.8824%"><span class="anx-num" aria-hidden="true">1</span><span class="anx-text"><span class="anx-name">Front shell</span><span class="anx-spec">162 × 95 × 9.0 mm</span><span class="anx-more">PLA+ · warm ivory</span></span></li>
+<li class="anx-label" id="anx-side-seam" data-part="seam" data-step="2" data-side="left" data-readout="Seam · Joins front and body · no screws" style="--lx:20.8333%;--ly:41.4034%"><span class="anx-num" aria-hidden="true">2</span><span class="anx-text"><span class="anx-name">Seam</span><span class="anx-spec">2 mm lip · foam tape</span><span class="anx-more">Joins front and body · no screws</span></span></li>
+<li class="anx-label" id="anx-side-body" data-part="body" data-step="3" data-side="right" data-readout="Body · PLA+ · blue-grey · holds the PCB" style="--lx:80%;--ly:56.9328%"><span class="anx-num" aria-hidden="true">3</span><span class="anx-text"><span class="anx-name">Body</span><span class="anx-spec">162 × 95 × 32.6 mm</span><span class="anx-more">PLA+ · blue-grey · holds the PCB</span></span></li></ol>
+</div>
+<div class="anx-dims" style="--anx-dw:1200px;--anx-dar:1200/230;--dl:17.4158%;--dt:11.3043%;--dw:65.1914%;--dh:83.2969%">
+<div class="anx-dims-stage">
+<div class="anx-dims-render">
+<div class="anx-dims-rot">
+<picture><source type="image/avif" srcset="assets/img/optilink_side_orthographic-480.avif 480w" sizes="192px"><source type="image/webp" srcset="assets/img/optilink_side_orthographic-480.webp 480w" sizes="192px"><img src="assets/img/optilink_side_orthographic-480.png" width="696" height="2842" alt="Side CAD view of the enclosure showing the ivory front, the blue-grey body and the seam between them. Turned on its side, front face up." loading="lazy" decoding="async"></picture></div>
+<svg class="anx-dims-lines" viewBox="0 0 1200 230" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="anx-dim-ext" d="M214.0 37.3 L178.0 37.3"/><path class="anx-dim-ext" d="M214.0 206.0 L178.0 206.0"/><path class="anx-dim" d="M186.0 37.3 L186.0 206.0"/><path class="anx-dim" d="M181.0 37.3 L191.0 37.3 M181.0 206.0 L191.0 206.0"/><path class="anx-dim-ext" d="M986.0 79.4 L1022.0 79.4"/><path class="anx-dim-ext" d="M986.0 206.0 L1022.0 206.0"/><path class="anx-dim" d="M1014.0 79.4 L1014.0 206.0"/><path class="anx-dim" d="M1009.0 79.4 L1019.0 79.4 M1009.0 206.0 L1019.0 206.0"/><path class="anx-dim-seam" d="M224.0 79.4 L976.0 79.4"/></svg>
+</div>
+<ol class="anx-labels anx-labels--dims">
+<li class="anx-label" data-side="left" style="--lx:14.3333%;--ly:52.8929%"><span class="anx-text"><span class="anx-name">Thickness</span><span class="anx-spec">36.0 mm overall</span></span></li>
+<li class="anx-label" data-side="right" style="--lx:85.6667%;--ly:62.0484%"><span class="anx-text"><span class="anx-name">Seam</span><span class="anx-spec">27.0 mm from the back</span></span></li></ol>
+</div>
+</div>
+</div>
+<figcaption class="anx-caption">Photo of the side, above. CAD render of the side, below, in millimetres.</figcaption>
+</figure>
+</div>
+<div class="anx-set-row anx-set-row--two">
+<figure class="anx anx--mini" id="anx-back" aria-label="OptiLink back view with the body, battery cover and latch labelled" data-motion="hotspots" style="--anx-w:640px;--anx-sar:640/640;--anx-mar:760/1220;--anx-cmax:360px;--bx:4.6875%;--by:1.5625%;--bw:60.3484%;--ix:-23.6842%;--iy:-7.377%;--iw:147.6316%;--ih:114.918%">
+<div class="anx-plate">
+<div class="anx-corners" aria-hidden="true"><span class="anx-corner" data-corner="fig">Fig 17 · Back</span><span class="anx-corner" data-corner="hint"><span class="anx-hint-wide">Hover or tap a part</span><span class="anx-hint-compact">Tap a number</span></span><span class="anx-corner" data-corner="readout" data-anx-readout>Back · PLA+</span></div>
+<div class="anx-stage">
+<div class="anx-media">
+<div class="anx-photo">
+<picture><source type="image/avif" srcset="assets/img/P04_back-480.avif 480w, assets/img/P04_back-960.avif 960w" sizes="(min-width: 560px) 570px, min(531px, 148vw)"><source type="image/webp" srcset="assets/img/P04_back-480.webp 480w, assets/img/P04_back-960.webp 960w" sizes="(min-width: 560px) 570px, min(531px, 148vw)"><img src="assets/img/P04_back-960.png" width="1122" height="1402" alt="Back of the unit: blue-grey shell with visible print layers and an off-white battery cover with a latch at the bottom." loading="lazy" decoding="async"></picture></div>
+<div class="anx-hotspots">
+<button type="button" class="anx-hot" data-part="body" data-step="1" aria-pressed="false" aria-describedby="anx-back-body" style="--x:50%;--y:35.2459%"><span class="anx-num" aria-hidden="true">1</span><span class="anx-sr">Body</span></button>
+<button type="button" class="anx-hot" data-part="cover" data-step="2" aria-pressed="false" aria-describedby="anx-back-cover" style="--x:38.1579%;--y:79.5082%"><span class="anx-num" aria-hidden="true">2</span><span class="anx-sr">Battery cover</span></button>
+<button type="button" class="anx-hot" data-part="latch" data-step="3" aria-pressed="false" aria-describedby="anx-back-latch" style="--x:55.5263%;--y:89.5082%"><span class="anx-num" aria-hidden="true">3</span><span class="anx-sr">Spring latch</span></button></div>
+</div>
+<svg class="anx-leaders" viewBox="0 0 640 640" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+<g class="anx-leader" data-part="body" data-step="1"><path class="anx-leader-halo" d="M226.6 228.5 L430.0 228.5"/><path class="anx-leader-line" d="M226.6 228.5 L430.0 228.5"/></g>
+<g class="anx-leader" data-part="cover" data-step="2"><path class="anx-leader-halo" d="M180.9 503.0 L379.0 503.0 L412.0 470.0 L430.0 470.0"/><path class="anx-leader-line" d="M180.9 503.0 L379.0 503.0 L412.0 470.0 L430.0 470.0"/></g>
+<g class="anx-leader" data-part="latch" data-step="3"><path class="anx-leader-halo" d="M248.0 565.0 L393.0 565.0 L412.0 584.0 L430.0 584.0"/><path class="anx-leader-line" d="M248.0 565.0 L393.0 565.0 L412.0 584.0 L430.0 584.0"/></g></svg>
+<ol class="anx-labels">
+<li class="anx-label" id="anx-back-body" data-part="body" data-step="1" data-side="right" data-readout="Body · 162 × 95 × 32.6 mm" style="--lx:67.1875%;--ly:35.707%"><span class="anx-num" aria-hidden="true">1</span><span class="anx-text"><span class="anx-name">Body</span><span class="anx-spec">PLA+ · blue-grey</span><span class="anx-more">162 × 95 × 32.6 mm</span></span></li>
+<li class="anx-label" id="anx-back-cover" data-part="cover" data-step="2" data-side="right" data-readout="Battery cover · Off-white · clips in without screws" style="--lx:67.1875%;--ly:73.4375%"><span class="anx-num" aria-hidden="true">2</span><span class="anx-text"><span class="anx-name">Battery cover</span><span class="anx-spec">80 × 43.4 × 8.1 mm</span><span class="anx-more">Off-white · clips in without screws</span></span></li>
+<li class="anx-label" id="anx-back-latch" data-part="latch" data-step="3" data-side="right" data-readout="Spring latch · No screws or magnets" style="--lx:67.1875%;--ly:91.25%"><span class="anx-num" aria-hidden="true">3</span><span class="anx-text"><span class="anx-name">Spring latch</span><span class="anx-spec">v5 · printed</span><span class="anx-more">No screws or magnets</span></span></li></ol>
+</div>
+</div>
+<figcaption class="anx-caption">Photo of the back.</figcaption>
+</figure>
+<figure class="anx anx--mini" id="anx-battery" aria-label="OptiLink battery bay with the battery, cover and recess labelled" data-motion="hotspots" style="--anx-w:640px;--anx-sar:640/480;--anx-mar:980/960;--anx-cmax:420px;--bx:1.5625%;--by:2.0833%;--bw:63.8021%;--ix:-23.4694%;--iy:-2.0833%;--iw:156.7347%;--ih:106.6667%">
+<div class="anx-plate">
+<div class="anx-corners" aria-hidden="true"><span class="anx-corner" data-corner="fig">Fig 17 · Battery bay</span><span class="anx-corner" data-corner="hint"><span class="anx-hint-wide">Hover or tap a part</span><span class="anx-hint-compact">Tap a number</span></span><span class="anx-corner" data-corner="readout" data-anx-readout>One 9 V PP3 NiMH</span></div>
+<div class="anx-stage">
+<div class="anx-media">
+<div class="anx-photo">
+<picture><source type="image/avif" srcset="assets/img/P05_battery_open-480.avif 480w, assets/img/P05_battery_open-960.avif 960w" sizes="(min-width: 560px) 640px, min(658px, 157vw)"><source type="image/webp" srcset="assets/img/P05_battery_open-480.webp 480w, assets/img/P05_battery_open-960.webp 960w" sizes="(min-width: 560px) 640px, min(658px, 157vw)"><img src="assets/img/P05_battery_open-960.png" width="1536" height="1024" alt="The battery compartment open, with the cover removed and a 9 V rechargeable battery sitting in the recess." loading="lazy" decoding="async"></picture></div>
+<div class="anx-hotspots">
+<button type="button" class="anx-hot" data-part="cover" data-step="1" aria-pressed="false" aria-describedby="anx-battery-cover" style="--x:19.3878%;--y:64.5833%"><span class="anx-num" aria-hidden="true">1</span><span class="anx-sr">Battery cover</span></button>
+<button type="button" class="anx-hot" data-part="battery" data-step="2" aria-pressed="false" aria-describedby="anx-battery-battery" style="--x:52.551%;--y:73.3333%"><span class="anx-num" aria-hidden="true">2</span><span class="anx-sr">9 V battery</span></button>
+<button type="button" class="anx-hot" data-part="body" data-step="3" aria-pressed="false" aria-describedby="anx-battery-body" style="--x:97.449%;--y:79.1667%"><span class="anx-num" aria-hidden="true">3</span><span class="anx-sr">Battery recess</span></button></div>
+</div>
+<svg class="anx-leaders" viewBox="0 0 640 480" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+<g class="anx-leader" data-part="cover" data-step="1"><path class="anx-leader-halo" d="M89.2 271.8 L89.2 414.8 L84.0 420.0 L84.0 438.0"/><path class="anx-leader-line" d="M89.2 271.8 L89.2 414.8 L84.0 420.0 L84.0 438.0"/></g>
+<g class="anx-leader" data-part="battery" data-step="2"><path class="anx-leader-halo" d="M228.1 303.3 L368.7 303.3 L422.0 250.0 L440.0 250.0"/><path class="anx-leader-line" d="M228.1 303.3 L368.7 303.3 L422.0 250.0 L440.0 250.0"/></g>
+<g class="anx-leader" data-part="body" data-step="3"><path class="anx-leader-halo" d="M410.4 329.1 L461.2 380.0 L440.0 380.0"/><path class="anx-leader-line" d="M410.4 329.1 L461.2 380.0 L440.0 380.0"/></g></svg>
+<ol class="anx-labels">
+<li class="anx-label" id="anx-battery-cover" data-part="cover" data-step="1" data-side="bottom" data-readout="Battery cover · Clips back in with the spring latch" style="--lx:13.125%;--ly:91.25%"><span class="anx-num" aria-hidden="true">1</span><span class="anx-text"><span class="anx-name">Battery cover</span><span class="anx-spec">Removed</span><span class="anx-more">Clips back in with the spring latch</span></span></li>
+<li class="anx-label" id="anx-battery-battery" data-part="battery" data-step="2" data-side="right" data-readout="9 V battery · Rechargeable · one per unit" style="--lx:68.75%;--ly:52.0833%"><span class="anx-num" aria-hidden="true">2</span><span class="anx-text"><span class="anx-name">9 V battery</span><span class="anx-spec">PP3 NiMH</span><span class="anx-more">Rechargeable · one per unit</span></span></li>
+<li class="anx-label" id="anx-battery-body" data-part="body" data-step="3" data-side="right" data-readout="Battery recess · In the body, under the clip-in cover" style="--lx:68.75%;--ly:79.1667%"><span class="anx-num" aria-hidden="true">3</span><span class="anx-text"><span class="anx-name">Battery recess</span><span class="anx-spec">Holds the battery</span><span class="anx-more">In the body, under the clip-in cover</span></span></li></ol>
+</div>
+</div>
+<figcaption class="anx-caption">Photo, cover removed.</figcaption>
+</figure>
+</div>
+<div class="anx-set-row">
+<figure class="anx" id="anx-topend" aria-label="OptiLink top end with the two infrared windows labelled" data-motion="hotspots" style="--anx-w:1200px;--anx-sar:1200/300;--anx-mar:768/256;--anx-cmax:560px;--bx:20%;--by:3.3333%;--bw:70%;--ix:-50%;--iy:-239.8438%;--iw:200%;--ih:400%;--anx-fx:9%;--anx-fy:16%">
+<div class="anx-plate">
+<div class="anx-corners" aria-hidden="true"><span class="anx-corner" data-corner="fig">Fig 17 · Top end</span><span class="anx-corner" data-corner="hint"><span class="anx-hint-wide">Hover or tap a part</span><span class="anx-hint-compact">Tap a number</span></span><span class="anx-corner" data-corner="readout" data-anx-readout>Infrared, 38 kHz</span></div>
+<div class="anx-stage">
+<div class="anx-media">
+<div class="anx-photo">
+<picture><source type="image/avif" srcset="assets/img/P06_ir_end-480.avif 480w, assets/img/P06_ir_end-960.avif 960w, assets/img/P06_ir_end-1440.avif 1440w" sizes="(min-width: 980px) 1680px, min(1120px, 200vw)"><source type="image/webp" srcset="assets/img/P06_ir_end-480.webp 480w, assets/img/P06_ir_end-960.webp 960w, assets/img/P06_ir_end-1440.webp 1440w" sizes="(min-width: 980px) 1680px, min(1120px, 200vw)"><img src="assets/img/P06_ir_end-1440.png" width="1536" height="1024" alt="Close view of the infrared windows on the top end of the unit." loading="lazy" decoding="async"></picture></div>
+<div class="anx-hotspots">
+<button type="button" class="anx-hot" data-part="irled" data-step="1" aria-pressed="false" aria-describedby="anx-topend-irled" style="--x:39.7135%;--y:39.0625%"><span class="anx-num" aria-hidden="true">1</span><span class="anx-sr">IR LED window</span></button>
+<button type="button" class="anx-hot" data-part="irrx" data-step="2" aria-pressed="false" aria-describedby="anx-topend-irrx" style="--x:77.0833%;--y:50.7812%"><span class="anx-num" aria-hidden="true">2</span><span class="anx-sr">IR receiver window</span></button></div>
+</div>
+<svg class="anx-leaders" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+<g class="anx-leader" data-part="irled" data-step="1"><path class="anx-leader-halo" d="M570.1 119.4 L210.0 119.4"/><path class="anx-leader-line" d="M570.1 119.4 L210.0 119.4"/></g>
+<g class="anx-leader" data-part="irrx" data-step="2"><path class="anx-leader-halo" d="M891.0 152.2 L990.0 152.2"/><path class="anx-leader-line" d="M891.0 152.2 L990.0 152.2"/></g></svg>
+<ol class="anx-labels">
+<li class="anx-label" id="anx-topend-irled" data-part="irled" data-step="1" data-side="left" data-readout="IR LED window · Infrared transmitter" style="--lx:17.5%;--ly:39.7917%"><span class="anx-num" aria-hidden="true">1</span><span class="anx-text"><span class="anx-name">IR LED window</span><span class="anx-spec">940 nm</span><span class="anx-more">Infrared transmitter</span></span></li>
+<li class="anx-label" id="anx-topend-irrx" data-part="irrx" data-step="2" data-side="right" data-readout="IR receiver window · Infrared receiver" style="--lx:82.5%;--ly:50.7292%"><span class="anx-num" aria-hidden="true">2</span><span class="anx-text"><span class="anx-name">IR receiver window</span><span class="anx-spec">VS1838B · 38 kHz</span><span class="anx-more">Infrared receiver</span></span></li></ol>
+</div>
+</div>
+<figcaption class="anx-caption">Photo of the top end. The link is infrared: no Wi-Fi, no mobile network, no radio.</figcaption>
+</figure>
+</div>
+</div>
+<!-- END anatomy:anatomy-side-back -->
+</div>
+      </div>
+    </section>
+
+    <!-- Enclosure -->
+    <section class="section" id="enclosure" aria-labelledby="enclosure-title" data-motion="section-reveal">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="enclosure-title">Opens without tools</h2>
+          <p class="lead">The OptiLink Lift enclosure: a screwless seam and a clip-in battery cover.</p>
+        </header>
+
+        <div class="design-split">
+          <div class="design-stack">
+            <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table">
+              <table class="spec">
+                <caption class="sr-only">Enclosure parts and dimensions</caption>
+                <tbody>
+                  <tr><th scope="row">Body</th><td>162 x 95 x 32.6 mm</td></tr>
+                  <tr><th scope="row">Front</th><td>162 x 95 x 9.0 mm</td></tr>
+                  <tr><th scope="row">Battery cover</th><td>80 x 43.4 x 8.1 mm</td></tr>
+                  <tr><th scope="row">Unit as printed</th><td>162 x 95 x 36 mm</td></tr>
+                  <tr><th scope="row">Material</th><td>PLA+</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="design-note">The unit size is the overall figure printed on the enclosure drawing. It is quoted as printed, not added up from the three parts.</p>
+            <div class="design-prose">
+              <p>The front joins the body on a 2 mm seam lip with 1 mm foam tape, so the unit opens without tools.</p>
+              <p>The battery cover clips in with printed parts alone, with no magnets or screws. It uses a v5 spring latch. A v6 lever lock was designed as a sturdier option.</p>
+              <p>The case is wipeable and screwless. Use a clear sleeve for each patient, and wipe with 70% alcohol between patients.</p>
+            </div>
+          </div>
+          <div class="design-stack">
+            <figure class="media-frame">
+              <picture>
+              <source type="image/avif" srcset="assets/img/optilink_hero_three_quarter-480.avif 480w, assets/img/optilink_hero_three_quarter-960.avif 960w, assets/img/optilink_hero_three_quarter-1440.avif 1440w" sizes="A CAD render of the enclosure from the front at an angle, with the screen, switch and keypad openings and the embossed OptiLink name.">
+              <source type="image/webp" srcset="assets/img/optilink_hero_three_quarter-480.webp 480w, assets/img/optilink_hero_three_quarter-960.webp 960w, assets/img/optilink_hero_three_quarter-1440.webp 1440w" sizes="A CAD render of the enclosure from the front at an angle, with the screen, switch and keypad openings and the embossed OptiLink name.">
+              <img src="assets/img/optilink_hero_three_quarter-1440.png" alt="undefined" width="1238" height="(min-width: 960px) 560px, 100vw" loading="lazy">
+            </picture>
+              <figcaption class="figure figcaption">CAD render</figcaption>
+            </figure>
+            <figure class="media-frame">
+              <picture>
+              <source type="image/avif" srcset="assets/img/P05_battery_open-480.avif 480w, assets/img/P05_battery_open-960.avif 960w" sizes="(min-width: 960px) 560px, 100vw">
+              <source type="image/webp" srcset="assets/img/P05_battery_open-480.webp 480w, assets/img/P05_battery_open-960.webp 960w" sizes="(min-width: 960px) 560px, 100vw">
+              <img src="assets/img/P05_battery_open-960.png" alt="The battery compartment open, with the cover removed and a 9 V rechargeable battery sitting in the recess." width="960" height="720" loading="lazy">
+            </picture>
+              <figcaption class="figure figcaption">Battery compartment with the cover removed</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="design-split design-sub">
+          <!-- FIGURE SLOT F19: outline dimension drawing (owner 2b) -->
+          <figure class="figure" data-figure="F19">
+            <img src="assets/fig/F19.svg" alt="Three-view drawing of the enclosure with its outline dimensions in millimetres." width="1560" height="1000" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="figure-placeholder" hidden>
+              <p class="mono">Dimension drawing</p>
+              <p>Front, side and back views with the outline dimensions in millimetres.</p>
+            </div>
+            <figcaption>Outline dimensions in millimetres.</figcaption>
+          </figure>
+          <figure class="media-frame">
+            <picture>
+              <source type="image/avif" srcset="assets/img/P16_open_unit-480.avif 480w, assets/img/P16_open_unit-960.avif 960w, assets/img/P16_open_unit-1440.avif 1440w" sizes="The unit opened by hand, showing the circuit board with its processor chip, wiring, buzzer and 9 V battery.">
+              <source type="image/webp" srcset="assets/img/P16_open_unit-480.webp 480w, assets/img/P16_open_unit-960.webp 960w, assets/img/P16_open_unit-1440.webp 1440w" sizes="The unit opened by hand, showing the circuit board with its processor chip, wiring, buzzer and 9 V battery.">
+              <img src="assets/img/P16_open_unit-1440.png" alt="undefined" width="960" height="(min-width: 960px) 560px, 100vw" loading="lazy">
+            </picture>
+            <figcaption class="figure figcaption">Prototype wiring</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Keypads and controls -->
+    <section class="section" id="controls" aria-labelledby="controls-title" data-motion="section-reveal">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="controls-title">Keys that follow the user</h2>
+          <p class="lead">Function keys for the doctor, digits for the patient.</p>
+        </header>
+
+        <div class="design-split design-split--wide-left">
+          <div class="design-stack">
+            <p class="design-lead">Bed Unit: digits only since firmware 4.6. The Bed Unit now uses 0 to 9, * and # alone, because the A to D column of the membrane keypad proved unreliable. Fewer keys also makes it easier for a patient.</p>
+            <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table">
+              <table class="compare">
+                <caption class="sr-only">Controls on the Doctor Station and the Bed Unit, firmware 4.6</caption>
+                <thead>
+                  <tr><th scope="col">Function</th><th scope="col">Doctor Station</th><th scope="col">Bed Unit</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Answer</th><td>Not used</td><td>1 = YES or OK, 2 = NO</td></tr>
+                  <tr><th scope="row">Send or confirm</th><td>STOP (or 5 in lists)</td><td>#</td></tr>
+                  <tr><th scope="row">Back</th><td>START</td><td>* (in number entry and typing, it deletes first)</td></tr>
+                  <tr><th scope="row">Home screen</th><td>Hold START for 1 s: main menu</td><td>Hold * for 1 s: waiting screen</td></tr>
+                  <tr><th scope="row">Please repeat</th><td>Not used</td><td>9, on the question screen</td></tr>
+                  <tr><th scope="row">Ask for help</th><td>Not used</td><td>7, then the request number, then #</td></tr>
+                  <tr><th scope="row">Type a message</th><td>F2</td><td>8, on the waiting screen</td></tr>
+                  <tr><th scope="row">Shortcuts</th><td>F1 recent questions, F2 type, F3 next bed, F4 last answer</td><td>Not used</td></tr>
+                  <tr><th scope="row">Pain 0 to 10, numbers</th><td>Digits for instructions</td><td>Digits (1 then 0 = 10), # sends</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <figure class="media-frame" style="max-width: 26rem;">
+            <picture>
+              <source type="image/avif" srcset="assets/img/P13_in_hand-480.avif 480w, assets/img/P13_in_hand-960.avif 960w, assets/img/P13_in_hand-1440.avif 1440w" sizes="A hand holding the unit with the thumb resting on the 1 key.">
+              <source type="image/webp" srcset="assets/img/P13_in_hand-480.webp 480w, assets/img/P13_in_hand-960.webp 960w, assets/img/P13_in_hand-1440.webp 1440w" sizes="A hand holding the unit with the thumb resting on the 1 key.">
+              <img src="assets/img/P13_in_hand-1440.png" alt="undefined" width="1800" height="(min-width: 960px) 400px, 100vw" loading="lazy">
+            </picture>
+          </figure>
+        </div>
+
+        <div class="design-split design-sub">
+          <div class="design-stack">
+            <h3>Seven one-press requests</h3>
+            <ul class="requests">
+              <li>I have pain</li>
+              <li>Water</li>
+              <li>Toilet</li>
+              <li>Can't breathe</li>
+              <li>Feel sick</li>
+              <li>Call nurse</li>
+              <li>Call family</li>
+            </ul>
+          </div>
+          <div class="design-stack">
+            <h3>Why a keypad</h3>
+            <p class="design-lead">A keypad is cheaper and more durable than a touch screen. It works with gloves, gives physical feedback, is easy to clean and draws little power.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Materials and colours -->
+    <section class="section" id="materials" aria-labelledby="materials-title" data-motion="section-reveal">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="materials-title">Materials and colours</h2>
+          <p class="lead">Three PLA+ parts, as built.</p>
+        </header>
+        <div class="design-split design-split--wide-left">
+          <figure class="media-frame">
+            <picture>
+              <source type="image/avif" srcset="assets/img/P01_hero-480.avif 480w, assets/img/P01_hero-960.avif 960w, assets/img/P01_hero-1440.avif 1440w" sizes="A Patient unit seen from above at an angle, ivory front with a small screen, keypad and red power switch, on a dark background.">
+              <source type="image/webp" srcset="assets/img/P01_hero-480.webp 480w, assets/img/P01_hero-960.webp 960w, assets/img/P01_hero-1440.webp 1440w" sizes="A Patient unit seen from above at an angle, ivory front with a small screen, keypad and red power switch, on a dark background.">
+              <img src="assets/img/P01_hero-1440.png" alt="undefined" width="810" height="(min-width: 960px) 700px, 100vw" loading="lazy">
+            </picture>
+          </figure>
+          <ul class="label-list" style="align-self: center;">
+            <li><strong>Front</strong> warm ivory</li>
+            <li><strong>Body</strong> blue-grey</li>
+            <li><strong>Battery cover</strong> off-white</li>
+            <li><strong>Material</strong> PLA+ for all three parts</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packaging -->
+    <section class="section" id="packaging" aria-labelledby="packaging-title" data-motion="section-reveal">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="packaging-title">Ready to hand over</h2>
+          <p class="lead">A matte-black presentation kit.</p>
+        </header>
+        <div class="design-split design-split--wide-left">
+          <div class="design-prose">
+            <p>The box lid is 315 x 298 x 25 mm and matte black. The sticker wraps the top and all four walls, with corner tabs.</p>
+            <p>In the box: two OptiLink units, a battery charger and a quick guide, with DOCTOR and PATIENT role stickers for the two units.</p>
+            <p>The lid carries the headline &ldquo;Two-way infrared bedside communicator.&rdquo;</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manuals -->
+    <section class="section" id="manuals" aria-labelledby="manuals-title" data-motion="section-reveal">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="manuals-title">Two manuals, three languages</h2>
+          <p class="lead">One to use it, one to build it.</p>
+        </header>
+        <div class="manuals">
+          <article class="manual">
+            <h3>User manual</h3>
+            <figure class="media-frame manual-cover">
+              <picture>
+              <source type="image/avif" srcset="assets/img/M01_manual_cover-480.avif 480w" sizes="240px">
+              <source type="image/webp" srcset="assets/img/M01_manual_cover-480.webp 480w" sizes="240px">
+              <img src="assets/img/M01_manual_cover-480.png" alt="The cover of the user manual, titled User manual in English, Sinhala and Tamil." width="480" height="600" loading="lazy">
+            </picture>
+            </figure>
+            <p>A 12-page A6 booklet with every instruction in English, Sinhala and Tamil.</p>
+            <div class="btn-row"><a class="btn" href="contact/">Request the user manual</a></div>
+          </article>
+          <article class="manual">
+            <h3>Design manual</h3>
+            <p>The earlier manual, written for firmware 3.1 to 4.3. It covers how the unit is built. Where it differs from the firmware 4.6 controls above, the table on this page applies.</p>
+            <div class="btn-row"><a class="btn" href="downloads/OptiLink_Design_Manual_A6_v2.pdf" download>Download the earlier design manual (PDF)</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing call to action -->
+    <section class="section design-cta" aria-labelledby="cta-title" data-motion="section-reveal">
+      <div class="container">
+        <h2 id="cta-title">See how it is made</h2>
+        <p class="design-lead" style="margin: var(--s-4) auto 0; max-width: 40ch;">Questions about the build or the parts? Email the team.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="contact/">Contact the team</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <nav aria-label="Learn">
+          <h2>Learn</h2>
+          <ul>
+            <li><a href="./">Overview</a></li>
+            <li><a href="why-optilink/">Why OptiLink</a></li>
+            <li><a href="technology/">Technology</a></li>
+            <li><a href="design/">Design</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Use">
+          <h2>Use</h2>
+          <ul>
+            <li><a href="guides/quick-start/">Quick start</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="About">
+          <h2>About</h2>
+          <ul>
+            <li><a href="team/">Team</a></li>
+            <li><a href="contact/">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-note">
+        <ul class="footer-team">
+          <li>Movindu Dissanayake, E/21/109, <a href="mailto:e21109@eng.pdn.ac.lk">e21109@eng.pdn.ac.lk</a></li>
+          <li>Thaariq Firdous, E/21/139, <a href="mailto:e21139@eng.pdn.ac.lk">e21139@eng.pdn.ac.lk</a></li>
+          <li>Oshadha Samarakoon, E/21/345, <a href="mailto:e21345@eng.pdn.ac.lk">e21345@eng.pdn.ac.lk</a></li>
+        </ul>
+        <p>EE356 Electronic Product Design and Manufacture, Department of Electrical and Electronic Engineering, University of Peradeniya.</p>
+        <p>OptiLink is a student prototype and is not a certified medical device. It supports, and does not replace, normal clinical care and the ward's nurse-call system.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

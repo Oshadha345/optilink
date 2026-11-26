@@ -1,0 +1,483 @@
+/* OptiLink components. Owner: 1B. Each block is documented in web/shared/README.md. */
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-height: 48px;
+  padding: 0 var(--s-5);
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--text);
+  font: 500 var(--fs-sm)/1 var(--font-body);
+  letter-spacing: 0.005em;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+.btn:hover { border-color: var(--link-blue); color: var(--text); background: rgba(169, 187, 208, 0.08); }
+
+.btn--primary {
+  background: var(--product-face);
+  border-color: var(--product-face);
+  color: var(--ink);
+}
+.btn--primary:hover { background: #F3EEDD; border-color: #F3EEDD; color: var(--ink); }
+
+.btn--block { width: 100%; }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+
+/* ---------- Global nav ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(11, 13, 16, 0.72);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  backdrop-filter: saturate(1.4) blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  min-height: 64px;
+}
+
+.brand { display: inline-flex; align-items: center; }
+.brand img { height: 26px; width: auto; }
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: var(--s-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text); }
+
+.nav-more { position: relative; }
+.nav-more summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+.nav-more summary::-webkit-details-marker { display: none; }
+.nav-more summary:hover { color: var(--text); }
+.nav-more[open] .nav-menu {
+  display: grid;
+}
+.nav-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: calc(100% + var(--s-4));
+  min-width: 200px;
+  gap: var(--s-1);
+  padding: var(--s-3);
+  background: var(--graphite);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+.nav-menu a { padding: var(--s-2) var(--s-3); border-radius: var(--r-sm); color: var(--text); text-decoration: none; font-size: var(--fs-sm); }
+.nav-menu a:hover { background: rgba(169, 187, 208, 0.08); }
+
+.nav-cta { display: none; min-height: 34px; padding: 0 var(--s-4); font-size: var(--fs-xs); }
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-right: calc(var(--s-2) * -1);
+  background: none;
+  border: 0;
+  color: var(--text);
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: currentColor;
+  box-shadow: 0 6px 0 currentColor, 0 -6px 0 currentColor;
+}
+
+/* Mobile menu: a panel that opens below the bar */
+.nav-panel {
+  display: none;
+  border-top: 1px solid var(--line);
+  padding-block: var(--s-4) var(--s-6);
+}
+.nav-panel.is-open { display: block; }
+.nav-panel ul { list-style: none; margin: 0 0 var(--s-5); padding: 0; }
+.nav-panel li a {
+  display: block;
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-panel .btn { width: 100%; }
+
+@media (min-width: 960px) {
+  .nav-links, .nav-cta { display: inline-flex; }
+  .nav-toggle, .nav-panel { display: none !important; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding-block: var(--s-7) var(--s-6);
+  /* clip sideways only, so the IR dot's pulse is not cut off at the hero's lower edge */
+  overflow-x: clip;
+}
+.hero-grid {
+  display: grid;
+  gap: var(--s-5);
+  align-items: center;
+}
+/* The headline is set as two lines at every width: "Talk across the / isolation line."
+   The HTML keeps "isolation&nbsp;line." together; 12ch holds the longer line. */
+.hero h1 { max-width: 12ch; }
+.hero .btn-row { margin-top: var(--s-6); }
+.hero-sub {
+  margin-top: var(--s-5);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  color: var(--text-muted);
+  max-width: 34ch;
+}
+.hero-media {
+  position: relative;
+  margin: 0 calc(var(--gutter) * -1);
+  /* Phones: show x 38-100 % of P01 (the 1A_MEDIA_MAP mobile crop), so the unit
+     fills the width instead of floating small in its dark ground. */
+  aspect-ratio: 10 / 9;
+}
+.hero-media picture { display: contents; }
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 100% 55%;
+  /* Feather every edge of the photo into the ink so no rectangle shows. */
+  -webkit-mask-image: radial-gradient(ellipse 58% 56% at 56% 52%, #000 62%, transparent 100%);
+          mask-image: radial-gradient(ellipse 58% 56% at 56% 52%, #000 62%, transparent 100%);
+}
+/* One signature element: the isolation line, a hairline across the hero with one IR dot */
+.isolation-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong) 20%, var(--line-strong) 80%, transparent);
+  pointer-events: none;
+}
+.ir-dot {
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  margin-left: -3.5px;
+  border-radius: 50%;
+  background: var(--signal-red);
+  box-shadow: 0 0 0 0 rgba(214, 59, 49, 0.5);
+  animation: ir-pulse 3.2s var(--ease-out) infinite;
+}
+@keyframes ir-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(214, 59, 49, 0.45); }
+  70%, 100% { box-shadow: 0 0 0 14px rgba(214, 59, 49, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ir-dot { animation: none; }
+}
+
+@media (min-width: 640px) {
+  .hero-media { margin-inline: calc(var(--gutter-wide) * -1); }
+}
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .hero { padding-top: var(--s-8); }
+  .hero-media { aspect-ratio: 16 / 10; }
+  .hero-media img {
+    object-position: 80% 55%;
+    -webkit-mask-image: radial-gradient(ellipse 52% 60% at 62% 52%, #000 60%, transparent 100%);
+            mask-image: radial-gradient(ellipse 52% 60% at 62% 52%, #000 60%, transparent 100%);
+  }
+}
+@media (min-width: 1200px) {
+  /* Desktop: P01 is composed with empty dark on the left and the unit on the
+     right, so it becomes the hero's backdrop and the text sits in the dark half.
+     The hero is never taller than the photo's native 941 px and the photo is
+     never wider than its native 1672 px, so it shows at 1:1 or smaller (no zoom
+     on the OLED, 1A_MEDIA_MAP). The isolation line sits at or just above the fold. */
+  .hero {
+    isolation: isolate;
+    min-height: min(calc(100svh - 64px), 941px);
+    display: grid;
+    align-content: center;
+    padding-block: var(--s-9);
+  }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .hero-grid > div { max-width: 40rem; }
+  .hero h1 { font-size: clamp(4.5rem, 2rem + 3.4vw, 5.75rem); }
+  .hero-media {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: min(100%, 1672px);
+    margin: 0;
+    z-index: -1;
+    aspect-ratio: auto;
+  }
+  .hero-media img {
+    object-position: 80% 50%;
+    /* Fade top, bottom and left into the ink; the right side is the viewport edge */
+    -webkit-mask-image:
+      linear-gradient(180deg, transparent 0, #000 14%, #000 72%, transparent 100%),
+      linear-gradient(90deg, transparent 0, #000 38%);
+    -webkit-mask-composite: source-in;
+            mask-image:
+      linear-gradient(180deg, transparent 0, #000 14%, #000 72%, transparent 100%),
+      linear-gradient(90deg, transparent 0, #000 38%);
+            mask-composite: intersect;
+  }
+}
+
+/* ---------- Section headers ---------- */
+.section-head { display: grid; gap: var(--s-4); margin-bottom: var(--s-8); }
+.section-head .lead { font-size: var(--fs-md); color: var(--text-muted); max-width: 44ch; margin: 0; }
+
+/* ---------- Four barriers (typographic, ruled; no cards, no icons) ---------- */
+/* The four are not a sequence, so no numbers and no ticks. Phones: each barrier
+   sits under its own hairline. From 960 px: one unbroken hairline runs over all
+   four columns, so they read as four parts of one problem. */
+.barriers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--s-6);
+}
+.barriers li {
+  display: grid;
+  gap: var(--s-3);
+  align-content: start;
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--line-strong);
+}
+.barriers h3 { font-size: var(--fs-lg); }
+.barriers p { color: var(--text-muted); margin: 0; max-width: 34ch; }
+
+@media (min-width: 640px) and (max-width: 959.98px) {
+  .barriers { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-7) var(--s-6); }
+}
+@media (min-width: 960px) {
+  .barriers {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--s-6);
+    padding-top: var(--s-6);
+    border-top: 1px solid var(--line-strong);
+  }
+  .barriers li { padding-top: 0; border-top: 0; }
+}
+
+.link-row { margin: var(--s-7) 0 0; }
+
+/* Text link: link-blue, so it reads as a link without an arrow */
+.text-link {
+  display: inline-block;
+  font-size: var(--fs-base);
+  font-weight: 400;
+  color: var(--link-blue);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color var(--dur-fast) var(--ease-out);
+}
+.text-link:hover { color: var(--link-blue); text-decoration-color: currentColor; }
+.theme-light .text-link { color: var(--slate); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding-block: var(--s-8) var(--s-6);
+  font-size: var(--fs-xs);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.footer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6) var(--s-5); }
+.footer-grid h2 {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: var(--s-3);
+}
+.footer-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-2); }
+.footer-grid a { text-decoration: none; }
+.footer-grid a:hover { color: var(--text); text-decoration: underline; }
+.footer-note { margin-top: var(--s-7); padding-top: var(--s-5); border-top: 1px solid var(--line); display: grid; gap: var(--s-3); }
+.footer-note p { margin: 0; }
+.footer-team { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-1); }
+.footer-team a { color: var(--text-muted); }
+.footer-team a:hover { color: var(--text); }
+
+@media (min-width: 640px) {
+  .footer-grid { grid-template-columns: repeat(3, minmax(0, 13rem)); }
+}
+
+/* ---------- Media frame and figure ---------- */
+.media-frame {
+  margin: 0;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--graphite);
+}
+.media-frame img { width: 100%; height: auto; }
+.figure { margin: 0; }
+.figure figcaption {
+  margin-top: var(--s-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--track-mono);
+  color: var(--text-muted);
+}
+
+/* ---------- Spec table, comparison table ---------- */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table.spec, table.compare {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+table.spec th, table.spec td, table.compare th, table.compare td {
+  padding: var(--s-3) var(--s-2);
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+table.spec th { width: 36%; font-weight: 400; color: var(--text-muted); }
+table.spec td { font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: var(--track-mono); }
+table.compare thead th { font-weight: 500; color: var(--text); }
+table.compare td:first-child { color: var(--text-muted); }
+
+/* ---------- FAQ item (native details) ---------- */
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-4);
+  padding: var(--s-5) 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "";
+  flex: none;
+  width: 12px;
+  height: 12px;
+  background:
+    linear-gradient(currentColor, currentColor) center / 12px 1.5px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 1.5px 12px no-repeat;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item .faq-answer { padding: 0 0 var(--s-5); color: var(--text-muted); max-width: var(--measure); }
+
+/* ---------- Stat and callout ---------- */
+.stat { display: grid; gap: var(--s-2); }
+.stat-value {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  line-height: 1;
+  letter-spacing: var(--track-display);
+}
+.stat-label { font-size: var(--fs-sm); color: var(--text-muted); }
+
+.callout {
+  padding: var(--s-5);
+  border-left: 2px solid var(--accent);
+  background: rgba(124, 146, 171, 0.06);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  color: var(--text);
+}
+.callout--proposal { border-left-color: var(--signal-red); }
+.callout p { margin: 0; }
+
+/* ---------- Title block (Nerfies-style, centred) ---------- */
+.title-block { text-align: center; padding-block: var(--s-8) var(--s-6); }
+.title-block h1 { margin-inline: auto; }
+.title-block .authors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s-2) var(--s-5);
+  list-style: none;
+  padding: 0;
+  margin: var(--s-6) 0 var(--s-4);
+}
+.title-block .authors a { text-decoration: none; }
+.title-block .affiliation { color: var(--text-muted); font-size: var(--fs-sm); margin: 0 auto var(--s-5); }
+.title-block .btn-row { justify-content: center; }
+
+/* ---------- Team card (monogram until a photo is added) ---------- */
+.member { display: grid; gap: var(--s-3); justify-items: start; }
+.avatar {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--graphite);
+  border: 1px solid var(--line-strong);
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  color: var(--link-blue);
+  overflow: hidden;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Figure slot: fallback when the SVG is not yet in assets/fig/ ---------- */
+.figure img[hidden] { display: none; }
+.figure-placeholder {
+  display: grid;
+  gap: var(--s-2);
+  align-content: center;
+  min-height: 16rem;
+  padding: var(--s-5);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-md);
+  color: var(--text-muted);
+}
+.figure-placeholder p { margin: 0; max-width: none; }
+.figure-placeholder .mono { color: var(--link-blue); }
+
+/* ---------- Video slot (hidden until a video exists) ---------- */
+.video-slot[hidden] { display: none; }
+

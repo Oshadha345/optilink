@@ -1,0 +1,1620 @@
+{
+  "images": [
+    {
+      "id": "P01_hero",
+      "source": "P01_hero.png",
+      "source_path": "sources/images/P01_hero.png",
+      "source_size": [
+        1672,
+        941
+      ],
+      "source_mode": "RGB",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "master_width": 1672,
+      "master_height": 941,
+      "aspect_ratio": 1.7768,
+      "focal": {
+        "x": 0.72,
+        "y": 0.55
+      },
+      "hero": true,
+      "alt": "A Patient unit seen from above at an angle, ivory front with a small screen, keypad and red power switch, on a dark background.",
+      "caption": "",
+      "note": "Crop: none (native 16:9). Mobile 4:3 crop x 38-100% is not produced; add it when a layout needs it.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 270,
+          "files": {
+            "avif": "P01_hero-480.avif",
+            "webp": "P01_hero-480.webp",
+            "png": "P01_hero-480.png"
+          },
+          "kb": {
+            "avif": 4.8,
+            "webp": 7.1,
+            "png": 121.3
+          }
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "files": {
+            "avif": "P01_hero-960.avif",
+            "webp": "P01_hero-960.webp",
+            "png": "P01_hero-960.png"
+          },
+          "kb": {
+            "avif": 11.8,
+            "webp": 18.9,
+            "png": 509.1
+          }
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "files": {
+            "avif": "P01_hero-1440.avif",
+            "webp": "P01_hero-1440.webp",
+            "png": "P01_hero-1440.png"
+          },
+          "kb": {
+            "avif": 23.6,
+            "webp": 36.9,
+            "png": 1135.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "P02_pair_above",
+      "source": "P02_pair_above.png",
+      "source_path": "sources/images/P02_pair_above.png",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_mode": "RGB",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "master_width": 1536,
+      "master_height": 1024,
+      "aspect_ratio": 1.5,
+      "focal": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "hero": false,
+      "alt": "A Doctor Station and a Bed Unit lying side by side on a dark surface.",
+      "caption": "",
+      "note": "Crop: none (native 3:2). Small use only (under 50% width).",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 320,
+          "files": {
+            "avif": "P02_pair_above-480.avif",
+            "webp": "P02_pair_above-480.webp",
+            "png": "P02_pair_above-480.png"
+          },
+          "kb": {
+            "avif": 9.4,
+            "webp": 13.4,
+            "png": 170.1
+          }
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "files": {
+            "avif": "P02_pair_above-960.avif",
+            "webp": "P02_pair_above-960.webp",
+            "png": "P02_pair_above-960.png"
+          },
+          "kb": {
+            "avif": 23.9,
+            "webp": 35.7,
+            "png": 669.1
+          }
+        },
+        {
+          "width": 1440,
+          "height": 960,
+          "files": {
+            "avif": "P02_pair_above-1440.avif",
+            "webp": "P02_pair_above-1440.webp",
+            "png": "P02_pair_above-1440.png"
+          },
+          "kb": {
+            "avif": 42.5,
+            "webp": 62.5,
+            "png": 1487.3
+          }
+        }
+      ]
+    },
+    {
+      "id": "P03_front",
+      "source": "P03_front.png",
+      "source_path": "sources/images/P03_front.png",
+      "source_size": [
+        1122,
+        1402
+      ],
+      "source_mode": "RGB",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        393,
+        1122,
+        1402
+      ],
+      "master_width": 1122,
+      "master_height": 1009,
+      "aspect_ratio": 1.112,
+      "focal": {
+        "x": 0.5,
+        "y": 0.45
+      },
+      "hero": false,
+      "alt": "Front of a Patient unit: screen at the top, red power switch, low-battery label and a keypad below.",
+      "caption": "illustrative",
+      "note": "Crop: y 28-100% per 1A_MEDIA_MAP section 6.1 (the plan's 1:1 crop y 5-60% keeps the garbled screen). Result is about 1.11:1, not 1:1.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 432,
+          "files": {
+            "avif": "P03_front-480.avif",
+            "webp": "P03_front-480.webp",
+            "png": "P03_front-480.png"
+          },
+          "kb": {
+            "avif": 8.9,
+            "webp": 12.9,
+            "png": 255.0
+          }
+        },
+        {
+          "width": 960,
+          "height": 863,
+          "files": {
+            "avif": "P03_front-960.avif",
+            "webp": "P03_front-960.webp",
+            "png": "P03_front-960.png"
+          },
+          "kb": {
+            "avif": 45.4,
+            "webp": 60.6,
+            "png": 1113.2
+          }
+        }
+      ]
+    },
+    {
+      "id": "P04_back",
+      "source": "P04_back.png",
+      "source_path": "sources/images/P04_back.png",
+      "source_size": [
+        1122,
+        1402
+      ],
+      "source_mode": "RGB",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        1122,
+        1402
+      ],
+      "master_width": 1122,
+      "master_height": 1402,
+      "aspect_ratio": 0.8003,
+      "focal": {
+        "x": 0.5,
+        "y": 0.75
+      },
+      "hero": false,
+      "alt": "Back of the unit: blue-grey shell with visible print layers and an off-white battery cover with a latch at the bottom.",
+      "caption": "",
+      "note": "Crop: none (native 4:5). The 4:3 cover crop is not produced.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 600,
+          "files": {
+            "avif": "P04_back-480.avif",
+            "webp": "P04_back-480.webp",
+            "png": "P04_back-480.png"
+          },
+          "kb": {
+            "avif": 17.0,
+            "webp": 22.6,
+            "png": 391.0
+          }
+        },
+        {
+          "width": 960,
+          "height": 1200,
+          "files": {
+            "avif": "P04_back-960.avif",
+            "webp": "P04_back-960.webp",
+            "png": "P04_back-960.png"
+          },
+          "kb": {
+            "avif": 79.8,
+            "webp": 111.6,
+            "png": 1679.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "P05_battery_open",
+      "source": "P05_battery_open.png",
+      "source_path": "sources/images/P05_battery_open.png",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_mode": "RGB",
+      "icc_kept": false,
+      "crop_px": [
+        230,
+        44,
+        1536,
+        1024
+      ],
+      "master_width": 1306,
+      "master_height": 980,
+      "aspect_ratio": 1.3327,
+      "focal": {
+        "x": 0.65,
+        "y": 0.6
+      },
+      "hero": false,
+      "alt": "The battery compartment open, with the cover removed and a 9 V rechargeable battery sitting in the recess.",
+      "caption": "9 V NiMH",
+      "note": "Crop: x 15-100%, 4:3 centred on focal. Charge-time label must not be quoted (guides CONFIRM).",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 360,
+          "files": {
+            "avif": "P05_battery_open-480.avif",
+            "webp": "P05_battery_open-480.webp",
+            "png": "P05_battery_open-480.png"
+          },
+          "kb": {
+            "avif": 9.1,
+            "webp": 11.9,
+            "png": 219.2
+          }
+        },
+        {
+          "width": 960,
+          "height": 720,
+          "files": {
+            "avif": "P05_battery_open-960.avif",
+            "webp": "P05_battery_open-960.webp",
+            "png": "P05_battery_open-960.png"
+          },
+          "kb": {
+            "avif": 43.2,
+            "webp": 60.3,
+            "png": 970.6
+          }
+        }
+      ]
+    },
+    {
+      "id": "P06_ir_end",
+      "source": "P06_ir_end.png",
+      "source_path": "sources/images/P06_ir_end.png",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_mode": "RGB",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        563,
+        1535,
+        870
+      ],
+      "master_width": 1535,
+      "master_height": 307,
+      "aspect_ratio": 5.0,
+      "focal": {
+        "x": 0.48,
+        "y": 0.72
+      },
+      "hero": false,
+      "alt": "Close view of the infrared LED window on the end of the unit.",
+      "caption": "",
+      "note": "Crop: y 55-85% strip, 5:1. The plan's 4:3 x 20-80% crop cannot be 4:3 inside y 55-90%, so the strip is used.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 96,
+          "files": {
+            "avif": "P06_ir_end-480.avif",
+            "webp": "P06_ir_end-480.webp",
+            "png": "P06_ir_end-480.png"
+          },
+          "kb": {
+            "avif": 1.8,
+            "webp": 1.6,
+            "png": 43.7
+          }
+        },
+        {
+          "width": 960,
+          "height": 192,
+          "files": {
+            "avif": "P06_ir_end-960.avif",
+            "webp": "P06_ir_end-960.webp",
+            "png": "P06_ir_end-960.png"
+          },
+          "kb": {
+            "avif": 4.9,
+            "webp": 5.4,
+            "png": 189.9
+          }
+        },
+        {
+          "width": 1440,
+          "height": 288,
+          "files": {
+            "avif": "P06_ir_end-1440.avif",
+            "webp": "P06_ir_end-1440.webp",
+            "png": "P06_ir_end-1440.png"
+          },
+          "kb": {
+            "avif": 11.7,
+            "webp": 14.6,
+            "png": 432.3
+          }
+        }
+      ]
+    },
+    {
+      "id": "P08_screen",
+      "source": "P08_screen.png",
+      "source_path": "sources/images/P08_screen.png",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_mode": "RGB",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "master_width": 1536,
+      "master_height": 1024,
+      "aspect_ratio": 1.5,
+      "focal": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "hero": false,
+      "alt": "Three screen states: a pain question in Sinhala, the same question in Tamil, and an English summary of a patient report.",
+      "caption": "Illustrative screen states",
+      "note": "Crop: none (native 3:2, kept whole). Do not publish at size until the team checks the text.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 320,
+          "files": {
+            "avif": "P08_screen-480.avif",
+            "webp": "P08_screen-480.webp",
+            "png": "P08_screen-480.png"
+          },
+          "kb": {
+            "avif": 8.8,
+            "webp": 12.5,
+            "png": 158.3
+          }
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "files": {
+            "avif": "P08_screen-960.avif",
+            "webp": "P08_screen-960.webp",
+            "png": "P08_screen-960.png"
+          },
+          "kb": {
+            "avif": 24.9,
+            "webp": 33.3,
+            "png": 623.1
+          }
+        },
+        {
+          "width": 1440,
+          "height": 960,
+          "files": {
+            "avif": "P08_screen-1440.avif",
+            "webp": "P08_screen-1440.webp",
+            "png": "P08_screen-1440.png"
+          },
+          "kb": {
+            "avif": 45.4,
+            "webp": 58.9,
+            "png": 1339.7
+          }
+        }
+      ]
+    },
+    {
+      "id": "P11_keypad",
+      "source": "P11_keypad.png",
+      "source_path": "sources/images/P11_keypad.png",
+      "source_size": [
+        1920,
+        2400
+      ],
+      "source_mode": "RGBA",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        1920,
+        2208
+      ],
+      "master_width": 1920,
+      "master_height": 2208,
+      "aspect_ratio": 0.8696,
+      "focal": {
+        "x": 0.5,
+        "y": 0.48
+      },
+      "hero": false,
+      "alt": "The front of a unit: ivory face with a small screen listing Sinhala, Tamil and English, a red power switch, and a keypad of numbered grey keys with letters, green START, red STOP and blue F1 to F4.",
+      "caption": "",
+      "note": "Crop: y 0-92% (removes the bottom dark smudge). Result is about 0.87:1, not 4:5. Bed Unit guides: caption 'keypad as built; the Bed Unit uses digits, * and # only' (guides CONFIRM).",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 552,
+          "files": {
+            "avif": "P11_keypad-480.avif",
+            "webp": "P11_keypad-480.webp",
+            "png": "P11_keypad-480.png"
+          },
+          "kb": {
+            "avif": 9.2,
+            "webp": 12.0,
+            "png": 310.4
+          }
+        },
+        {
+          "width": 960,
+          "height": 1104,
+          "files": {
+            "avif": "P11_keypad-960.avif",
+            "webp": "P11_keypad-960.webp",
+            "png": "P11_keypad-960.png"
+          },
+          "kb": {
+            "avif": 35.9,
+            "webp": 43.6,
+            "png": 1173.0
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1656,
+          "files": {
+            "avif": "P11_keypad-1440.avif",
+            "webp": "P11_keypad-1440.webp",
+            "png": "P11_keypad-1440.png"
+          },
+          "kb": {
+            "avif": 78.6,
+            "webp": 86.9,
+            "png": 2232.1
+          }
+        },
+        {
+          "width": 1920,
+          "height": 2208,
+          "files": {
+            "avif": "P11_keypad-1920.avif",
+            "webp": "P11_keypad-1920.webp",
+            "png": "P11_keypad-1920.png"
+          },
+          "kb": {
+            "avif": 132.5,
+            "webp": 144.9,
+            "png": 3061.6
+          }
+        }
+      ]
+    },
+    {
+      "id": "P13_in_hand",
+      "source": "P13_in_hand.png",
+      "source_path": "sources/images/P13_in_hand.png",
+      "source_size": [
+        1536,
+        1920
+      ],
+      "source_mode": "RGBA",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        1536,
+        1920
+      ],
+      "master_width": 1536,
+      "master_height": 1920,
+      "aspect_ratio": 0.8,
+      "focal": {
+        "x": 0.45,
+        "y": 0.6
+      },
+      "hero": false,
+      "alt": "A hand holding the unit with the thumb resting on the 1 key.",
+      "caption": "",
+      "note": "Crop: none (native 4:5).",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 600,
+          "files": {
+            "avif": "P13_in_hand-480.avif",
+            "webp": "P13_in_hand-480.webp",
+            "png": "P13_in_hand-480.png"
+          },
+          "kb": {
+            "avif": 14.0,
+            "webp": 19.1,
+            "png": 381.8
+          }
+        },
+        {
+          "width": 960,
+          "height": 1200,
+          "files": {
+            "avif": "P13_in_hand-960.avif",
+            "webp": "P13_in_hand-960.webp",
+            "png": "P13_in_hand-960.png"
+          },
+          "kb": {
+            "avif": 47.1,
+            "webp": 56.1,
+            "png": 1283.3
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1800,
+          "files": {
+            "avif": "P13_in_hand-1440.avif",
+            "webp": "P13_in_hand-1440.webp",
+            "png": "P13_in_hand-1440.png"
+          },
+          "kb": {
+            "avif": 92.6,
+            "webp": 101.4,
+            "png": 2399.2
+          }
+        }
+      ]
+    },
+    {
+      "id": "P16_open_unit",
+      "source": "P16_open_unit.png",
+      "source_path": "sources/images/P16_open_unit.png",
+      "source_size": [
+        1800,
+        1200
+      ],
+      "source_mode": "RGBA",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        1800,
+        1200
+      ],
+      "master_width": 1800,
+      "master_height": 1200,
+      "aspect_ratio": 1.5,
+      "focal": {
+        "x": 0.52,
+        "y": 0.5
+      },
+      "hero": false,
+      "alt": "The unit opened by hand, showing the circuit board with its processor chip, wiring, buzzer and 9 V battery.",
+      "caption": "prototype wiring",
+      "note": "Crop: none (native 3:2). Never label as Rev 1.7 in the caption.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 320,
+          "files": {
+            "avif": "P16_open_unit-480.avif",
+            "webp": "P16_open_unit-480.webp",
+            "png": "P16_open_unit-480.png"
+          },
+          "kb": {
+            "avif": 9.2,
+            "webp": 12.6,
+            "png": 196.6
+          }
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "files": {
+            "avif": "P16_open_unit-960.avif",
+            "webp": "P16_open_unit-960.webp",
+            "png": "P16_open_unit-960.png"
+          },
+          "kb": {
+            "avif": 24.4,
+            "webp": 33.4,
+            "png": 722.6
+          }
+        },
+        {
+          "width": 1440,
+          "height": 960,
+          "files": {
+            "avif": "P16_open_unit-1440.avif",
+            "webp": "P16_open_unit-1440.webp",
+            "png": "P16_open_unit-1440.png"
+          },
+          "kb": {
+            "avif": 44.6,
+            "webp": 58.6,
+            "png": 1454.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "B01_box_hero",
+      "source": "B01_box_hero.png",
+      "source_path": "sources/images/B01_box_hero.png",
+      "source_size": [
+        2560,
+        1440
+      ],
+      "source_mode": "RGBA",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        2560,
+        1440
+      ],
+      "master_width": 2560,
+      "master_height": 1440,
+      "aspect_ratio": 1.7778,
+      "focal": {
+        "x": 0.6,
+        "y": 0.5
+      },
+      "hero": true,
+      "alt": "A closed matte black box with the OptiLink name and a list of features printed on the lid.",
+      "caption": "box artwork",
+      "note": "Crop: none (native 16:9). Lid QR is the old qrco.de code: do not present as scannable.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 270,
+          "files": {
+            "avif": "B01_box_hero-480.avif",
+            "webp": "B01_box_hero-480.webp",
+            "png": "B01_box_hero-480.png"
+          },
+          "kb": {
+            "avif": 4.7,
+            "webp": 5.6,
+            "png": 88.3
+          }
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "files": {
+            "avif": "B01_box_hero-960.avif",
+            "webp": "B01_box_hero-960.webp",
+            "png": "B01_box_hero-960.png"
+          },
+          "kb": {
+            "avif": 12.2,
+            "webp": 15.6,
+            "png": 314.6
+          }
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "files": {
+            "avif": "B01_box_hero-1440.avif",
+            "webp": "B01_box_hero-1440.webp",
+            "png": "B01_box_hero-1440.png"
+          },
+          "kb": {
+            "avif": 21.5,
+            "webp": 27.2,
+            "png": 614.0
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "files": {
+            "avif": "B01_box_hero-1920.avif",
+            "webp": "B01_box_hero-1920.webp",
+            "png": "B01_box_hero-1920.png"
+          },
+          "kb": {
+            "avif": 33.1,
+            "webp": 39.9,
+            "png": 990.6
+          }
+        }
+      ]
+    },
+    {
+      "id": "B02_box_top",
+      "source": "B02_box_top.png",
+      "source_path": "sources/images/B02_box_top.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_mode": "RGB",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        1254,
+        690
+      ],
+      "master_width": 1254,
+      "master_height": 690,
+      "aspect_ratio": 1.8174,
+      "focal": {
+        "x": 0.5,
+        "y": 0.3
+      },
+      "hero": false,
+      "alt": "Flat view of the box lid artwork: tagline and feature list beside a stylised blue-grey unit. Cropped above the QR code.",
+      "caption": "lid artwork, stylised",
+      "note": "Crop: y 0-55% (checked: the old QR is below this crop). Caption says stylised; never a key reference.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 264,
+          "files": {
+            "avif": "B02_box_top-480.avif",
+            "webp": "B02_box_top-480.webp",
+            "png": "B02_box_top-480.png"
+          },
+          "kb": {
+            "avif": 7.7,
+            "webp": 9.3,
+            "png": 157.8
+          }
+        },
+        {
+          "width": 960,
+          "height": 528,
+          "files": {
+            "avif": "B02_box_top-960.avif",
+            "webp": "B02_box_top-960.webp",
+            "png": "B02_box_top-960.png"
+          },
+          "kb": {
+            "avif": 26.0,
+            "webp": 27.1,
+            "png": 669.3
+          }
+        }
+      ]
+    },
+    {
+      "id": "B03_box_open",
+      "source": "B03_box_open.png",
+      "source_path": "sources/images/B03_box_open.png",
+      "source_size": [
+        3840,
+        2160
+      ],
+      "source_mode": "RGBA",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        3840,
+        2160
+      ],
+      "master_width": 3840,
+      "master_height": 2160,
+      "aspect_ratio": 1.7778,
+      "focal": {
+        "x": 0.5,
+        "y": 0.62
+      },
+      "hero": false,
+      "alt": "The open box with the lid raised, showing two units in a tray, a mains charger and a booklet.",
+      "caption": "",
+      "note": "Crop: none (native 16:9). Do not claim role stickers are visible.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 270,
+          "files": {
+            "avif": "B03_box_open-480.avif",
+            "webp": "B03_box_open-480.webp",
+            "png": "B03_box_open-480.png"
+          },
+          "kb": {
+            "avif": 4.5,
+            "webp": 5.8,
+            "png": 93.5
+          }
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "files": {
+            "avif": "B03_box_open-960.avif",
+            "webp": "B03_box_open-960.webp",
+            "png": "B03_box_open-960.png"
+          },
+          "kb": {
+            "avif": 12.8,
+            "webp": 16.3,
+            "png": 371.6
+          }
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "files": {
+            "avif": "B03_box_open-1440.avif",
+            "webp": "B03_box_open-1440.webp",
+            "png": "B03_box_open-1440.png"
+          },
+          "kb": {
+            "avif": 24.1,
+            "webp": 30.5,
+            "png": 852.9
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "files": {
+            "avif": "B03_box_open-1920.avif",
+            "webp": "B03_box_open-1920.webp",
+            "png": "B03_box_open-1920.png"
+          },
+          "kb": {
+            "avif": 39.7,
+            "webp": 48.5,
+            "png": 1417.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "B05_box_front",
+      "source": "B05_box_front.png",
+      "source_path": "sources/images/B05_box_front.png",
+      "source_size": [
+        1920,
+        1280
+      ],
+      "source_mode": "RGBA",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        164,
+        1920,
+        1244
+      ],
+      "master_width": 1920,
+      "master_height": 1080,
+      "aspect_ratio": 1.7778,
+      "focal": {
+        "x": 0.5,
+        "y": 0.55
+      },
+      "hero": false,
+      "alt": "The black box seen low from the front, with the OptiLink name on the lid edge.",
+      "caption": "",
+      "note": "Crop: 16:9 at full width (the plan's y 20-80% band is too short for 16:9). Gallery only.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 270,
+          "files": {
+            "avif": "B05_box_front-480.avif",
+            "webp": "B05_box_front-480.webp",
+            "png": "B05_box_front-480.png"
+          },
+          "kb": {
+            "avif": 4.4,
+            "webp": 4.5,
+            "png": 106.0
+          }
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "files": {
+            "avif": "B05_box_front-960.avif",
+            "webp": "B05_box_front-960.webp",
+            "png": "B05_box_front-960.png"
+          },
+          "kb": {
+            "avif": 16.4,
+            "webp": 18.1,
+            "png": 404.5
+          }
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "files": {
+            "avif": "B05_box_front-1440.avif",
+            "webp": "B05_box_front-1440.webp",
+            "png": "B05_box_front-1440.png"
+          },
+          "kb": {
+            "avif": 41.0,
+            "webp": 42.3,
+            "png": 916.0
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "files": {
+            "avif": "B05_box_front-1920.avif",
+            "webp": "B05_box_front-1920.webp",
+            "png": "B05_box_front-1920.png"
+          },
+          "kb": {
+            "avif": 77.6,
+            "webp": 81.4,
+            "png": 1395.6
+          }
+        }
+      ]
+    },
+    {
+      "id": "M01_manual_cover",
+      "source": "M01_manual_cover.png",
+      "source_path": "sources/images/M01_manual_cover.png",
+      "source_size": [
+        960,
+        1200
+      ],
+      "source_mode": "RGBA",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        960,
+        1200
+      ],
+      "master_width": 960,
+      "master_height": 1200,
+      "aspect_ratio": 0.8,
+      "focal": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "hero": false,
+      "alt": "The cover of the user manual, titled User manual in English, Sinhala and Tamil.",
+      "caption": "",
+      "note": "Crop: none (native 4:5). Display under 480 px wide; no retina claim.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 600,
+          "files": {
+            "avif": "M01_manual_cover-480.avif",
+            "webp": "M01_manual_cover-480.webp",
+            "png": "M01_manual_cover-480.png"
+          },
+          "kb": {
+            "avif": 12.6,
+            "webp": 13.6,
+            "png": 332.3
+          }
+        },
+        {
+          "width": 960,
+          "height": 1200,
+          "files": {
+            "avif": "M01_manual_cover-960.avif",
+            "webp": "M01_manual_cover-960.webp",
+            "png": "M01_manual_cover-960.png"
+          },
+          "kb": {
+            "avif": 45.1,
+            "webp": 48.8,
+            "png": 1158.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "M03_manual_on_box",
+      "source": "M03_manual_on_box.png",
+      "source_path": "sources/images/M03_manual_on_box.png",
+      "source_size": [
+        1920,
+        1280
+      ],
+      "source_mode": "RGBA",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        74,
+        1920,
+        1154
+      ],
+      "master_width": 1920,
+      "master_height": 1080,
+      "aspect_ratio": 1.7778,
+      "focal": {
+        "x": 0.52,
+        "y": 0.48
+      },
+      "hero": false,
+      "alt": "A printed booklet resting on the lid of the black box.",
+      "caption": "",
+      "note": "Crop: 16:9 at full width. Gallery only.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 270,
+          "files": {
+            "avif": "M03_manual_on_box-480.avif",
+            "webp": "M03_manual_on_box-480.webp",
+            "png": "M03_manual_on_box-480.png"
+          },
+          "kb": {
+            "avif": 4.6,
+            "webp": 5.1,
+            "png": 97.6
+          }
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "files": {
+            "avif": "M03_manual_on_box-960.avif",
+            "webp": "M03_manual_on_box-960.webp",
+            "png": "M03_manual_on_box-960.png"
+          },
+          "kb": {
+            "avif": 10.9,
+            "webp": 12.8,
+            "png": 320.9
+          }
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "files": {
+            "avif": "M03_manual_on_box-1440.avif",
+            "webp": "M03_manual_on_box-1440.webp",
+            "png": "M03_manual_on_box-1440.png"
+          },
+          "kb": {
+            "avif": 19.2,
+            "webp": 21.1,
+            "png": 681.6
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "files": {
+            "avif": "M03_manual_on_box-1920.avif",
+            "webp": "M03_manual_on_box-1920.webp",
+            "png": "M03_manual_on_box-1920.png"
+          },
+          "kb": {
+            "avif": 30.5,
+            "webp": 32.4,
+            "png": 920.3
+          }
+        }
+      ]
+    },
+    {
+      "id": "optilink_hero_three_quarter",
+      "source": "optilink_hero_three_quarter.png",
+      "source_path": "sources/optilink_web_assets/renders/optilink_hero_three_quarter.png",
+      "source_size": [
+        2501,
+        2150
+      ],
+      "source_mode": "RGBA",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        2501,
+        2150
+      ],
+      "master_width": 2501,
+      "master_height": 2150,
+      "aspect_ratio": 1.1633,
+      "focal": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "hero": true,
+      "alt": "A CAD render of the enclosure from the front at an angle, with the screen, switch and keypad openings and the embossed OptiLink name.",
+      "caption": "CAD render",
+      "note": "Crop: none (native, transparent).",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 413,
+          "files": {
+            "avif": "optilink_hero_three_quarter-480.avif",
+            "webp": "optilink_hero_three_quarter-480.webp",
+            "png": "optilink_hero_three_quarter-480.png"
+          },
+          "kb": {
+            "avif": 10.2,
+            "webp": 14.2,
+            "png": 66.6
+          }
+        },
+        {
+          "width": 960,
+          "height": 825,
+          "files": {
+            "avif": "optilink_hero_three_quarter-960.avif",
+            "webp": "optilink_hero_three_quarter-960.webp",
+            "png": "optilink_hero_three_quarter-960.png"
+          },
+          "kb": {
+            "avif": 21.0,
+            "webp": 30.7,
+            "png": 168.7
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1238,
+          "files": {
+            "avif": "optilink_hero_three_quarter-1440.avif",
+            "webp": "optilink_hero_three_quarter-1440.webp",
+            "png": "optilink_hero_three_quarter-1440.png"
+          },
+          "kb": {
+            "avif": 31.3,
+            "webp": 49.3,
+            "png": 296.9
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1651,
+          "files": {
+            "avif": "optilink_hero_three_quarter-1920.avif",
+            "webp": "optilink_hero_three_quarter-1920.webp",
+            "png": "optilink_hero_three_quarter-1920.png"
+          },
+          "kb": {
+            "avif": 50.7,
+            "webp": 69.0,
+            "png": 446.2
+          }
+        }
+      ]
+    },
+    {
+      "id": "optilink_exploded",
+      "source": "optilink_exploded.png",
+      "source_path": "sources/optilink_web_assets/renders/optilink_exploded.png",
+      "source_size": [
+        2245,
+        2244
+      ],
+      "source_mode": "RGBA",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        2245,
+        2244
+      ],
+      "master_width": 2245,
+      "master_height": 2244,
+      "aspect_ratio": 1.0004,
+      "focal": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "hero": false,
+      "alt": "An exploded CAD view of the enclosure showing the front shell, body shell and battery cover separated.",
+      "caption": "CAD render",
+      "note": "Crop: none (native 1:1, transparent). Say three printed parts.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 480,
+          "files": {
+            "avif": "optilink_exploded-480.avif",
+            "webp": "optilink_exploded-480.webp",
+            "png": "optilink_exploded-480.png"
+          },
+          "kb": {
+            "avif": 14.1,
+            "webp": 20.2,
+            "png": 96.9
+          }
+        },
+        {
+          "width": 960,
+          "height": 960,
+          "files": {
+            "avif": "optilink_exploded-960.avif",
+            "webp": "optilink_exploded-960.webp",
+            "png": "optilink_exploded-960.png"
+          },
+          "kb": {
+            "avif": 29.9,
+            "webp": 45.2,
+            "png": 238.8
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1439,
+          "files": {
+            "avif": "optilink_exploded-1440.avif",
+            "webp": "optilink_exploded-1440.webp",
+            "png": "optilink_exploded-1440.png"
+          },
+          "kb": {
+            "avif": 46.4,
+            "webp": 70.6,
+            "png": 409.6
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1919,
+          "files": {
+            "avif": "optilink_exploded-1920.avif",
+            "webp": "optilink_exploded-1920.webp",
+            "png": "optilink_exploded-1920.png"
+          },
+          "kb": {
+            "avif": 60.9,
+            "webp": 95.9,
+            "png": 610.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "optilink_front_orthographic",
+      "source": "optilink_front_orthographic.png",
+      "source_path": "sources/optilink_web_assets/renders/optilink_front_orthographic.png",
+      "source_size": [
+        1702,
+        2842
+      ],
+      "source_mode": "RGBA",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        1702,
+        2842
+      ],
+      "master_width": 1702,
+      "master_height": 2842,
+      "aspect_ratio": 0.5989,
+      "focal": {
+        "x": 0.5,
+        "y": 0.45
+      },
+      "hero": false,
+      "alt": "A straight-on CAD view of the front of the enclosure with its openings.",
+      "caption": "CAD render",
+      "note": "Overlay or annotation base only, not a hero. Test on ink-black before use.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 802,
+          "files": {
+            "avif": "optilink_front_orthographic-480.avif",
+            "webp": "optilink_front_orthographic-480.webp",
+            "png": "optilink_front_orthographic-480.png"
+          },
+          "kb": {
+            "avif": 8.9,
+            "webp": 13.6,
+            "png": 57.6
+          }
+        },
+        {
+          "width": 960,
+          "height": 1603,
+          "files": {
+            "avif": "optilink_front_orthographic-960.avif",
+            "webp": "optilink_front_orthographic-960.webp",
+            "png": "optilink_front_orthographic-960.png"
+          },
+          "kb": {
+            "avif": 17.9,
+            "webp": 28.1,
+            "png": 145.3
+          }
+        },
+        {
+          "width": 1440,
+          "height": 2405,
+          "files": {
+            "avif": "optilink_front_orthographic-1440.avif",
+            "webp": "optilink_front_orthographic-1440.webp",
+            "png": "optilink_front_orthographic-1440.png"
+          },
+          "kb": {
+            "avif": 26.6,
+            "webp": 42.5,
+            "png": 254.3
+          }
+        }
+      ]
+    },
+    {
+      "id": "optilink_side_orthographic",
+      "source": "optilink_side_orthographic.png",
+      "source_path": "sources/optilink_web_assets/renders/optilink_side_orthographic.png",
+      "source_size": [
+        696,
+        2842
+      ],
+      "source_mode": "RGBA",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        696,
+        2842
+      ],
+      "master_width": 696,
+      "master_height": 2842,
+      "aspect_ratio": 0.2449,
+      "focal": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "hero": false,
+      "alt": "Side CAD view of the enclosure showing the ivory front, the blue-grey body and the seam between them.",
+      "caption": "CAD render",
+      "note": "Thin diagram (0.25:1). Only 480 px is produced: the source is 696 px wide, so 960 is skipped.",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 1960,
+          "files": {
+            "avif": "optilink_side_orthographic-480.avif",
+            "webp": "optilink_side_orthographic-480.webp",
+            "png": "optilink_side_orthographic-480.png"
+          },
+          "kb": {
+            "avif": 7.0,
+            "webp": 6.8,
+            "png": 108.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "optilink_outline_dimensions",
+      "source": "optilink_outline_dimensions.png",
+      "source_path": "sources/optilink_web_assets/vector/optilink_outline_dimensions.png",
+      "source_size": [
+        2160,
+        1380
+      ],
+      "source_mode": "RGBA",
+      "icc_kept": false,
+      "crop_px": [
+        0,
+        0,
+        2160,
+        1380
+      ],
+      "master_width": 2160,
+      "master_height": 1380,
+      "aspect_ratio": 1.5652,
+      "focal": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "hero": false,
+      "alt": "Three-view drawing of the enclosure: front, side and back, with dimensions 95.0 wide, 162.0 tall and 36.0 thick.",
+      "caption": "",
+      "note": "Dark ink on transparent: place on a light panel in CSS. Switch label conflict (15.4 x 20.4 vs deck 26.4) is not fixed here. AVIF encoded at quality 80 (line art).",
+      "outputs": [
+        {
+          "width": 480,
+          "height": 307,
+          "files": {
+            "avif": "optilink_outline_dimensions-480.avif",
+            "webp": "optilink_outline_dimensions-480.webp",
+            "png": "optilink_outline_dimensions-480.png"
+          },
+          "kb": {
+            "avif": 12.8,
+            "webp": 15.9,
+            "png": 40.8
+          }
+        },
+        {
+          "width": 960,
+          "height": 613,
+          "files": {
+            "avif": "optilink_outline_dimensions-960.avif",
+            "webp": "optilink_outline_dimensions-960.webp",
+            "png": "optilink_outline_dimensions-960.png"
+          },
+          "kb": {
+            "avif": 29.5,
+            "webp": 35.4,
+            "png": 100.6
+          }
+        },
+        {
+          "width": 1440,
+          "height": 920,
+          "files": {
+            "avif": "optilink_outline_dimensions-1440.avif",
+            "webp": "optilink_outline_dimensions-1440.webp",
+            "png": "optilink_outline_dimensions-1440.png"
+          },
+          "kb": {
+            "avif": 53.8,
+            "webp": 55.3,
+            "png": 165.5
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1227,
+          "files": {
+            "avif": "optilink_outline_dimensions-1920.avif",
+            "webp": "optilink_outline_dimensions-1920.webp",
+            "png": "optilink_outline_dimensions-1920.png"
+          },
+          "kb": {
+            "avif": 73.1,
+            "webp": 74.7,
+            "png": 242.3
+          }
+        }
+      ]
+    }
+  ],
+  "reference_copies_kept": [
+    "P01_hero.png",
+    "optilink_hero_three_quarter.png"
+  ],
+  "extras": [
+    {
+      "id": "vector/*",
+      "source": "sources/optilink_web_assets/vector/*.svg (9 files)",
+      "outputs": [],
+      "alt": "",
+      "note": "Copied unchanged into assets/img/vector/ (task rule). Use the lockup and logo mark; the product illustration is decorative only; the block diagram is to be redrawn in brand fonts before publishing."
+    },
+    {
+      "id": "favicon",
+      "source": "sources/optilink_web_assets/vector/optilink_logo_mark.svg",
+      "outputs": [
+        {
+          "file": "favicon.svg"
+        },
+        {
+          "file": "favicon.ico",
+          "sizes": [
+            16,
+            32,
+            48
+          ]
+        }
+      ],
+      "alt": "",
+      "note": "Copied unchanged for favicon.svg; ICO rendered at 16/32/48 px."
+    },
+    {
+      "id": "apple-touch-icon",
+      "source": "sources/optilink_web_assets/vector/optilink_logo_mark.svg",
+      "outputs": [
+        {
+          "file": "apple-touch-icon.png",
+          "width": 180,
+          "height": 180
+        }
+      ],
+      "alt": "",
+      "note": "Logo mark on flat ink-black (#0B0D10) because iOS fills transparent areas black. Rendered from the SVG."
+    },
+    {
+      "id": "icon-192/512",
+      "source": "sources/optilink_web_assets/vector/optilink_logo_mark.svg",
+      "outputs": [
+        {
+          "file": "icon-192.png",
+          "width": 192,
+          "height": 192
+        },
+        {
+          "file": "icon-512.png",
+          "width": 512,
+          "height": 512
+        }
+      ],
+      "alt": "",
+      "note": "Logo mark, transparent. Rendered from the SVG."
+    },
+    {
+      "id": "og-share",
+      "source": "sources/images/P01_hero.png + sources/optilink_web_assets/vector/optilink_lockup_on_dark.svg",
+      "outputs": [
+        {
+          "file": "og-share-1200x630.jpg",
+          "width": 1200,
+          "height": 630
+        }
+      ],
+      "alt": "",
+      "note": "P01 cropped to 1200:630 at focal 72%,55% (source 1672x941), dark gradient from 40% height down to alpha 0.69, lockup 380 px wide at 64 px from the bottom-left. Nothing else added. Pages should reference this in og:image."
+    }
+  ],
+  "og_share": {
+    "crop_px": [
+      0,
+      63,
+      1672,
+      941
+    ],
+    "lockup_px": [
+      64,
+      483,
+      444,
+      566
+    ]
+  }
+}

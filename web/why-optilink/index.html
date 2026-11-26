@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../">
+  <title>Why OptiLink: OptiLink</title>
+  <meta name="description" content="The evidence behind OptiLink: isolation harm, language barriers and weak networks in Sri Lankan wards, and where everyday tools and specialist systems fall short.">
+  <meta name="theme-color" content="#0B0D10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Why OptiLink: OptiLink">
+  <meta property="og:description" content="The evidence behind OptiLink: isolation harm, language barriers and weak networks in Sri Lankan wards, and where everyday tools and specialist systems fall short.">
+  <link rel="icon" href="assets/img/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="shared/tokens.css">
+  <link rel="stylesheet" href="shared/base.css">
+  <link rel="stylesheet" href="shared/components.css">
+  <script src="shared/site.js" defer></script>
+  <style>
+    /* Page-local layout only. Colours come from tokens; the three status colours
+       in the matrix are the only additions (see BUILD_LOG, Phase 4a why-optilink). */
+    .why-page .section + .section { border-top: 1px solid var(--line); }
+    .why-page .title-block { padding-block: var(--s-9, 6rem) var(--s-7); }
+    .why-page .title-block p { margin-inline: auto; }
+    .why-page .title-block .lead { font-size: var(--fs-md); color: var(--text-muted); margin-top: var(--s-5); max-width: 46ch; }
+    .why-page .title-block .lead + p { color: var(--text-muted); max-width: 52ch; }
+    .why-page .block + .block { margin-top: var(--s-9, 6rem); }
+    .why-page .block-head { display: grid; gap: var(--s-3); margin-bottom: var(--s-6); }
+    .why-page .block-head p { margin: 0; color: var(--text-muted); max-width: 52ch; }
+    .why-page .block-head p.cite { font-size: var(--fs-sm); }
+    .why-page .evidence-grid { display: grid; gap: var(--s-7); }
+    .why-page .evidence-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-4); }
+    .why-page .evidence-list li { padding-top: var(--s-4); border-top: 1px solid var(--line); color: var(--text-muted); max-width: 52ch; }
+    .why-page .evidence-list li:first-child { border-top: 0; padding-top: 0; }
+    .why-page .stats { display: grid; gap: var(--s-6); margin-bottom: var(--s-7); }
+    .why-page .stat { padding-top: var(--s-4); border-top: 1px solid var(--line-strong); align-content: start; }
+    .why-page .stat p { margin: 0; }
+    .why-page .stat-value--alert { color: var(--signal-red); }
+    .why-page .pair { display: grid; gap: var(--s-6); }
+    .why-page .pair h3 { font-size: var(--fs-md); margin-bottom: var(--s-3); letter-spacing: -0.01em; }
+    .why-page .pair p { color: var(--text-muted); margin: 0; max-width: 46ch; }
+    .why-page .callout { margin-top: var(--s-7); max-width: 62ch; }
+    .why-page .quote { margin: 0 0 var(--s-7); padding: var(--s-5) 0 var(--s-5) var(--s-5); border-left: 2px solid var(--signal-red); max-width: 62ch; }
+    .why-page .quote p { margin: 0; font-family: var(--font-display); font-size: var(--fs-lg); line-height: 1.3; letter-spacing: var(--track-display); }
+    .why-page .quote strong { font-weight: 500; }
+    .why-page .table-wrap { margin-bottom: var(--s-4); }
+    .why-page .table-wrap table { min-width: 44rem; }
+    .why-page .table-wrap--matrix table { min-width: 52rem; }
+    .why-page .table-wrap:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+    .why-page table.compare th, .why-page table.compare td { padding: var(--s-3) var(--s-3); line-height: 1.45; }
+    .why-page table.compare tbody th { font-weight: 400; text-align: left; color: var(--text); }
+    .why-page table.compare td:first-child { color: var(--text); }
+    .why-page table.compare td.num { white-space: nowrap; }
+    .why-page .table-note { font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: var(--track-mono); color: var(--text-muted); max-width: 70ch; margin: 0 0 var(--s-2); }
+    .why-page .cost-row th, .why-page .cost-row td { border-top: 1px solid var(--line-strong); }
+
+    /* Matrix: colour plus a word, so colour is never the only signal */
+    .matrix { --m-yes: var(--link-blue); --m-partly: var(--accent); --m-no: var(--signal-red);
+              --m-yes-bg: rgba(169, 187, 208, 0.10); --m-partly-bg: rgba(124, 146, 171, 0.12); --m-no-bg: rgba(214, 59, 49, 0.10); }
+    .matrix tbody th { position: sticky; left: 0; background: var(--bg); z-index: 1; min-width: 12rem; }
+    .matrix td { font-size: var(--fs-sm); }
+    .matrix td.m-yes { background: var(--m-yes-bg); }
+    .matrix td.m-partly { background: var(--m-partly-bg); }
+    .matrix td.m-no { background: var(--m-no-bg); }
+    .matrix td .m-word { display: inline-flex; align-items: center; gap: var(--s-2); font-weight: 500; }
+    .matrix td .m-word::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex: none; }
+    .matrix td.m-yes .m-word { color: var(--m-yes); }
+    .matrix td.m-partly .m-word { color: var(--m-partly); }
+    .matrix td.m-no .m-word { color: var(--m-no); }
+    .matrix td small { display: block; margin-top: 2px; color: var(--text-muted); font-size: var(--fs-xs); }
+    .matrix .col-us { box-shadow: inset 2px 0 0 var(--link-blue), inset -2px 0 0 var(--link-blue); }
+    .matrix thead th.col-us { background: var(--slate-dark); box-shadow: inset 2px 0 0 var(--link-blue), inset -2px 0 0 var(--link-blue), inset 0 2px 0 var(--link-blue); }
+    .matrix tbody tr:last-child td.col-us { box-shadow: inset 2px 0 0 var(--link-blue), inset -2px 0 0 var(--link-blue), inset 0 -2px 0 var(--link-blue); }
+    .matrix td.cost { color: var(--text); font-size: var(--fs-sm); }
+    .matrix td.cost.col-us { font-weight: 500; }
+
+    .why-page .figure { max-width: 56rem; }
+    .why-page .figure img { width: 100%; height: auto; border-radius: var(--r-md); background: var(--graphite); }
+    .why-page .figure img[hidden] { display: none; }
+    .why-page .figure-placeholder { display: grid; gap: var(--s-2); align-content: center; min-height: 14rem; padding: var(--s-6); border: 1px dashed var(--line-strong); border-radius: var(--r-md); background: var(--graphite); }
+    .why-page .figure-placeholder[hidden] { display: none; }
+    .why-page .figure-placeholder p { margin: 0; color: var(--text-muted); max-width: 56ch; }
+    .why-page .figure-placeholder p.mono { color: var(--link-blue); }
+
+    .why-page .trio { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-6); }
+    .why-page .trio li { display: grid; gap: var(--s-3); align-content: start; padding-top: var(--s-5); border-top: 1px solid var(--line-strong); }
+    .why-page .trio h3 { font-size: var(--fs-md); letter-spacing: -0.01em; }
+    .why-page .trio p { margin: 0; color: var(--text-muted); max-width: 40ch; }
+    .why-page .scope-note { margin: var(--s-7) 0 0; color: var(--text-muted); font-size: var(--fs-sm); max-width: 62ch; }
+
+    .why-page .faq-list { max-width: 52rem; border-top: 1px solid var(--line); }
+    .why-page .faq-answer p { margin: 0 0 var(--s-3); }
+    .why-page .faq-answer p:last-child { margin-bottom: 0; }
+    .why-page .faq-answer strong { color: var(--text); font-weight: 500; }
+
+    .why-page .refs { display: grid; gap: var(--s-7); }
+    .why-page .refs h3 { font-size: var(--fs-md); margin-bottom: var(--s-4); letter-spacing: -0.01em; }
+    .why-page .refs ol { margin: 0; padding-left: 1.6em; display: grid; gap: var(--s-2); color: var(--text-muted); font-size: var(--fs-sm); }
+    .why-page .refs li { padding-left: var(--s-1); max-width: 70ch; }
+    .why-page .refs-note { margin: var(--s-6) 0 0; color: var(--text-muted); font-size: var(--fs-xs); font-family: var(--font-mono); letter-spacing: var(--track-mono); }
+
+    .why-page .cta { text-align: center; }
+    .why-page .cta h2 { margin-inline: auto; }
+    .why-page .cta p { margin: var(--s-4) auto var(--s-6); color: var(--text-muted); font-size: var(--fs-md); max-width: 40ch; }
+    .why-page .cta .btn-row { justify-content: center; }
+
+    @media (min-width: 640px) {
+      .why-page .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .why-page .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-7); }
+      .why-page .trio { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-6); }
+      .why-page .refs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-7); }
+    }
+    @media (min-width: 960px) {
+      .why-page .evidence-grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: var(--s-8); align-items: start; }
+    }
+  </style>
+</head>
+<body class="has-glow why-page">
+  <a class="sr-only" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container site-nav" aria-label="Main">
+      <a class="brand" href="./" aria-label="OptiLink home">
+        <img src="assets/brand/optilink_lockup_on_dark.svg" alt="OptiLink" width="140" height="31">
+      </a>
+      <ul class="nav-links">
+        <li><a href="why-optilink/" aria-current="page">Why OptiLink</a></li>
+        <li><a href="technology/">Technology</a></li>
+        <li><a href="design/">Design</a></li>
+        <li>
+          <details class="nav-more">
+            <summary>More</summary>
+            <div class="nav-menu">
+              <a href="team/">Team</a>
+              <a href="contact/">Contact</a>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <a class="btn btn--primary nav-cta" href="guides/quick-start/">Get started</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">
+        <span class="sr-only">Menu</span>
+        <span aria-hidden="true"></span>
+      </button>
+    </nav>
+    <div class="nav-panel container" id="nav-panel">
+      <ul>
+        <li><a href="./">Overview</a></li>
+        <li><a href="why-optilink/" aria-current="page">Why OptiLink</a></li>
+        <li><a href="technology/">Technology</a></li>
+        <li><a href="design/">Design</a></li>
+        <li><a href="guides/quick-start/">Quick start</a></li>
+        <li><a href="team/">Team</a></li>
+        <li><a href="contact/">Contact</a></li>
+      </ul>
+      <a class="btn btn--primary" href="guides/quick-start/">Get started</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- WHY-1 Title block -->
+    <section class="section" data-motion="section-reveal" aria-labelledby="why-title">
+      <div class="container">
+        <header class="title-block">
+          <h1 id="why-title">Why OptiLink</h1>
+          <p class="lead">In Sri Lankan wards, doctors and patients often have to communicate without close contact, without a shared language and without a reliable network.</p>
+          <p>Three questions, answered in order: Is it a real problem? What do hospitals use today? Where does each option fall short?</p>
+        </header>
+      </div>
+    </section>
+
+    <!-- WHY-2 to WHY-5 Evidence (deck slides 4 to 7) -->
+    <section class="section" id="evidence" data-motion="section-reveal" aria-labelledby="evidence-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="evidence-title">The problem, on the record.</h2>
+          <p class="lead">Four barriers, no low-cost offline answer.</p>
+        </header>
+
+        <ul class="barriers">
+          <li>
+            <h3>Distance.</h3>
+            <p>In isolation, every close conversation exposes staff and uses a set of PPE. Masks muffle speech and hide lip movement.</p>
+          </li>
+          <li>
+            <h3>Language.</h3>
+            <p>Sinhala, Tamil and English are all in daily hospital use, and a doctor and patient often do not share a first language.</p>
+          </li>
+          <li>
+            <h3>Network.</h3>
+            <p>Many wards, especially in rural hospitals, have weak mobile signal or no Wi-Fi, so app-based tools fail where they are needed most.</p>
+          </li>
+          <li>
+            <h3>Voice.</h3>
+            <p>Patients with breathing difficulty or after surgery may not speak easily, but can still press a key.</p>
+          </li>
+        </ul>
+
+        <!-- Isolation harm: deck slide 5 -->
+        <div class="block" style="margin-top: var(--s-10, 8rem);">
+          <header class="block-head">
+            <h3 style="font-size: var(--fs-xl); line-height: 1.08;">Isolation costs patients.</h3>
+            <p>Isolated patients are seen less often and suffer more preventable harm.</p>
+          </header>
+
+          <div class="evidence-grid">
+            <!-- FIGURE SLOT F11: Isolation-harm bar chart (2b). Drop assets/fig/F11.svg in place; nothing else changes. -->
+            <figure class="figure" data-figure="F11"><img src="assets/fig/F11.svg" alt="Horizontal bar chart from Stelfox et al., JAMA 2003, in events per 1,000 patient-days. Adverse events: 15 for patients not isolated, 31 for isolated patients. Preventable events: 3 not isolated, 20 isolated." width="1280" height="720" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="figure-placeholder" hidden><p class="mono">Stelfox et al., JAMA 2003: safety of patients isolated for infection control</p><p>Events per 1,000 patient-days. Adverse events: not isolated 15, isolated 31. Preventable events: not isolated 3, isolated 20.</p></div><figcaption>Events per 1,000 patient-days. Isolated patients were also 8 times more likely to make a formal complaint (8% vs 1%).</figcaption></figure>
+
+            <ul class="evidence-list">
+              <li>Kirkland and Weinstein, Lancet 1999: health workers entered contact-isolation rooms about half as often.</li>
+              <li>Saint et al., Am J Infect Control 2003: doctors examined patients in contact isolation less often.</li>
+              <li>Morgan et al., Am J Infect Control 2009: a review of adverse outcomes linked to contact precautions.</li>
+              <li>Cost of each entry here: an isolation gown and gloves cost about Rs 510–630 at Sri Lankan retail prices (gown Rs 495–590, gloves a pair Rs 15–40), and an N95 mask, at Rs 430, adds to that when it is changed.</li>
+            </ul>
+          </div>
+
+          <div class="callout">
+            <p>If routine questions and requests can cross the room without an entry, staff keep their distance and the patient is not left waiting.</p>
+          </div>
+        </div>
+
+        <!-- Language: deck slide 6 -->
+        <div class="block">
+          <header class="block-head">
+            <h3 style="font-size: var(--fs-xl); line-height: 1.08;">A quarter speak mainly Tamil.</h3>
+            <p>Most Sinhalese doctors rate their own Tamil as poor.</p>
+          </header>
+
+          <div class="stats">
+            <div class="stat">
+              <p class="stat-value">25.6%</p>
+              <p class="stat-label">of the population belongs to mainly Tamil-speaking communities (Census 2024; 24.6% in 2012).</p>
+            </div>
+            <div class="stat">
+              <p class="stat-value stat-value--alert">82.2%</p>
+              <p class="stat-label">of Sinhalese doctors rate their own Tamil as poor (Ranasinghe et al. 2016, 753 doctors).</p>
+            </div>
+            <div class="stat">
+              <p class="stat-value">44.2%</p>
+              <p class="stat-label">of those doctors met second-language barriers during Medicine ward appointments.</p>
+            </div>
+          </div>
+
+          <div class="pair">
+            <div>
+              <h3>Language barriers cause harm.</h3>
+              <p>Divi et al. (Int J Qual Health Care, 2007): adverse events in patients with limited English caused physical harm in 49.1% of cases, against 29.5% for English speakers.</p>
+            </div>
+            <div>
+              <h3>Interpreters help, but are rarely there.</h3>
+              <p>Flores (2005) and Karliner et al. (2007) show professional interpreters improve care. In our wards they are rarely available, especially at night, and must be near the patient.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Network and voice: deck slide 7 -->
+        <div class="block">
+          <header class="block-head">
+            <h3 style="font-size: var(--fs-xl); line-height: 1.08;">No signal. No voice.</h3>
+            <p>App-based tools fail where the signal is weakest, and some patients cannot speak.</p>
+          </header>
+
+          <div class="pair">
+            <div>
+              <h3>No reliable network.</h3>
+              <p>Phones, tablets, video calls and online translation all depend on mobile data or Wi-Fi. Many wards, especially in rural hospitals, have weak signal or no Wi-Fi.</p>
+            </div>
+            <div>
+              <h3>Patients who cannot speak.</h3>
+              <p>Happ and colleagues (the SPEACS studies) describe how voicelessness in mechanically ventilated ICU patients is a major barrier to care. Patients with breathing difficulty, or after surgery, can still press a key and answer yes or no, rate pain from 0 to 10, or ask for help.</p>
+            </div>
+          </div>
+
+          <div class="callout">
+            <p>OptiLink was designed around all four barriers at once: from across the room, in each person's language, with no network, and with one key press per answer.</p>
+          </div>
+        </div>
+
+        <!-- Problem statement: deck slide 4 callout -->
+        <div class="block">
+          <header class="block-head">
+            <h3 style="font-size: var(--fs-xl); line-height: 1.08;">The problem, in one line.</h3>
+          </header>
+          <blockquote class="quote">
+            <p>Problem statement. No low-cost, offline tool lets a doctor and a patient exchange clinical questions, answers and urgent needs reliably from across the room, each in their own language.</p>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY-6 Everyday tools (deck slide 10) -->
+    <section class="section" id="everyday" data-motion="section-reveal" aria-labelledby="everyday-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="everyday-title">Familiar tools, same gaps.</h2>
+          <p class="lead">Everyday tools are cheap or familiar, but none carries a checked message across a language barrier.</p>
+        </header>
+
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Everyday tools compared (scrolls sideways on small screens)">
+          <table class="compare">
+            <thead>
+              <tr><th scope="col">Option</th><th scope="col">Price in Sri Lanka (Rs)</th><th scope="col">Strength</th><th scope="col">Why it does not solve this problem</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Talking at the bedside or through glass</td><td>None</td><td>No equipment</td><td>Exposure in isolation; PPE muffles speech; still needs a shared language</td></tr>
+              <tr><td>Wireless call button (433 MHz)</td><td>2,062–6,637 single; 49,537 for a 10-bed kit</td><td>Cheap, no wiring</td><td>One-way "come" only: no content, no reply, no language</td></tr>
+              <tr><td>Walkie-talkie, intercom, baby monitor</td><td>2,475–6,884 a pair; intercoms 5,000–20,000</td><td>Natural speech</td><td>Muffled by masks and glass; no translation; no written record</td></tr>
+              <tr><td>Tablet with Google Translate or video call</td><td>24,249 (no-name) to 41,940 (Galaxy Tab A9) or 126,666 (iPad) per bed</td><td>Familiar; Translate is free and supports Sinhala and Tamil</td><td>A device per bed; cleaning, charging, logins, theft; unchecked medical translation; no alert to staff</td></tr>
+              <tr><td>Human or phone interpreter</td><td>Staff time</td><td>Most accurate</td><td>Rarely available, especially at night; must be near or on a network</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">Prices: Daraz.lk listings, November 2026, from the team's verification review.</p>
+      </div>
+    </section>
+
+    <!-- WHY-7 Specialist systems (deck slide 11) -->
+    <section class="section" id="specialist" data-motion="section-reveal" aria-labelledby="specialist-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="specialist-title">Specialist, but out of reach.</h2>
+          <p class="lead">Specialist systems solve part of the problem, at a cost no government ward can carry.</p>
+        </header>
+
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Specialist systems compared (scrolls sideways on small screens)">
+          <table class="compare">
+            <thead>
+              <tr><th scope="col">Option</th><th scope="col">Price</th><th scope="col">Why it does not solve this problem</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Cboard (free AAC app)</td><td>Free app, plus a tablet per bed (Rs 24,000+)</td><td>Supports Sinhala and Tamil, but one-way: no clinician station, no alert, no reply, no record</td></tr>
+              <tr><td>Avaz AAC</td><td>About USD 199.99 lifetime (Rs 66,400), plus a tablet</td><td>Tamil but no Sinhala; built for long-term disability; one-way</td></tr>
+              <tr><td>Proloquo2Go</td><td>USD 249.99–299.99 (Rs 83,000–100,000), iPad only</td><td>English, Spanish, French and Dutch only: no Sinhala or Tamil</td></tr>
+              <tr><td>Tobii Dynavox speech devices</td><td>GBP 3,199–7,950 (about Rs 1.3–3.3 million)</td><td>Built for one long-term user; no Sinhala or Tamil symbol sets</td></tr>
+              <tr><td>Vidatak EZ Board and VidaTalk</td><td>About USD 28 per board (Rs 9,300); app USD 300 a month per ICU unit</td><td>No Sinhala or Tamil board listed; the app is a monthly tablet subscription</td></tr>
+              <tr><td>Hospital nurse-call (Ascom, Rauland, Hillrom)</td><td>USD 140–650 per bed: Rs 4.6–21.6 million per 100 beds, plus 8–15% a year</td><td>Carries no message content and no language; needs cabling and installation</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">Prices from vendor sites and listings, November 2026. See the references below.</p>
+      </div>
+    </section>
+
+    <!-- WHY-9 Needs-vs-options matrix (deck slide 13; F13 is built as this HTML table) -->
+    <section class="section" id="matrix" data-motion="section-reveal" aria-labelledby="matrix-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="matrix-title">Every option leaves gaps.</h2>
+          <p class="lead">Against the needs that matter in a ward, every alternative leaves at least two gaps.</p>
+        </header>
+
+        <div class="table-wrap table-wrap--matrix" tabindex="0" role="region" aria-label="Needs against options matrix (scrolls sideways on small screens)">
+          <table class="compare matrix">
+            <thead>
+              <tr>
+                <th scope="col">Need</th>
+                <th scope="col" class="col-us">OptiLink</th>
+                <th scope="col">Tablet / video</th>
+                <th scope="col">Translator app</th>
+                <th scope="col">AAC app or device</th>
+                <th scope="col">Intercom / nurse-call</th>
+                <th scope="col">Board</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Usable from across the room</th>
+                <td class="m-yes col-us"><span class="m-word">Yes</span></td>
+                <td class="m-yes"><span class="m-word">Yes</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-yes"><span class="m-word">Yes</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Works with no network</th>
+                <td class="m-yes col-us"><span class="m-word">Yes</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-partly"><span class="m-word">Partly</span><small>offline packs</small></td>
+                <td class="m-yes"><span class="m-word">Yes</span></td>
+                <td class="m-partly"><span class="m-word">Partly</span><small>wired install</small></td>
+                <td class="m-yes"><span class="m-word">Yes</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Sinhala and Tamil</th>
+                <td class="m-yes col-us"><span class="m-word">Yes</span></td>
+                <td class="m-partly"><span class="m-word">Partly</span><small>speech only</small></td>
+                <td class="m-yes"><span class="m-word">Yes</span></td>
+                <td class="m-partly"><span class="m-word">Partly</span><small>Cboard only</small></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-partly"><span class="m-word">Partly</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Each person reads their own language</th>
+                <td class="m-yes col-us"><span class="m-word">Yes</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-partly"><span class="m-word">Partly</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Works for a patient who cannot speak</th>
+                <td class="m-yes col-us"><span class="m-word">Yes</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-yes"><span class="m-word">Yes</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-yes"><span class="m-word">Yes</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Checked clinical phrases and an English record</th>
+                <td class="m-yes col-us"><span class="m-word">Yes</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Alert to staff and confirmed delivery</th>
+                <td class="m-yes col-us"><span class="m-word">Yes</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+                <td class="m-partly"><span class="m-word">Partly</span><small>alert only</small></td>
+                <td class="m-no"><span class="m-word">No</span></td>
+              </tr>
+              <tr class="cost-row">
+                <th scope="row">Cost per bed (Rs)</th>
+                <td class="cost col-us">about 9,500<sup><a href="why-optilink/#matrix-note" aria-label="See the cost per bed note">*</a></sup></td>
+                <td class="cost">24,000+</td>
+                <td class="cost">a phone per bed</td>
+                <td class="cost">24,000 to 3.3 million</td>
+                <td class="cost">46,500–216,000</td>
+                <td class="cost">very low</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note" id="matrix-note">* OptiLink cost per bed: a 10-bed ward kit (1 Doctor Station, 10 Bed Units, 6 chargers) of about Rs 95,300, divided by 10.</p>
+        <p class="table-note">The OptiLink figure is a build-cost estimate, not a selling price.</p>
+      </div>
+    </section>
+
+    <!-- WHY-8 Positioning map (deck slide 12) -->
+    <section class="section" id="gap-map" data-motion="section-reveal" aria-labelledby="map-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="map-title">Where the gap sits.</h2>
+          <p class="lead">No product we found sits where OptiLink does: offline, low-cost and two-way in three languages.</p>
+        </header>
+
+        <!-- FIGURE SLOT F12: Positioning map 2x2 (2b). Drop assets/fig/F12.svg in place; nothing else changes. -->
+        <figure class="figure" data-figure="F12"><img src="assets/fig/F12.svg" alt="Two-by-two map. Vertical axis: two-way, checked, in each person's language, from low to high. Horizontal axis: needs network, devices, installation or cost per bed, from low to high. OptiLink sits alone in the top-left quadrant, The gap. Tablet with Translate or video and AAC apps and devices sit top-right. Communication board, talking through glass and wireless call button sit bottom-left. Walkie-talkie and intercom sit on the vertical divider below the horizontal line. Hospital nurse-call sits bottom-right." width="1000" height="800" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="figure-placeholder" hidden><p class="mono">Positioning map</p><p>Two-way, checked, in each person's language (vertical) against network, devices, installation or cost per bed (horizontal). OptiLink sits alone in the top-left quadrant, The gap.</p></div><figcaption>Positions are our judgement from the comparison above, not measurements.</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- WHY-10 Research gap (deck slide 14) -->
+    <section class="section" id="research-gap" data-motion="section-reveal" aria-labelledby="research-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="research-title">The research gap, stated precisely.</h2>
+          <p class="lead">What exists, what does not, and what is accepted in hospitals.</p>
+        </header>
+
+        <blockquote class="quote">
+          <p>Existing options either need close contact, depend on a network or a smartphone, cost far too much, ignore Sinhala and Tamil, or carry no structured clinical content. <strong>We found no low-cost, offline device that lets a clinician and a patient exchange structured clinical questions, answers and urgent requests from across a room, each in their own language, with confirmed delivery and an automatic English record.</strong></p>
+        </blockquote>
+
+        <ul class="trio">
+          <li>
+            <h3>Local evidence of the problem.</h3>
+            <p>Ranasinghe et al. (2016); Abesooriya and Rassool (2024, 2025, University of Jaffna) on language in a government ward.</p>
+          </li>
+          <li>
+            <h3>Local attempts so far.</h3>
+            <p>Gunawardana et al. (2019) built a Sinhala-only Android communication app, tested at Ragama Hospital: one language, one-way, a phone per patient.</p>
+          </li>
+          <li>
+            <h3>Infrared is accepted in hospitals.</h3>
+            <p>US patent 5,561,412 uses infrared transceivers in patient rooms for nurse call. OptiLink differs: standalone, trilingual and two-way.</p>
+          </li>
+        </ul>
+
+        <p class="scope-note">"We found no" describes our search, not a guarantee.</p>
+      </div>
+    </section>
+
+    <!-- WHY-11 and WHY-12 Answers (deck slides 15 and 35) -->
+    <section class="section" id="answers" data-motion="section-reveal" aria-labelledby="answers-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="answers-title">Free tools, honest answers.</h2>
+          <p class="lead">Two strong alternatives are free, so we answer them on their real weaknesses.</p>
+        </header>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>Google Translate works in Sinhala and Tamil. Why not use it?</summary>
+            <div class="faq-answer">
+              <p>It is free and supports both languages, and downloaded languages can work offline.</p>
+              <p>At the bedside it needs a phone or tablet per patient, which must be disinfected, charged and kept from theft. Medical translations are not checked, a patient who cannot speak or type cannot use it, and it alerts no one and records nothing.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>Cboard is free and supports Sinhala and Tamil. Why build OptiLink?</summary>
+            <div class="faq-answer">
+              <p>Cboard is a good one-way communication board.</p>
+              <p>It still needs a tablet per bed (Rs 24,000 or more), and has no clinician station, no alert, no reply and no record. OptiLink is two-way: the doctor sees the request at the station and the patient reads the answer in their own language.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>Is it not just a remote control?</summary>
+            <div class="faq-answer">
+              <p>The parts are standard. What is new is the combination: phrase-code messaging so each side reads its own language, structured clinical content with an English report, and confirmed delivery, all offline and from a distance.</p>
+            </div>
+          </details>
+        </div>
+
+        <p class="link-row"><a class="text-link" href="contact/">Ask the team</a></p>
+      </div>
+    </section>
+
+    <!-- WHY-13 References (deck slide 51) -->
+    <section class="section" id="references" data-motion="section-reveal" aria-labelledby="refs-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="refs-title">References.</h2>
+          <p class="lead">Sources for every cited figure on this page.</p>
+        </header>
+
+        <div class="refs">
+          <div>
+            <h3>International studies</h3>
+            <ol>
+              <li>Divi C, et al. Language proficiency and adverse events in US hospitals. Int J Qual Health Care. 2007;19(2):60-67.</li>
+              <li>Flores G. The impact of medical interpreter services on the quality of health care. Med Care Res Rev. 2005;62(3):255-299.</li>
+              <li>Karliner LS, et al. Do professional interpreters improve clinical care for patients with limited English proficiency? Health Serv Res. 2007;42(2):727-754.</li>
+              <li>Happ MB, et al. SPEACS: communication with non-speaking ICU patients (2000; SPEACS-2, 2010).</li>
+              <li>Kirkland KB, Weinstein JM. Adverse effects of contact isolation. Lancet. 1999;354:1177-1178.</li>
+              <li>Saint S, et al. Do physicians examine patients in contact isolation less frequently? Am J Infect Control. 2003;31(6).</li>
+              <li>Stelfox HT, et al. Safety of patients isolated for infection control. JAMA. 2003;290:1899-1905.</li>
+              <li>Morgan DJ, et al. Adverse outcomes associated with Contact Precautions. Am J Infect Control. 2009;37:85-93.</li>
+            </ol>
+          </div>
+          <div>
+            <h3>Sri Lankan sources, data and prices</h3>
+            <ol>
+              <li>Ranasinghe et al. (2016). Language barrier due to lack of second official language proficiency among medical officers in Sri Lanka.</li>
+              <li>Abesooriya and Rassool (2024, 2025). Language strategies in a government hospital ward. University of Jaffna.</li>
+              <li>Gunawardana et al. (2019). AAC application in Sinhala for adults with language difficulties.</li>
+              <li>Department of Census and Statistics: Census of Population and Housing 2012 and 2024.</li>
+              <li>US Patent 5,561,412: Patient/nurse call system.</li>
+              <li>Prices: Daraz.lk, Tronic.lk, Duino.lk, LakSafety, HuMed.lk, Healthguard.lk, vendor sites (November 2026).</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing call to action -->
+    <section class="section cta" data-motion="section-reveal" aria-labelledby="cta-title">
+      <div class="container">
+        <h2 id="cta-title">See it in a ward.</h2>
+        <p>Set up a pair in minutes, or read how OptiLink fits a hospital.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="guides/quick-start/">Get started</a>
+          <a class="btn" href="contact/">Contact the team</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <nav aria-label="Learn">
+          <h2>Learn</h2>
+          <ul>
+            <li><a href="./">Overview</a></li>
+            <li><a href="why-optilink/">Why OptiLink</a></li>
+            <li><a href="technology/">Technology</a></li>
+            <li><a href="design/">Design</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Use">
+          <h2>Use</h2>
+          <ul>
+            <li><a href="guides/quick-start/">Quick start</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="About">
+          <h2>About</h2>
+          <ul>
+            <li><a href="team/">Team</a></li>
+            <li><a href="contact/">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-note">
+        <ul class="footer-team">
+          <li>Movindu Dissanayake, E/21/109, <a href="mailto:e21109@eng.pdn.ac.lk">e21109@eng.pdn.ac.lk</a></li>
+          <li>Thaariq Firdous, E/21/139, <a href="mailto:e21139@eng.pdn.ac.lk">e21139@eng.pdn.ac.lk</a></li>
+          <li>Oshadha Samarakoon, E/21/345, <a href="mailto:e21345@eng.pdn.ac.lk">e21345@eng.pdn.ac.lk</a></li>
+        </ul>
+        <p>EE356 Electronic Product Design and Manufacture, Department of Electrical and Electronic Engineering, University of Peradeniya.</p>
+        <p>OptiLink is a student prototype and is not a certified medical device. It supports, and does not replace, normal clinical care and the ward's nurse-call system.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

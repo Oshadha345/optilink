@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../">
+  <title>Team: OptiLink</title>
+  <meta name="description" content="The three students who built OptiLink, and the people who guided the work.">
+  <meta name="theme-color" content="#0B0D10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Team: OptiLink">
+  <meta property="og:description" content="The three students who built OptiLink, and the people who guided the work.">
+  <link rel="icon" href="assets/img/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="shared/tokens.css">
+  <link rel="stylesheet" href="shared/base.css">
+  <link rel="stylesheet" href="shared/components.css">
+  <script src="shared/site.js" defer></script>
+  <style>
+    .team-grid { display: grid; gap: var(--s-8); margin-top: var(--s-6); }
+    @media (min-width: 640px) { .team-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .team-grid .member p { margin: 0; color: var(--text-muted); }
+    .team-grid .member a { overflow-wrap: anywhere; }
+    .ack-list { margin: var(--s-5) 0 0; padding: 0; list-style: none; display: grid; gap: var(--s-3); }
+    .course-line { margin-top: var(--s-6); color: var(--text-muted); font-size: var(--fs-sm); }
+  </style>
+</head>
+<body class="has-glow">
+  <a class="sr-only" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container site-nav" aria-label="Main">
+      <a class="brand" href="./" aria-label="OptiLink home">
+        <img src="assets/brand/optilink_lockup_on_dark.svg" alt="OptiLink" width="140" height="31">
+      </a>
+      <ul class="nav-links">
+        <li><a href="why-optilink/">Why OptiLink</a></li>
+        <li><a href="technology/">Technology</a></li>
+        <li><a href="design/">Design</a></li>
+        <li>
+          <details class="nav-more">
+            <summary>More</summary>
+            <div class="nav-menu">
+              <a href="team/" aria-current="page">Team</a>
+              <a href="contact/">Contact</a>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <a class="btn btn--primary nav-cta" href="guides/quick-start/">Get started</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">
+        <span class="sr-only">Menu</span>
+        <span aria-hidden="true"></span>
+      </button>
+    </nav>
+    <div class="nav-panel container" id="nav-panel">
+      <ul>
+        <li><a href="./">Overview</a></li>
+        <li><a href="why-optilink/">Why OptiLink</a></li>
+        <li><a href="technology/">Technology</a></li>
+        <li><a href="design/">Design</a></li>
+        <li><a href="guides/quick-start/">Quick start</a></li>
+        <li><a href="team/" aria-current="page">Team</a></li>
+        <li><a href="contact/">Contact</a></li>
+      </ul>
+      <a class="btn btn--primary" href="guides/quick-start/">Get started</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section section--tight">
+      <div class="container">
+        <header class="title-block">
+          <h1>Three students, one ward</h1>
+          <p class="affiliation">Built for EE356 at the University of Peradeniya.</p>
+        </header>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="members-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="members-title">The team</h2>
+          <p class="lead">Three names, three direct emails.</p>
+        </header>
+        <div class="team-grid">
+          <article class="member">
+            <div class="avatar" aria-hidden="true">MD</div>
+            <h3>Movindu Dissanayake</h3>
+            <p class="mono">E/21/109</p>
+            <a href="mailto:e21109@eng.pdn.ac.lk?subject=OptiLink">e21109@eng.pdn.ac.lk</a>
+          </article>
+          <article class="member">
+            <div class="avatar" aria-hidden="true">TF</div>
+            <h3>Thaariq Firdous</h3>
+            <p class="mono">E/21/139</p>
+            <a href="mailto:e21139@eng.pdn.ac.lk?subject=OptiLink">e21139@eng.pdn.ac.lk</a>
+          </article>
+          <article class="member">
+            <div class="avatar" aria-hidden="true">OS</div>
+            <h3>Oshadha Samarakoon</h3>
+            <p class="mono">E/21/345</p>
+            <a href="mailto:e21345@eng.pdn.ac.lk?subject=OptiLink">e21345@eng.pdn.ac.lk</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="thanks-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="thanks-title">With thanks</h2>
+          <p class="lead">To the people who guided and checked this work.</p>
+        </header>
+        <ul class="ack-list">
+          <li>Dr. Isuru Dassanayake</li>
+          <li>Dr. Janaka Wijayakulasooriya</li>
+          <li>Dr. Sudheera Navaratne</li>
+        </ul>
+        <p class="course-line">EE356 Electronic Product Design and Manufacture, Department of Electrical and Electronic Engineering, University of Peradeniya.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <nav aria-label="Learn">
+          <h2>Learn</h2>
+          <ul>
+            <li><a href="./">Overview</a></li>
+            <li><a href="why-optilink/">Why OptiLink</a></li>
+            <li><a href="technology/">Technology</a></li>
+            <li><a href="design/">Design</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Use">
+          <h2>Use</h2>
+          <ul>
+            <li><a href="guides/quick-start/">Quick start</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="About">
+          <h2>About</h2>
+          <ul>
+            <li><a href="team/">Team</a></li>
+            <li><a href="contact/">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-note">
+        <ul class="footer-team">
+          <li>Movindu Dissanayake, E/21/109, <a href="mailto:e21109@eng.pdn.ac.lk">e21109@eng.pdn.ac.lk</a></li>
+          <li>Thaariq Firdous, E/21/139, <a href="mailto:e21139@eng.pdn.ac.lk">e21139@eng.pdn.ac.lk</a></li>
+          <li>Oshadha Samarakoon, E/21/345, <a href="mailto:e21345@eng.pdn.ac.lk">e21345@eng.pdn.ac.lk</a></li>
+        </ul>
+        <p>EE356 Electronic Product Design and Manufacture, Department of Electrical and Electronic Engineering, University of Peradeniya.</p>
+        <p>OptiLink is a student prototype and is not a certified medical device. It supports, and does not replace, normal clinical care and the ward's nurse-call system.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

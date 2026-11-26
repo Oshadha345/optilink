@@ -1,0 +1,380 @@
+/* OptiLink product anatomy. Owner: part 2c. Load after tokens.css, base.css, components.css.
+   Every colour, font and motion value reads a token from tokens.css; the fallbacks after the
+   comma are the same values, so a partial still renders if a token is renamed.
+   Two layouts per figure, chosen by the figure's own width (container query), not the viewport:
+   compact (numbered markers, list under the image) and wide (labels in columns, hairline leaders). */
+
+.anx {
+  --anx-ink: var(--ink, #0B0D10);
+  --anx-surface: var(--graphite, #14171C);
+  --anx-wire: var(--link-blue, #A9BBD0);
+  --anx-label: var(--text, #F2F4F7);
+  --anx-spec: var(--accent, #7C92AB);
+  --anx-slate: var(--slate, #3F4E61);
+  --anx-red: var(--signal-red, #D63B31);
+  --anx-rule: var(--line, rgba(169, 187, 208, 0.14));
+  --anx-display: var(--font-display, "Space Grotesk", system-ui, sans-serif);
+  --anx-body: var(--font-body, "Poppins", system-ui, sans-serif);
+  --anx-mono: var(--font-mono, "JetBrains Mono", ui-monospace, monospace);
+  --anx-fast: var(--dur-fast, 160ms);
+  --anx-base: var(--dur-base, 320ms);
+  --anx-ease: var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
+  container-type: inline-size;
+  margin: 0;
+  min-width: 0;
+}
+
+/* ---------- Plate (card) and its four corners ---------- */
+.anx-plate {
+  position: relative;
+  padding: 56px 16px 52px;
+  border: 1px solid var(--anx-rule);
+  border-radius: var(--r-lg, 24px);
+  background: var(--anx-ink);
+  overflow: hidden;            /* nothing may cause sideways scroll */
+}
+.anx--bare .anx-plate { border-color: transparent; background: transparent; }
+
+.anx-corners { position: absolute; inset: 20px 20px 18px; pointer-events: none; }
+.anx-corner {
+  position: absolute;
+  max-width: 100%;
+  font-family: var(--anx-mono);
+  font-size: 11px;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted, #A3ADBB);
+  font-variant-numeric: tabular-nums;
+}
+.anx-corner[data-corner="fig"] { top: 0; left: 0; right: 45%; color: var(--anx-label); }
+.anx-corner[data-corner="hint"] { top: 0; right: 0; left: 55%; text-align: right; }
+.anx-corner[data-corner="readout"] { right: 0; bottom: 0; left: 30%; text-align: right; color: var(--anx-label); }
+.anx-hint-wide { display: none; }
+
+/* ---------- Stage: image box, hotspots, leaders, labels ---------- */
+.anx-stage { position: relative; margin-inline: auto; }
+
+.anx-media {
+  position: relative;
+  width: 100%;
+  max-width: var(--anx-cmax, 480px);
+  margin-inline: auto;
+  aspect-ratio: var(--anx-mar);
+}
+/* The photo is shown as provided: only scaled and framed. Its edges are feathered into the ink
+   so no rectangle shows (the same treatment as the site hero). */
+.anx-photo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0, #000 var(--anx-fx, 7%), #000 calc(100% - var(--anx-fx, 7%)), transparent 100%),
+    linear-gradient(180deg, transparent 0, #000 var(--anx-fy, 6%), #000 calc(100% - var(--anx-fy, 6%)), transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image:
+    linear-gradient(90deg, transparent 0, #000 var(--anx-fx, 7%), #000 calc(100% - var(--anx-fx, 7%)), transparent 100%),
+    linear-gradient(180deg, transparent 0, #000 var(--anx-fy, 6%), #000 calc(100% - var(--anx-fy, 6%)), transparent 100%);
+          mask-composite: intersect;
+}
+.anx-photo picture { display: contents; }
+.anx-photo img {
+  position: absolute;
+  left: var(--ix);
+  top: var(--iy);
+  width: var(--iw);
+  height: var(--ih);
+  max-width: none;
+}
+.anx-hotspots { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.anx-hotspots .anx-hot { pointer-events: auto; }
+
+/* ---------- Exploded layer stack ----------
+   Three transparent CAD layers on one canvas, stacked bottom to top (cover, body, front) at identical
+   size, so they register exactly. Shown exploded. Each moving element carries its exploded-to-assembled
+   move (layers.json, in % of the canvas) as --mx/--my; setting --anx-assemble (0 to 1) on the figure
+   moves the layer images, markers, leaders and labels together. Nothing here animates it. */
+.anx-photo--layers { overflow: visible; -webkit-mask-image: none; mask-image: none; }
+.anx-stack { position: absolute; inset: 0; }
+.anx-stack .anx-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  transform: translate(calc(var(--mx, 0%) * var(--anx-assemble, 0)), calc(var(--my, 0%) * var(--anx-assemble, 0)));
+}
+
+/* Hotspot: a 36 px target; the visible mark is a numbered badge (compact) or a 6 px ring (wide). */
+.anx-hot {
+  position: absolute;
+  left: calc(var(--x) + var(--mx, 0%) * var(--anx-assemble, 0));
+  top: calc(var(--y) + var(--my, 0%) * var(--anx-assemble, 0));
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--anx-label);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.anx-hot::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  border: 1.25px solid var(--anx-wire);
+  box-shadow: 0 0 0 1px rgba(11, 13, 16, 0.55);
+  box-sizing: border-box;
+  display: none;
+  transition: transform var(--anx-fast) var(--anx-ease), background-color var(--anx-fast) var(--anx-ease);
+}
+.anx-hot[data-tone="red"]::before { border-color: var(--anx-red); }
+.anx-hot:focus { outline: none; }
+.anx-hot:focus-visible::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--anx-wire), 0 0 0 4px rgba(11, 13, 16, 0.6);
+}
+
+.anx-num {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--anx-wire);
+  background: rgba(11, 13, 16, 0.82);
+  color: var(--anx-label);
+  font-family: var(--anx-mono);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  box-sizing: border-box;
+  transition: background-color var(--anx-fast) var(--anx-ease), color var(--anx-fast) var(--anx-ease), border-color var(--anx-fast) var(--anx-ease);
+}
+.anx-hot .anx-num { position: absolute; left: 7px; top: 7px; }
+[data-tone="red"] > .anx-num { border-color: var(--anx-red); }
+
+.anx-sr {
+  position: absolute !important;
+  width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* Leaders: hidden in the compact layout. */
+.anx-leaders { display: none; z-index: 1; pointer-events: none; }  /* paint order: photo, leaders, markers and labels */
+.anx-leaders path { fill: none; vector-effect: non-scaling-stroke; stroke-linejoin: miter; stroke-linecap: butt; }
+.anx-leader-halo { stroke: rgba(11, 13, 16, 0.42); stroke-width: 3; }
+.anx-leader-line { stroke: var(--anx-wire); stroke-opacity: 0.6; stroke-width: 1; transition: stroke-opacity var(--anx-fast) var(--anx-ease); }
+.anx-leader {
+  transform: translate(calc(var(--gx, 0px) * var(--anx-assemble, 0)), calc(var(--gy, 0px) * var(--anx-assemble, 0)));
+  transition: opacity var(--anx-fast) var(--anx-ease);
+}
+
+/* Labels: a numbered list under the image (compact). */
+.anx-labels {
+  position: relative;
+  z-index: 2;
+  list-style: none;
+  margin: 28px auto 0;
+  padding: 0;
+  max-width: 520px;
+  display: grid;
+  gap: 14px;
+}
+.anx-label {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  cursor: default;
+  transition: opacity var(--anx-fast) var(--anx-ease);
+}
+.anx-text { display: grid; gap: 3px; min-width: 0; }
+.anx-name {
+  font-family: var(--anx-display);
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  color: var(--anx-label);
+  transition: color var(--anx-fast) var(--anx-ease);
+}
+.anx-spec, .anx-more {
+  font-family: var(--anx-mono);
+  font-size: 12px;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--anx-spec);
+  font-variant-numeric: tabular-nums;
+}
+.anx-more { color: var(--text-muted, #A3ADBB); text-transform: none; letter-spacing: 0; font-family: var(--anx-body); font-size: 14px; font-weight: 300; }
+.anx-labels--dims .anx-label { grid-template-columns: minmax(0, 1fr); }
+
+/* ---------- Caption under the plate ---------- */
+.anx-caption {
+  margin-top: 12px;
+  padding-inline: 4px;
+  font-family: var(--anx-mono);
+  font-size: var(--fs-xs, 13px);
+  letter-spacing: var(--track-mono, 0.02em);
+  line-height: 1.6;
+  color: var(--text-muted, #A3ADBB);
+}
+.anx-caption .anx-link { margin-left: 0.5ch; font-family: var(--anx-body); font-size: var(--fs-sm, 15px); }
+
+
+/* ---------- PCB card (shown separately: the board is not in the 3D model) ---------- */
+.anx-card {
+  display: grid;
+  gap: 20px;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid var(--anx-rule);
+  border-radius: var(--r-lg, 24px);
+  background: var(--anx-ink);
+}
+.anx-card[hidden] { display: none; }
+.anx-card-media { border-radius: var(--r-md, 14px); background: var(--off-white, #F8F7F3); padding: 12px; }
+.anx-card-media img { display: block; width: 100%; height: auto; }
+.anx-card-text { display: grid; gap: 6px; align-content: center; }
+.anx-card-text p, .anx-card-text h3 { margin: 0; }
+.anx-card .anx-name { font-size: 20px; }
+.anx-card-kicker {
+  font-family: var(--anx-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted, #A3ADBB);
+}
+.anx-card-body { margin-top: 8px !important; max-width: 52ch; font-size: var(--fs-sm, 15px); line-height: 1.6; color: var(--text-muted, #A3ADBB); }
+@media (min-width: 720px) {
+  .anx-card { grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 32px; padding: 24px 28px; }
+}
+
+/* ---------- Side dimensions strip (CAD side render, turned front-face up) ---------- */
+.anx-dims { margin-top: 36px; }
+.anx-dims-stage { position: relative; max-width: var(--anx-dw, 1200px); margin-inline: auto; }
+.anx-dims-render { position: relative; aspect-ratio: var(--anx-dar); }
+.anx-dims-rot {
+  position: absolute;
+  left: var(--dl);
+  top: var(--dt);
+  width: var(--dw);
+  height: var(--dh);
+}
+/* The render is portrait (696 x 2842); it is turned 90 degrees clockwise inside its box. */
+.anx-dims-rot picture { display: contents; }
+.anx-dims-rot img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(100% * 696 / 2842);
+  height: auto;
+  max-width: none;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.anx-dims-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.anx-dims-lines path { fill: none; vector-effect: non-scaling-stroke; stroke: var(--anx-wire); stroke-width: 1; }
+.anx-dim { stroke-opacity: 0.6; }
+.anx-dim-ext { stroke-opacity: 0.35; }
+.anx-dim-seam { stroke-opacity: 0.35; stroke-dasharray: 2 4; }
+.anx-dims .anx-labels { margin-top: 16px; }
+.anx-dims-note {
+  margin: 10px 0 0;
+  text-align: center;
+  font-family: var(--anx-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted, #A3ADBB);
+}
+
+/* ---------- Detail set (side and back) ---------- */
+.anx-set { display: grid; gap: 20px; }
+.anx-set-row { display: grid; gap: 20px; min-width: 0; }
+.anx-set-row--two { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1024px) {
+  .anx-set-row--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- Active part (one lit accent; the rest step down) ---------- */
+.anx-hot.is-active .anx-num { background: var(--anx-label); color: var(--anx-ink); border-color: var(--anx-label); }
+.anx-hot[data-tone="red"].is-active .anx-num { background: var(--anx-red); color: var(--anx-label); border-color: var(--anx-red); }
+.anx-hot.is-active::before { transform: scale(1.6); background-color: rgba(169, 187, 208, 0.35); }
+.anx-hot[data-tone="red"].is-active::before { background-color: rgba(214, 59, 49, 0.4); }
+.anx[data-active] .anx-label:not(.is-active) { opacity: 0.6; }
+.anx[data-active] .anx-leader:not(.is-active) { opacity: 0.3; }
+.anx-leader.is-active .anx-leader-line { stroke-opacity: 1; }
+.anx-label.is-active .anx-num { background: var(--anx-label); color: var(--anx-ink); border-color: var(--anx-label); }
+.anx-label[data-tone="red"].is-active .anx-num { background: var(--anx-red); color: var(--anx-label); border-color: var(--anx-red); }
+/* Without the script, hovering a label still lifts it. */
+.anx-label:hover .anx-name { color: #fff; }
+
+/* ---------- Wide layout: labels in columns, hairline leaders ----------
+   Large figures switch at 900 px of figure width, detail figures (.anx--mini) at 520 px.
+   The two blocks are identical apart from the selector prefix. */
+@container (min-width: 900px) {
+  .anx:not(.anx--mini) .anx-stage { max-width: var(--anx-w); aspect-ratio: var(--anx-sar); }
+  .anx:not(.anx--mini) .anx-media { position: absolute; left: var(--bx); top: var(--by); width: var(--bw); max-width: none; margin: 0; }
+  .anx:not(.anx--mini) .anx-leaders { display: block; position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .anx:not(.anx--mini) .anx-hot::before { display: block; }
+  .anx:not(.anx--mini) .anx-hot .anx-num { display: none; }
+  .anx:not(.anx--mini) .anx-stage > .anx-labels { position: absolute; inset: 0; margin: 0; max-width: none; display: block; pointer-events: none; }
+  .anx:not(.anx--mini) .anx-stage > .anx-labels > .anx-label { position: absolute; top: calc(var(--ly) + var(--lmy, 0%) * var(--anx-assemble, 0)); display: block; pointer-events: auto; white-space: nowrap; }
+  .anx:not(.anx--mini) .anx-label > .anx-num { display: none; }
+  .anx:not(.anx--mini) .anx-stage > .anx-labels > .anx-label[data-side="left"] { right: calc(100% - var(--lx) - var(--lmx, 0%) * var(--anx-assemble, 0)); padding-right: 10px; text-align: right; transform: translateY(-10.5px); }
+  .anx:not(.anx--mini) .anx-stage > .anx-labels > .anx-label[data-side="right"] { left: calc(var(--lx) + var(--lmx, 0%) * var(--anx-assemble, 0)); padding-left: 10px; transform: translateY(-10.5px); }
+  .anx:not(.anx--mini) .anx-stage > .anx-labels > .anx-label[data-side="top"] { left: var(--lx); transform: translate(-50%, calc(-100% - 8px)); text-align: center; }
+  .anx:not(.anx--mini) .anx-stage > .anx-labels > .anx-label[data-side="bottom"] { left: var(--lx); transform: translate(-50%, 8px); text-align: center; }
+  .anx:not(.anx--mini) .anx-more { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .anx:not(.anx--mini) .anx-hint-wide { display: inline; }
+  .anx:not(.anx--mini) .anx-hint-compact { display: none; }
+  .anx:not(.anx--mini) .anx-plate { padding: 64px 28px 56px; }
+  .anx:not(.anx--mini) .anx-corners { inset: 22px 26px 20px; }
+}
+@container (min-width: 520px) {
+  .anx--mini .anx-stage { max-width: var(--anx-w); aspect-ratio: var(--anx-sar); }
+  .anx--mini .anx-media { position: absolute; left: var(--bx); top: var(--by); width: var(--bw); max-width: none; margin: 0; }
+  .anx--mini .anx-leaders { display: block; position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .anx--mini .anx-hot::before { display: block; }
+  .anx--mini .anx-hot .anx-num { display: none; }
+  .anx--mini .anx-stage > .anx-labels { position: absolute; inset: 0; margin: 0; max-width: none; display: block; pointer-events: none; }
+  .anx--mini .anx-stage > .anx-labels > .anx-label { position: absolute; top: var(--ly); display: block; pointer-events: auto; white-space: nowrap; }
+  .anx--mini .anx-label > .anx-num { display: none; }
+  .anx--mini .anx-stage > .anx-labels > .anx-label[data-side="left"] { right: calc(100% - var(--lx)); padding-right: 10px; text-align: right; transform: translateY(-10.5px); }
+  .anx--mini .anx-stage > .anx-labels > .anx-label[data-side="right"] { left: var(--lx); padding-left: 10px; transform: translateY(-10.5px); }
+  .anx--mini .anx-stage > .anx-labels > .anx-label[data-side="top"] { left: var(--lx); transform: translate(-50%, calc(-100% - 8px)); text-align: center; }
+  .anx--mini .anx-stage > .anx-labels > .anx-label[data-side="bottom"] { left: var(--lx); transform: translate(-50%, 8px); text-align: center; }
+  .anx--mini .anx-more { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .anx--mini .anx-hint-wide { display: inline; }
+  .anx--mini .anx-hint-compact { display: none; }
+  .anx--mini .anx-plate { padding: 60px 24px 52px; }
+}
+/* The dimension strip labels go to the sides once the strip is wide enough to carry them. */
+@container (min-width: 1100px) {
+  .anx .anx-dims .anx-labels { position: absolute; inset: 0; margin: 0; max-width: none; display: block; pointer-events: none; }
+  .anx .anx-dims .anx-label { position: absolute; top: var(--ly); display: block; white-space: nowrap; }
+  .anx .anx-dims .anx-label[data-side="left"] { right: calc(100% - var(--lx)); text-align: right; transform: translateY(-50%); }
+  .anx .anx-dims .anx-label[data-side="right"] { left: var(--lx); transform: translateY(-50%); }
+}
+
+/* ---------- Reduced motion: every change is instant ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .anx *, .anx *::before, .anx *::after { transition: none !important; animation: none !important; }
+}

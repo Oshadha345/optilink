@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="./">
+  <title>OptiLink: Talk across the isolation line</title>
+  <meta name="description" content="OptiLink is a two-way infrared bedside communicator for doctors and patients. Sinhala, Tamil and English on each unit, with no network.">
+  <meta name="theme-color" content="#0B0D10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="OptiLink: Talk across the isolation line">
+  <meta property="og:description" content="A two-way infrared bedside communicator. Sinhala, Tamil and English. No network.">
+  <meta property="og:url" content="https://oshadha345.github.io/optilink/">
+  <meta property="og:image" content="assets/img/og-share-1200x630.jpg">
+  <link rel="icon" href="assets/img/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="shared/tokens.css">
+  <link rel="stylesheet" href="shared/base.css">
+  <link rel="stylesheet" href="shared/components.css">
+  <link rel="stylesheet" href="shared/anatomy/anatomy.css">
+  <style>
+    /* Overview page-local styles (4a). Tokens only. Candidates for components.css: see BUILD_LOG REQ 4a-overview. */
+    .figure img[hidden], .media-frame img[hidden] { display: none; }
+    .figure-placeholder[hidden] { display: none; }
+    .figure-placeholder {
+      display: grid; place-content: center; gap: var(--s-2); text-align: center;
+      min-height: 220px; padding: var(--s-6);
+      border: 1px dashed var(--line-strong); border-radius: var(--r-md);
+      color: var(--text-muted);
+    }
+    .figure-placeholder p { margin: 0 auto; max-width: 44ch; }
+    .figure-placeholder .mono { color: var(--link-blue); }
+    .figure figcaption { padding-top: 0; }
+
+    .btn--lg { min-height: 56px; padding-inline: var(--s-6); font-size: var(--fs-base); }
+    .media-frame.on-light { background: var(--mist); padding: var(--s-5); }
+    .media-frame.on-light img { margin-inline: auto; }
+
+    /* OV-2 Get started panel */
+    .start-panel {
+      display: grid; gap: var(--s-6);
+      padding: var(--s-5);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+    }
+    .start-copy .section-head, .start-copy h2 { margin-bottom: 0; }
+    .start-copy .lead { margin: var(--s-4) 0 0; font-size: var(--fs-md); color: var(--text-muted); }
+    .steps { list-style: none; counter-reset: step; margin: var(--s-6) 0; padding: 0; }
+    .steps li {
+      counter-increment: step;
+      display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: var(--s-3);
+      padding-block: var(--s-3);
+      border-top: 1px solid var(--line);
+    }
+    .steps li:last-child { border-bottom: 1px solid var(--line); }
+    .steps li::before {
+      content: counter(step);
+      font: 400 var(--fs-xs)/1.9 var(--font-mono);
+      color: var(--link-blue);
+    }
+    .steps p { margin: 0; color: var(--text); font-weight: 300; max-width: 52ch; }
+    .start-actions { display: grid; gap: var(--s-4); justify-items: start; }
+    .start-actions .btn { width: 100%; }
+    .start-media { align-self: center; }
+    .start-media figcaption { margin-top: var(--s-3); }
+    @media (min-width: 640px) {
+      .start-panel { padding: var(--s-6); }
+      .start-actions { grid-auto-flow: column; justify-content: start; align-items: center; gap: var(--s-5); }
+      .start-actions .btn { width: auto; }
+    }
+    @media (min-width: 960px) {
+      .start-panel { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); padding: var(--s-7); gap: var(--s-7); }
+    }
+
+    /* OV-3 Title block */
+    .title-section { padding-top: var(--s-7); }
+    .title-block { padding-block: 0 var(--s-8); }
+    .ov-name { font-size: var(--fs-hero); line-height: var(--lh-tight); }
+    .ov-subtitle { font-size: var(--fs-md); color: var(--text-muted); margin: var(--s-3) auto 0; max-width: 40ch; }
+    .title-block .authors { gap: var(--s-5) var(--s-7); margin-top: var(--s-7); }
+    .title-block .authors li { display: grid; gap: 2px; justify-items: center; }
+    .author-name { font-family: var(--font-display); font-size: var(--fs-md); letter-spacing: -0.01em; }
+    .author-id { color: var(--text-muted); }
+    .title-block .authors a { color: var(--link-blue); font-size: var(--fs-sm); word-break: break-all; }
+    .title-block .authors a:hover { text-decoration: underline; }
+    .title-block .affiliation { max-width: 56ch; line-height: 1.55; }
+    .title-block .btn-row .btn { min-height: 44px; padding-inline: var(--s-4); }
+    .abstract-grid { display: grid; gap: var(--s-7); align-items: center; }
+    .abstract { max-width: 60ch; margin-inline: auto; }
+    .abstract h3 { margin-bottom: var(--s-4); }
+    .abstract p { font-size: var(--fs-md); line-height: 1.6; margin: 0; max-width: none; }
+    .render-figure { max-width: 520px; width: 100%; margin-inline: auto; }
+    .render-figure figcaption { margin-top: var(--s-3); text-align: center; }
+    @media (min-width: 960px) {
+      .abstract-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: var(--s-8); }
+      .abstract { margin-inline: 0; }
+      .title-block .authors { flex-wrap: nowrap; }
+    }
+
+    /* OV-5 How it works */
+    .how-grid { display: grid; gap: var(--s-7); align-items: start; }
+    .how-steps { list-style: none; counter-reset: how; margin: 0; padding: 0; }
+    .how-steps li {
+      counter-increment: how;
+      display: grid; grid-template-columns: 2rem minmax(0, 1fr); column-gap: var(--s-3); row-gap: var(--s-2);
+      padding-block: var(--s-4);
+      border-top: 1px solid var(--line);
+    }
+    .how-steps li:last-child { border-bottom: 1px solid var(--line); }
+    .how-steps li::before {
+      content: counter(how);
+      grid-row: 1 / span 2;
+      font: 400 var(--fs-xs)/2.4 var(--font-mono);
+      color: var(--link-blue);
+    }
+    .how-steps h3 { font-size: var(--fs-md); letter-spacing: -0.01em; }
+    .how-steps p { margin: 0; color: var(--text-muted); max-width: 52ch; }
+    .lang-strip {
+      padding: var(--s-5);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+    }
+    .lang-strip-title { margin: 0 0 var(--s-4); color: var(--text-muted); }
+    .lang-strip ul { list-style: none; margin: 0; padding: 0; }
+    .lang-strip li {
+      display: grid; gap: var(--s-1);
+      padding-block: var(--s-4);
+      border-top: 1px solid var(--line);
+    }
+    .lang-name { color: var(--link-blue); }
+    .lang-text { font-size: var(--fs-lg); line-height: 1.4; }
+    .lang-strip-note { margin: var(--s-2) 0 0; padding-top: var(--s-4); border-top: 1px solid var(--line); color: var(--text-muted); max-width: none; }
+    .figure-slot { margin-top: var(--s-8); }
+    .how-close { margin-top: var(--s-7); display: grid; gap: var(--s-3); justify-items: start; }
+    .how-close p { margin: 0; font-size: var(--fs-md); max-width: 52ch; }
+    @media (min-width: 960px) {
+      .how-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: var(--s-8); }
+      .lang-demo { position: sticky; top: 6rem; }
+    }
+
+    /* OV-6 Key features */
+    .stat-band {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6) var(--s-5);
+      padding-block: var(--s-6);
+      border-block: 1px solid var(--line-strong);
+    }
+    .stat-value { font-size: clamp(2.75rem, 1.6rem + 3.4vw, 4.5rem); }
+    .stat { align-content: start; }
+    .stat-value, .stat-label { margin: 0; }
+    .stat-label { max-width: 20ch; }
+    .features {
+      list-style: none; margin: var(--s-8) 0 0; padding: 0;
+      display: grid; gap: var(--s-5);
+    }
+    .features li { padding-top: var(--s-4); border-top: 1px solid var(--line); display: grid; gap: var(--s-2); align-content: start; }
+    .features h3 { font-size: var(--fs-md); letter-spacing: -0.01em; }
+    .features p { margin: 0; color: var(--text-muted); font-size: var(--fs-sm); max-width: 34ch; }
+    .features-note { margin-top: var(--s-8); max-width: 62ch; }
+    @media (min-width: 640px) {
+      .features { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6) var(--s-6); }
+    }
+    @media (min-width: 960px) {
+      .stat-band { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-6); }
+      .features { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    /* OV-7 Gallery: natural aspect ratios, no cropping */
+    .gallery { columns: 1; column-gap: var(--s-5); }
+    .gallery-item { break-inside: avoid; margin: 0 0 var(--s-6); }
+    .gallery-item figcaption { margin-top: var(--s-3); }
+    .gallery-item .media-frame { border-radius: var(--r-md); }
+    @media (min-width: 560px) { .gallery { columns: 2; } }
+    @media (min-width: 960px) { .gallery { columns: 3; column-gap: var(--s-6); } }
+
+    /* Anatomy teaser slot */
+    .anatomy-teaser { display: grid; gap: var(--s-6); }
+    .anatomy-teaser .section-head { margin-bottom: 0; }
+    .anatomy-teaser .link-row { margin: 0; }
+    .anatomy-teaser .media-frame { max-width: 720px; }
+
+    /* OV-8 Closing */
+    .closing { border-top: 1px solid var(--line); }
+    .closing h2 { font-size: clamp(2.5rem, 1.4rem + 4.4vw, 5rem); line-height: 1.04; max-width: 14ch; }
+    .closing .lead { margin: var(--s-4) 0 0; font-size: var(--fs-md); color: var(--text-muted); }
+    .closing-copy { margin: var(--s-6) 0 var(--s-6); font-size: var(--fs-md); line-height: 1.6; max-width: 52ch; }
+    .closing-note { margin: var(--s-5) 0 0; color: var(--text-muted); }
+    .closing .btn-row .btn { min-height: 52px; }
+  </style>
+  <script src="shared/site.js" defer></script>
+  <script src="shared/anatomy/anatomy.js" defer></script>
+</head>
+<body class="has-glow">
+  <a class="sr-only" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container site-nav" aria-label="Main">
+      <a class="brand" href="./" aria-label="OptiLink home">
+        <img src="assets/brand/optilink_lockup_on_dark.svg" alt="OptiLink" width="140" height="31">
+      </a>
+      <ul class="nav-links">
+        <li><a href="why-optilink/">Why OptiLink</a></li>
+        <li><a href="technology/">Technology</a></li>
+        <li><a href="design/">Design</a></li>
+        <li>
+          <details class="nav-more">
+            <summary>More</summary>
+            <div class="nav-menu">
+              <a href="team/">Team</a>
+              <a href="contact/">Contact</a>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <a class="btn btn--primary nav-cta" href="guides/quick-start/">Get started</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">
+        <span class="sr-only">Menu</span>
+        <span aria-hidden="true"></span>
+      </button>
+    </nav>
+    <div class="nav-panel container" id="nav-panel">
+      <ul>
+        <li><a href="./">Overview</a></li>
+        <li><a href="why-optilink/">Why OptiLink</a></li>
+        <li><a href="technology/">Technology</a></li>
+        <li><a href="design/">Design</a></li>
+        <li><a href="guides/quick-start/">Quick start</a></li>
+        <li><a href="team/">Team</a></li>
+        <li><a href="contact/">Contact</a></li>
+      </ul>
+      <a class="btn btn--primary" href="guides/quick-start/">Get started</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+
+    <!-- OV-1 Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <h1 id="hero-title" data-motion="hero-entrance">Talk across the isolation&nbsp;line.</h1>
+          <p class="hero-sub">A two-way infrared bedside communicator. Each person reads Sinhala, Tamil or English, with no network, no Wi-Fi and no radio.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="guides/quick-start/">Get started</a>
+            <a class="btn" href="why-optilink/">Why OptiLink</a>
+          </div>
+        </div>
+
+        <figure class="hero-media">
+          <picture>
+            <source type="image/avif" sizes="100vw"
+                    srcset="assets/img/P01_hero-480.avif 480w, assets/img/P01_hero-960.avif 960w, assets/img/P01_hero-1440.avif 1440w">
+            <source type="image/webp" sizes="100vw"
+                    srcset="assets/img/P01_hero-480.webp 480w, assets/img/P01_hero-960.webp 960w, assets/img/P01_hero-1440.webp 1440w">
+            <img src="assets/img/P01_hero-1440.png" width="1672" height="941" fetchpriority="high"
+                 alt="An OptiLink Bed Unit seen from above at an angle: warm ivory front, small screen, keypad and red power switch, on a dark background.">
+          </picture>
+        </figure>
+      </div>
+
+      <div class="isolation-line" aria-hidden="true"><span class="ir-dot" data-motion="link-pulse"></span></div>
+    </section>
+
+    <!-- OV-2 Get started panel (box-QR landing) -->
+    <section class="section section--tight start" id="get-started" aria-labelledby="start-title" data-motion="section-reveal">
+      <div class="container">
+        <div class="start-panel">
+          <div class="start-copy">
+            <h2 id="start-title">You have the box. Start here.</h2>
+            <p class="lead">Five steps from lid to first message.</p>
+            <ol class="steps">
+              <li><p>Open the box: two units, a battery charger and a quick guide.</p></li>
+              <li><p>Find the stickers: DOCTOR on one unit, PATIENT on the other.</p></li>
+              <li><p>Switch each unit on with the rocker switch.</p></li>
+              <li><p>Choose your language on each unit's start screen. Each unit keeps its own.</p></li>
+              <li><p>Doctor Station: pick a bed and send a question. Bed Unit: press 1 for YES, 2 for NO, 7 to ask for help.</p></li>
+            </ol>
+            <div class="start-actions">
+              <a class="btn btn--primary btn--lg" href="guides/quick-start/">Get started</a>
+              <a class="text-link" href="guides/quick-start/#bed-title">Bed Unit controls</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OV-3 Title block (Nerfies style) -->
+    <section class="section title-section" id="project" aria-labelledby="project-title" data-motion="section-reveal">
+      <div class="container">
+        <header class="title-block">
+          <h2 class="ov-name" id="project-title">OptiLink</h2>
+          <p class="ov-subtitle">A two-way infrared bedside communicator</p>
+          <ul class="authors">
+            <li><span class="author-name">Movindu Dissanayake</span><span class="author-id mono">E/21/109</span><a href="mailto:e21109@eng.pdn.ac.lk?subject=OptiLink">e21109@eng.pdn.ac.lk</a></li>
+            <li><span class="author-name">Thaariq Firdous</span><span class="author-id mono">E/21/139</span><a href="mailto:e21139@eng.pdn.ac.lk?subject=OptiLink">e21139@eng.pdn.ac.lk</a></li>
+            <li><span class="author-name">Oshadha Samarakoon</span><span class="author-id mono">E/21/345</span><a href="mailto:e21345@eng.pdn.ac.lk?subject=OptiLink">e21345@eng.pdn.ac.lk</a></li>
+          </ul>
+          <p class="affiliation">Department of Electrical and Electronic Engineering, Faculty of Engineering, University of Peradeniya.<br>EE356 Electronic Product Design and Manufacture.</p>
+          <div class="btn-row">
+            <a class="btn" href="why-optilink/">Evidence</a>
+            <a class="btn" href="technology/">Technology</a>
+            <a class="btn" href="design/">Design</a>
+            <a class="btn" href="guides/quick-start/">Quick start</a>
+          </div>
+        </header>
+
+        <div class="abstract-grid">
+          <div class="abstract">
+            <h3>Abstract</h3>
+            <p>Doctors and patients in Sri Lankan wards often have to communicate without close contact, without a shared language and without a reliable network. OptiLink is a pair of identical hand-held units, a Doctor Station and a Bed Unit. The units never send words: they send a short phrase number over an infrared link, and each unit shows that phrase in its own language.</p>
+          </div>
+          <figure class="figure render-figure">
+            <div class="media-frame on-light">
+              <picture>
+  <source type="image/avif" sizes="(min-width: 960px) 480px, 80vw" srcset="assets/img/optilink_hero_three_quarter-480.avif 480w, assets/img/optilink_hero_three_quarter-960.avif 960w, assets/img/optilink_hero_three_quarter-1440.avif 1440w, assets/img/optilink_hero_three_quarter-1920.avif 1920w">
+  <source type="image/webp" sizes="(min-width: 960px) 480px, 80vw" srcset="assets/img/optilink_hero_three_quarter-480.webp 480w, assets/img/optilink_hero_three_quarter-960.webp 960w, assets/img/optilink_hero_three_quarter-1440.webp 1440w, assets/img/optilink_hero_three_quarter-1920.webp 1920w">
+  <img src="assets/img/optilink_hero_three_quarter-960.png" width="960" height="825" loading="lazy" decoding="async" alt="A CAD render of the enclosure from the front at an angle, with the screen, switch and keypad openings and the embossed OptiLink name.">
+</picture>
+            </div>
+            <figcaption>CAD render of the enclosure</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- OV-4 Four barriers -->
+    <section class="section" aria-labelledby="barriers-title" data-motion="section-reveal">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="barriers-title">Four barriers, one bedside.</h2>
+          <p class="lead">OptiLink was designed around all four at once.</p>
+        </header>
+
+        <ul class="barriers">
+          <li>
+            <h3>Distance.</h3>
+            <p>In isolation, every close conversation exposes staff and uses a set of PPE. Masks muffle speech and hide lip movement.</p>
+          </li>
+          <li>
+            <h3>Language.</h3>
+            <p>Sinhala, Tamil and English are all in daily hospital use, and a doctor and patient often do not share a first language.</p>
+          </li>
+          <li>
+            <h3>Network.</h3>
+            <p>Many wards, especially in rural hospitals, have weak mobile signal or no Wi-Fi, so app-based tools fail where they are needed most.</p>
+          </li>
+          <li>
+            <h3>Voice.</h3>
+            <p>Patients with breathing difficulty or after surgery may not speak easily, but can still press a key.</p>
+          </li>
+        </ul>
+
+        <p class="link-row">
+          <a class="text-link" href="why-optilink/">See the evidence</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- OV-5 How it works -->
+    <section class="section" id="how-it-works" aria-labelledby="how-title" data-motion="section-reveal">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="how-title">One message, two languages.</h2>
+          <p class="lead">The units never send words. They send a short phrase number, and each unit shows that phrase in its own language.</p>
+        </header>
+
+        <div class="how-grid">
+          <ol class="how-steps">
+            <li><h3>Doctor.</h3><p>Selects bed 3 and sends &ldquo;Do you have pain?&rdquo; from across the room, reading Sinhala.</p></li>
+            <li><h3>Bed Unit.</h3><p>Beeps twice and shows the question in Tamil, the language chosen on that unit.</p></li>
+            <li><h3>Patient.</h3><p>Presses 1 (YES). The doctor's screen shows Delivered, then the answer.</p></li>
+            <li><h3>Assessment.</h3><p>The doctor runs the pain assessment: location, severity 0 to 10, duration, constant or not.</p></li>
+            <li><h3>Report.</h3><p>One English sentence: &ldquo;Patient has pain in the chest, severity 6/10, for 1-3 days, constant.&rdquo;</p></li>
+            <li><h3>Request.</h3><p>The patient later presses 7 and sends Water. The doctor replies &ldquo;The nurse will come in 5 minutes&rdquo;, read in Tamil.</p></li>
+          </ol>
+          <div class="lang-demo">
+            <div class="lang-strip" data-motion="phrase-to-code" role="group" aria-label="One phrase in three languages">
+              <p class="lang-strip-title mono">The same phrase on three units</p>
+              <ul>
+                <li><span class="lang-name mono">English</span><span class="lang-text" lang="en">Do you have pain?</span></li>
+                <li><span class="lang-name mono">Sinhala</span><span class="lang-text" lang="si">ඔබට වේදනාවක් තිබේද?</span></li>
+                <li><span class="lang-name mono">Tamil</span><span class="lang-text" lang="ta">உங்களுக்கு வலி இருக்கிறதா?</span></li>
+              </ul>
+              <p class="lang-strip-note mono">Infrared, 38 kHz; a phrase ID of 12 bits, a few bytes per frame.</p>
+            </div>
+          </div>
+        </div>
+        <div class="figure-slot" data-slot="figure-F01">
+          <figure class="figure" data-figure="F01"><img src="assets/fig/F01.svg" alt="Phrase-code flow: a Doctor Station set to English sends the phrase ID for &ldquo;Do you have pain?&rdquo; over infrared at 38 kHz, and a Bed Unit set to Tamil shows the same question in Tamil." width="1600" height="900" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="figure-placeholder" hidden><p class="mono">Phrase-code flow</p><p>A number travels: a phrase ID crosses the infrared link and each unit shows it in its own language.</p></div><figcaption>Only a phrase number travels. Each unit draws it in its own language.</figcaption></figure>
+        </div>
+
+        <div class="how-close">
+          <p>Every message is acknowledged; the sender sees Delivered, or NOT delivered.</p>
+          <a class="text-link" href="technology/">How the link works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- OV-6 Key features -->
+    <section class="section" id="features" aria-labelledby="features-title" data-motion="section-reveal">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="features-title">Eight differences, one combination.</h2>
+          <p class="lead">The parts are standard. What is new is how they work together.</p>
+        </header>
+
+        <div class="stat-band">
+          <div class="stat"><p class="stat-value">3</p><p class="stat-label">languages on every unit</p></div>
+          <div class="stat"><p class="stat-value">0</p><p class="stat-label">networks needed</p></div>
+          <div class="stat"><p class="stat-value">14</p><p class="stat-label">Bed Units served by one Doctor Station</p></div>
+          <div class="stat"><p class="stat-value">9 V</p><p class="stat-label">rechargeable NiMH battery per unit</p></div>
+        </div>
+
+        <ul class="features">
+          <li><h3>Distance.</h3><p>Routine questions and requests from across the room; no close contact.</p></li>
+          <li><h3>Own language.</h3><p>Each person reads Sinhala, Tamil or English at the same time, because just phrase numbers travel.</p></li>
+          <li><h3>No network.</h3><p>No Wi-Fi, SIM, radio, pairing or IT setup; one 9 V battery per unit.</p></li>
+          <li><h3>Confirmed delivery.</h3><p>Every message acknowledged; automatic resend; urgent alarm for Can't breathe.</p></li>
+          <li><h3>Structured content.</h3><p>Phrases checked in advance; assessments give an English sentence; the report survives switch-off.</p></li>
+          <li><h3>Non-speaking patients.</h3><p>Answer, rate pain and ask for help with single key presses.</p></li>
+          <li><h3>One station, 14 beds.</h3><p>Identical hardware for both roles, so spares are interchangeable.</p></li>
+          <li><h3>Low cost, local.</h3><p>Rs 7,876 per unit from Sri Lankan suppliers; socketed chips; reprintable case.</p></li>
+        </ul>
+
+        <div class="callout features-note">
+          <p>OptiLink supports, and does not replace, the ward's nurse-call system. It is an extra channel, not a safety-critical alarm.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OV-7 Gallery -->
+    <section class="section" id="gallery" aria-labelledby="gallery-title" data-motion="section-reveal">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="gallery-title">See the unit.</h2>
+          <p class="lead">The Doctor Station and the Bed Unit are the same hand-held unit.</p>
+        </header>
+
+        <div class="gallery">
+          <figure class="figure gallery-item">
+            <div class="media-frame">
+              <picture>
+  <source type="image/avif" sizes="(min-width: 960px) 380px, (min-width: 560px) 45vw, 92vw" srcset="assets/img/P11_keypad-480.avif 480w, assets/img/P11_keypad-960.avif 960w, assets/img/P11_keypad-1440.avif 1440w, assets/img/P11_keypad-1920.avif 1920w">
+  <source type="image/webp" sizes="(min-width: 960px) 380px, (min-width: 560px) 45vw, 92vw" srcset="assets/img/P11_keypad-480.webp 480w, assets/img/P11_keypad-960.webp 960w, assets/img/P11_keypad-1440.webp 1440w, assets/img/P11_keypad-1920.webp 1920w">
+  <img src="assets/img/P11_keypad-960.png" width="960" height="1104" loading="lazy" decoding="async" alt="The front of a unit: ivory face with a small screen listing Sinhala, Tamil and English, a red power switch, and a keypad of numbered grey keys with letters, green START, red STOP and blue F1 to F4.">
+</picture>
+            </div>
+            <figcaption>Front: warm ivory face, blue-grey body.</figcaption>
+          </figure>
+          <figure class="figure gallery-item">
+            <div class="media-frame">
+              <picture>
+  <source type="image/avif" sizes="(min-width: 960px) 380px, (min-width: 560px) 45vw, 92vw" srcset="assets/img/P13_in_hand-480.avif 480w, assets/img/P13_in_hand-960.avif 960w, assets/img/P13_in_hand-1440.avif 1440w">
+  <source type="image/webp" sizes="(min-width: 960px) 380px, (min-width: 560px) 45vw, 92vw" srcset="assets/img/P13_in_hand-480.webp 480w, assets/img/P13_in_hand-960.webp 960w, assets/img/P13_in_hand-1440.webp 1440w">
+  <img src="assets/img/P13_in_hand-960.png" width="960" height="1200" loading="lazy" decoding="async" alt="A hand holding the unit with the thumb resting on the 1 key.">
+</picture>
+            </div>
+            <figcaption>In the hand: 162 x 95 x 36 mm.</figcaption>
+          </figure>
+          <figure class="figure gallery-item">
+            <div class="media-frame">
+              <picture>
+  <source type="image/avif" sizes="(min-width: 960px) 380px, (min-width: 560px) 45vw, 92vw" srcset="assets/img/P04_back-480.avif 480w, assets/img/P04_back-960.avif 960w">
+  <source type="image/webp" sizes="(min-width: 960px) 380px, (min-width: 560px) 45vw, 92vw" srcset="assets/img/P04_back-480.webp 480w, assets/img/P04_back-960.webp 960w">
+  <img src="assets/img/P04_back-960.png" width="960" height="1200" loading="lazy" decoding="async" alt="Back of the unit: blue-grey shell with visible print layers and an off-white battery cover with a latch at the bottom.">
+</picture>
+            </div>
+            <figcaption>Back: off-white battery cover, spring latch.</figcaption>
+          </figure>
+          <figure class="figure gallery-item">
+            <div class="media-frame">
+              <picture>
+  <source type="image/avif" sizes="(min-width: 960px) 380px, (min-width: 560px) 45vw, 92vw" srcset="assets/img/P05_battery_open-480.avif 480w, assets/img/P05_battery_open-960.avif 960w">
+  <source type="image/webp" sizes="(min-width: 960px) 380px, (min-width: 560px) 45vw, 92vw" srcset="assets/img/P05_battery_open-480.webp 480w, assets/img/P05_battery_open-960.webp 960w">
+  <img src="assets/img/P05_battery_open-960.png" width="960" height="720" loading="lazy" decoding="async" alt="The battery compartment open, with the cover removed and a 9 V rechargeable battery sitting in the recess.">
+</picture>
+            </div>
+            <figcaption>Battery open: 9 V NiMH cell in the recess.</figcaption>
+          </figure>
+          <figure class="figure gallery-item">
+            <div class="media-frame">
+              <picture>
+  <source type="image/avif" sizes="(min-width: 960px) 380px, (min-width: 560px) 45vw, 92vw" srcset="assets/img/P16_open_unit-480.avif 480w, assets/img/P16_open_unit-960.avif 960w, assets/img/P16_open_unit-1440.avif 1440w">
+  <source type="image/webp" sizes="(min-width: 960px) 380px, (min-width: 560px) 45vw, 92vw" srcset="assets/img/P16_open_unit-480.webp 480w, assets/img/P16_open_unit-960.webp 960w, assets/img/P16_open_unit-1440.webp 1440w">
+  <img src="assets/img/P16_open_unit-960.png" width="960" height="640" loading="lazy" decoding="async" alt="The unit opened by hand, showing the circuit board with its processor chip, wiring, buzzer and 9 V battery.">
+</picture>
+            </div>
+            <figcaption>Inside: the unit opened. Prototype wiring.</figcaption>
+          </figure>
+          <figure class="figure gallery-item">
+            <div class="media-frame on-light">
+              <picture>
+  <source type="image/avif" sizes="(min-width: 960px) 380px, (min-width: 560px) 45vw, 92vw" srcset="assets/img/optilink_exploded-480.avif 480w, assets/img/optilink_exploded-960.avif 960w, assets/img/optilink_exploded-1440.avif 1440w, assets/img/optilink_exploded-1920.avif 1920w">
+  <source type="image/webp" sizes="(min-width: 960px) 380px, (min-width: 560px) 45vw, 92vw" srcset="assets/img/optilink_exploded-480.webp 480w, assets/img/optilink_exploded-960.webp 960w, assets/img/optilink_exploded-1440.webp 1440w, assets/img/optilink_exploded-1920.webp 1920w">
+  <img src="assets/img/optilink_exploded-960.png" width="960" height="960" loading="lazy" decoding="async" alt="An exploded CAD view of the enclosure showing the front shell, body shell and battery cover separated.">
+</picture>
+            </div>
+            <figcaption>Exploded: front, body, battery cover. CAD render.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- Anatomy teaser (web/shared/anatomy/partials/anatomy-teaser.html) -->
+    <section class="section section--tight" id="anatomy" aria-labelledby="anatomy-title" data-motion="section-reveal">
+      <div class="container anatomy-teaser">
+        <header class="section-head">
+          <h2 id="anatomy-title">Inside the unit.</h2>
+          <p class="lead">Three printed parts, one board and a 9 V battery. The Design page takes the unit apart.</p>
+          <p class="link-row"><a class="text-link" href="design/">See the design</a></p>
+        </header>
+<!-- BEGIN anatomy:anatomy-teaser (part 2c, web/shared/anatomy/partials/anatomy-teaser.html). Paste between these comments. Overview page. One compact moment. -->
+<figure class="anx anx--bare" id="anx-teaser" aria-label="OptiLink enclosure with four labelled openings and the seam" data-motion="hotspots" style="--anx-w:1200px;--anx-sar:1200/640;--anx-mar:2501/2150;--anx-cmax:520px;--bx:19.9583%;--by:1.5625%;--bw:60.1016%;--ix:0%;--iy:0%;--iw:100%;--ih:100%">
+<div class="anx-plate">
+<div class="anx-corners" aria-hidden="true"><span class="anx-corner" data-corner="fig">Anatomy</span><span class="anx-corner" data-corner="hint"><span class="anx-hint-wide">Hover or tap a part</span><span class="anx-hint-compact">Tap a number</span></span><span class="anx-corner" data-corner="readout" data-anx-readout>162 × 95 × 36 mm</span></div>
+<div class="anx-stage">
+<div class="anx-media">
+<div class="anx-photo">
+<picture><source type="image/avif" srcset="assets/img/optilink_hero_three_quarter-480.avif 480w, assets/img/optilink_hero_three_quarter-960.avif 960w, assets/img/optilink_hero_three_quarter-1440.avif 1440w, assets/img/optilink_hero_three_quarter-1920.avif 1920w" sizes="(min-width: 980px) 721px, min(520px, 100vw)"><source type="image/webp" srcset="assets/img/optilink_hero_three_quarter-480.webp 480w, assets/img/optilink_hero_three_quarter-960.webp 960w, assets/img/optilink_hero_three_quarter-1440.webp 1440w, assets/img/optilink_hero_three_quarter-1920.webp 1920w" sizes="(min-width: 980px) 721px, min(520px, 100vw)"><img src="assets/img/optilink_hero_three_quarter-1920.png" width="2501" height="2150" alt="A CAD render of the enclosure from the front at an angle, with the screen, switch and keypad openings and the embossed OptiLink name." loading="lazy" decoding="async"></picture></div>
+<div class="anx-hotspots">
+<button type="button" class="anx-hot" data-part="switch" data-step="1" data-tone="red" aria-pressed="false" aria-describedby="anx-teaser-switch" style="--x:42.8629%;--y:11.9535%"><span class="anx-num" aria-hidden="true">1</span><span class="anx-sr">Switch opening</span></button>
+<button type="button" class="anx-hot" data-part="oled" data-step="2" aria-pressed="false" aria-describedby="anx-teaser-oled" style="--x:22.8709%;--y:19.1163%"><span class="anx-num" aria-hidden="true">2</span><span class="anx-sr">OLED window</span></button>
+<button type="button" class="anx-hot" data-part="seam" data-step="3" aria-pressed="false" aria-describedby="anx-teaser-seam" style="--x:14.2743%;--y:40.093%"><span class="anx-num" aria-hidden="true">3</span><span class="anx-sr">Seam</span></button>
+<button type="button" class="anx-hot" data-part="tail" data-step="4" aria-pressed="false" aria-describedby="anx-teaser-tail" style="--x:71.4114%;--y:59.4884%"><span class="anx-num" aria-hidden="true">4</span><span class="anx-sr">Keypad tail slot</span></button></div>
+</div>
+<svg class="anx-leaders" viewBox="0 0 1200 640" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+<g class="anx-leader" data-part="switch" data-step="1"><path class="anx-leader-halo" d="M551.1 81.6 L588.7 44.0 L990.0 44.0"/><path class="anx-leader-line" d="M551.1 81.6 L588.7 44.0 L990.0 44.0"/></g>
+<g class="anx-leader" data-part="oled" data-step="2"><path class="anx-leader-halo" d="M400.9 128.5 L220.0 128.5"/><path class="anx-leader-line" d="M400.9 128.5 L220.0 128.5"/></g>
+<g class="anx-leader" data-part="seam" data-step="3"><path class="anx-leader-halo" d="M338.9 258.6 L220.0 258.6"/><path class="anx-leader-line" d="M338.9 258.6 L220.0 258.6"/></g>
+<g class="anx-leader" data-part="tail" data-step="4"><path class="anx-leader-halo" d="M758.0 378.8 L990.0 378.8"/><path class="anx-leader-line" d="M758.0 378.8 L990.0 378.8"/></g></svg>
+<ol class="anx-labels">
+<li class="anx-label" id="anx-teaser-switch" data-part="switch" data-step="1" data-tone="red" data-side="right" data-readout="Switch opening · Holds the red rocker power switch" style="--lx:82.5%;--ly:6.875%"><span class="anx-num" aria-hidden="true">1</span><span class="anx-text"><span class="anx-name">Switch opening</span><span class="anx-spec">15.4 × 20.4 mm</span><span class="anx-more">Holds the red rocker power switch</span></span></li>
+<li class="anx-label" id="anx-teaser-oled" data-part="oled" data-step="2" data-side="left" data-readout="OLED window · 1.3&quot; SH1106 OLED · 128 × 64" style="--lx:18.3333%;--ly:20.0814%"><span class="anx-num" aria-hidden="true">2</span><span class="anx-text"><span class="anx-name">OLED window</span><span class="anx-spec">35.6 × 20.6 mm</span><span class="anx-more">1.3&quot; SH1106 OLED · 128 × 64</span></span></li>
+<li class="anx-label" id="anx-teaser-seam" data-part="seam" data-step="3" data-side="left" data-readout="Seam · No screws" style="--lx:18.3333%;--ly:40.4026%"><span class="anx-num" aria-hidden="true">3</span><span class="anx-text"><span class="anx-name">Seam</span><span class="anx-spec">2 mm lip · foam tape</span><span class="anx-more">No screws</span></span></li>
+<li class="anx-label" id="anx-teaser-tail" data-part="tail" data-step="4" data-side="right" data-readout="Keypad tail slot · Tail of the 4 × 4 membrane keypad" style="--lx:82.5%;--ly:59.1919%"><span class="anx-num" aria-hidden="true">4</span><span class="anx-text"><span class="anx-name">Keypad tail slot</span><span class="anx-spec">24 × 5 mm</span><span class="anx-more">Tail of the 4 × 4 membrane keypad</span></span></li></ol>
+</div>
+</div>
+<figcaption class="anx-caption">CAD render of the enclosure. Three printed parts, no screws. <a class="text-link anx-link" href="design/">See the full anatomy</a></figcaption>
+</figure>
+<!-- END anatomy:anatomy-teaser -->
+      </div>
+    </section>
+
+
+    <!-- OV-8 Closing call to action -->
+    <section class="section closing" id="closing" aria-labelledby="closing-title" data-motion="section-reveal">
+      <div class="container">
+        <h2 id="closing-title">Know before you gown.</h2>
+        <p class="lead">See the request before putting on PPE.</p>
+        <p class="closing-copy">A doctor and a patient exchange checked clinical questions, answers and urgent requests from across the room, each in Sinhala, Tamil or English, with no network, for about Rs 17,000 a pair to build.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="guides/quick-start/">Get started</a>
+          <a class="btn" href="why-optilink/">Read the evidence</a>
+          <a class="btn" href="team/">Meet the team</a>
+        </div>
+        <p class="closing-note mono">Build cost estimate, not a selling price.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <nav aria-label="Learn">
+          <h2>Learn</h2>
+          <ul>
+            <li><a href="./">Overview</a></li>
+            <li><a href="why-optilink/">Why OptiLink</a></li>
+            <li><a href="technology/">Technology</a></li>
+            <li><a href="design/">Design</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Use">
+          <h2>Use</h2>
+          <ul>
+            <li><a href="guides/quick-start/">Quick start</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="About">
+          <h2>About</h2>
+          <ul>
+            <li><a href="team/">Team</a></li>
+            <li><a href="contact/">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-note">
+        <ul class="footer-team">
+          <li>Movindu Dissanayake, E/21/109, <a href="mailto:e21109@eng.pdn.ac.lk">e21109@eng.pdn.ac.lk</a></li>
+          <li>Thaariq Firdous, E/21/139, <a href="mailto:e21139@eng.pdn.ac.lk">e21139@eng.pdn.ac.lk</a></li>
+          <li>Oshadha Samarakoon, E/21/345, <a href="mailto:e21345@eng.pdn.ac.lk">e21345@eng.pdn.ac.lk</a></li>
+        </ul>
+        <p>EE356 Electronic Product Design and Manufacture, Department of Electrical and Electronic Engineering, University of Peradeniya.</p>
+        <p>OptiLink is a student prototype and is not a certified medical device. It supports, and does not replace, normal clinical care and the ward's nurse-call system.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

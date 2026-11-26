@@ -1,0 +1,109 @@
+<!-- Page shell template (1B). Copy this for every page; replace the <<...>> tokens.
+     <<ROOT>>      "./" top level, "../" one folder down, "../../" two folders down
+     <<TITLE>>     page name, for example "Why OptiLink"
+     <<DESCRIPTION>>, <<BODY_CLASS>>, and the content inside <main>.
+     Nav and footer link only to built pages. Set aria-current="page" on the current link. -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="<<ROOT>>">
+  <title><<TITLE>>: OptiLink</title>
+  <meta name="description" content="<<DESCRIPTION>>">
+  <meta name="theme-color" content="#0B0D10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="<<TITLE>>: OptiLink">
+  <meta property="og:description" content="<<DESCRIPTION>>">
+  <link rel="icon" href="assets/img/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="shared/tokens.css">
+  <link rel="stylesheet" href="shared/base.css">
+  <link rel="stylesheet" href="shared/components.css">
+  <script src="shared/site.js" defer></script>
+</head>
+<body class="has-glow <<BODY_CLASS>>">
+  <a class="sr-only" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container site-nav" aria-label="Main">
+      <a class="brand" href="./" aria-label="OptiLink home">
+        <img src="assets/brand/optilink_lockup_on_dark.svg" alt="OptiLink" width="140" height="31">
+      </a>
+      <ul class="nav-links">
+        <li><a href="why-optilink/">Why OptiLink</a></li>
+        <li><a href="technology/">Technology</a></li>
+        <li><a href="design/">Design</a></li>
+        <li>
+          <details class="nav-more">
+            <summary>More</summary>
+            <div class="nav-menu">
+              <a href="team/">Team</a>
+              <a href="contact/">Contact</a>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <a class="btn btn--primary nav-cta" href="guides/quick-start/">Get started</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">
+        <span class="sr-only">Menu</span>
+        <span aria-hidden="true"></span>
+      </button>
+    </nav>
+    <div class="nav-panel container" id="nav-panel">
+      <ul>
+        <li><a href="./">Overview</a></li>
+        <li><a href="why-optilink/">Why OptiLink</a></li>
+        <li><a href="technology/">Technology</a></li>
+        <li><a href="design/">Design</a></li>
+        <li><a href="guides/quick-start/">Quick start</a></li>
+        <li><a href="team/">Team</a></li>
+        <li><a href="contact/">Contact</a></li>
+      </ul>
+      <a class="btn btn--primary" href="guides/quick-start/">Get started</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- page content: sections use <section class="section"> with .container inside -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <nav aria-label="Learn">
+          <h2>Learn</h2>
+          <ul>
+            <li><a href="./">Overview</a></li>
+            <li><a href="why-optilink/">Why OptiLink</a></li>
+            <li><a href="technology/">Technology</a></li>
+            <li><a href="design/">Design</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Use">
+          <h2>Use</h2>
+          <ul>
+            <li><a href="guides/quick-start/">Quick start</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="About">
+          <h2>About</h2>
+          <ul>
+            <li><a href="team/">Team</a></li>
+            <li><a href="contact/">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-note">
+        <ul class="footer-team">
+          <li>Movindu Dissanayake, E/21/109, <a href="mailto:e21109@eng.pdn.ac.lk">e21109@eng.pdn.ac.lk</a></li>
+          <li>Thaariq Firdous, E/21/139, <a href="mailto:e21139@eng.pdn.ac.lk">e21139@eng.pdn.ac.lk</a></li>
+          <li>Oshadha Samarakoon, E/21/345, <a href="mailto:e21345@eng.pdn.ac.lk">e21345@eng.pdn.ac.lk</a></li>
+        </ul>
+        <p>EE356 Electronic Product Design and Manufacture, Department of Electrical and Electronic Engineering, University of Peradeniya.</p>
+        <p>OptiLink is a student prototype and is not a certified medical device. It supports, and does not replace, normal clinical care and the ward's nurse-call system.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

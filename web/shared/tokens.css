@@ -1,0 +1,110 @@
+/* OptiLink design tokens. Source of truth: sources/optilink_web_assets/BRAND.md.
+   Owner: 1B. Later parts read these; they never redefine them. */
+
+:root {
+  /* Colour: brand (from BRAND.md) */
+  --ink: #0B0D10;            /* site background, matches the matte-black box */
+  --graphite: #14171C;       /* raised surfaces */
+  --slate: #3F4E61;          /* manuals, headers */
+  --slate-dark: #2D3948;     /* shadows, depth */
+  --link-blue: #A9BBD0;      /* accents on dark, wordmark "Link" */
+  --accent: #7C92AB;         /* rules, secondary accent */
+  --product-body: #7B96B6;   /* the real unit's blue-grey body */
+  --product-face: #E8E1CC;   /* the real unit's warm ivory front */
+  --product-cover: #ECECE8;  /* off-white battery cover */
+  --signal-red: #D63B31;     /* the IR dot, power switch, alerts: use sparingly */
+  --off-white: #F8F7F3;      /* light sections, manual pages */
+  --mist: #E7EBF1;           /* light panels */
+  --text-secondary: #667384; /* secondary text on light */
+
+  /* Colour: semantic roles (dark is the default theme) */
+  --bg: var(--ink);
+  --surface: var(--graphite);
+  --text: #F2F1EC;
+  --text-muted: #A3ADBB;     /* secondary text on dark, 7.4:1 on ink */
+  --line: rgba(169, 187, 208, 0.18);   /* hairline rules on dark */
+  --line-strong: rgba(169, 187, 208, 0.36);
+  --focus: var(--link-blue);
+  --glow: rgba(124, 146, 171, 0.14);   /* light field behind the hero */
+
+  /* Type families (BRAND.md) */
+  --font-display: "Space Grotesk", "Poppins", system-ui, sans-serif;
+  --font-body: "Poppins", "Noto Sans Sinhala", "Noto Sans Tamil", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --font-sinhala: "Noto Sans Sinhala", "Poppins", sans-serif;
+  --font-tamil: "Noto Sans Tamil", "Poppins", sans-serif;
+
+  /* Type scale (fluid display, fixed body). Ratio about 1.25 at the small end. */
+  --fs-xs: 0.8125rem;                             /* 13px: mono labels, captions */
+  --fs-sm: 0.9375rem;                             /* 15px */
+  --fs-base: 1.0625rem;                           /* 17px body */
+  --fs-md: 1.25rem;                               /* 20px lead */
+  --fs-lg: clamp(1.375rem, 1.1rem + 0.9vw, 1.75rem);
+  --fs-xl: clamp(2rem, 1.2rem + 3vw, 3.25rem);    /* section headline */
+  --fs-hero: clamp(2.75rem, 1.4rem + 6vw, 6.5rem);/* hero headline */
+
+  --lh-tight: 1.04;
+  --lh-snug: 1.2;
+  --lh-body: 1.6;
+  --track-display: -0.025em;
+  --track-mono: 0.02em;
+  --measure: 62ch;                                /* body line length cap */
+
+  /* Spacing (8px base) */
+  --s-1: 0.25rem;  /* 4 */
+  --s-2: 0.5rem;   /* 8 */
+  --s-3: 0.75rem;  /* 12 */
+  --s-4: 1rem;     /* 16 */
+  --s-5: 1.5rem;   /* 24 */
+  --s-6: 2rem;     /* 32 */
+  --s-7: 3rem;     /* 48 */
+  --s-8: 4rem;     /* 64 */
+  --s-9: 6rem;     /* 96 */
+  --s-10: 8rem;    /* 128 */
+  --gutter: 1rem;                                 /* 16px side gutter on phones */
+  --gutter-wide: clamp(1.25rem, 4vw, 3rem);
+  --container: 1200px;
+  --section-y: clamp(4rem, 3rem + 6vw, 8.5rem);
+
+  /* Radii */
+  --r-sm: 6px;
+  --r-md: 14px;
+  --r-lg: 24px;
+  --r-pill: 999px;
+
+  /* Shadows (used sparingly; dark theme relies on light and line) */
+  --shadow-lift: 0 30px 80px -30px rgba(0, 0, 0, 0.7);
+
+  /* Motion */
+  --dur-fast: 160ms;
+  --dur-base: 320ms;
+  --dur-slow: 640ms;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Breakpoints (documented; used in media queries) */
+  --bp-sm: 640px;
+  --bp-md: 960px;
+  --bp-lg: 1280px;
+  --bp-xl: 1920px;
+}
+
+/* Light theme for light sections (off-white, mist) */
+.theme-light {
+  --bg: var(--off-white);
+  --surface: var(--mist);
+  --text: var(--ink);
+  --text-muted: var(--text-secondary);
+  --line: rgba(11, 13, 16, 0.14);
+  --line-strong: rgba(11, 13, 16, 0.3);
+  --focus: var(--slate);
+  --glow: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+  }
+}

@@ -4,9 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "src/**"
-      - "build.mjs"
-      - "package.json"
+      - "web/**"
       - ".github/workflows/deploy-site.yml"
   workflow_dispatch:
 
@@ -24,11 +22,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Build site
-        run: npm run build
+      - name: Stage site
+        run: |
+          mkdir -p dist
+          cp -r web/. dist/
+          touch dist/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

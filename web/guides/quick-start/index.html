@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../../">
+  <title>Quick start: OptiLink</title>
+  <meta name="description" content="Switch on, choose a language, and send your first question on an OptiLink unit.">
+  <meta name="theme-color" content="#0B0D10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Quick start: OptiLink">
+  <meta property="og:description" content="Switch on, choose a language, and send your first question on an OptiLink unit.">
+  <link rel="icon" href="assets/img/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="shared/tokens.css">
+  <link rel="stylesheet" href="shared/base.css">
+  <link rel="stylesheet" href="shared/components.css">
+  <script src="shared/site.js" defer></script>
+  <style>
+    .qs-steps { margin: var(--s-5) 0 0; padding-left: var(--s-6); display: grid; gap: var(--s-4); }
+    .qs-steps li::marker { color: var(--link-blue); }
+    .qs-table { margin-top: var(--s-5); }
+    .qs-actions { margin-top: var(--s-6); }
+  </style>
+</head>
+<body class="has-glow">
+  <a class="sr-only" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container site-nav" aria-label="Main">
+      <a class="brand" href="./" aria-label="OptiLink home">
+        <img src="assets/brand/optilink_lockup_on_dark.svg" alt="OptiLink" width="140" height="31">
+      </a>
+      <ul class="nav-links">
+        <li><a href="why-optilink/">Why OptiLink</a></li>
+        <li><a href="technology/">Technology</a></li>
+        <li><a href="design/">Design</a></li>
+        <li>
+          <details class="nav-more">
+            <summary>More</summary>
+            <div class="nav-menu">
+              <a href="team/">Team</a>
+              <a href="contact/">Contact</a>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <a class="btn btn--primary nav-cta" href="guides/quick-start/">Get started</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">
+        <span class="sr-only">Menu</span>
+        <span aria-hidden="true"></span>
+      </button>
+    </nav>
+    <div class="nav-panel container" id="nav-panel">
+      <ul>
+        <li><a href="./">Overview</a></li>
+        <li><a href="why-optilink/">Why OptiLink</a></li>
+        <li><a href="technology/">Technology</a></li>
+        <li><a href="design/">Design</a></li>
+        <li><a href="guides/quick-start/" aria-current="page">Quick start</a></li>
+        <li><a href="team/">Team</a></li>
+        <li><a href="contact/">Contact</a></li>
+      </ul>
+      <a class="btn btn--primary" href="guides/quick-start/">Get started</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section section--tight">
+      <div class="container">
+        <header class="title-block">
+          <h1>Get started</h1>
+          <p class="affiliation">Two units, one switch each, no network.</p>
+        </header>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="first-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="first-title">Switch on and choose a language</h2>
+        </header>
+        <ol class="qs-steps">
+          <li>Switch each unit on with the rocker switch.</li>
+          <li>Choose your language on the start screen. Each unit keeps its own language, so the doctor and the patient can read different ones.</li>
+          <li>The Doctor Station opens its main menu. The Bed Unit waits for questions.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="doctor-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="doctor-title">Doctor Station</h2>
+          <p class="lead">Pick a bed and send a question.</p>
+        </header>
+        <div class="table-wrap qs-table">
+          <table class="spec">
+            <tbody>
+              <tr><th scope="row">Digits</th><td>Enter numbers</td></tr>
+              <tr><th scope="row">STOP</th><td>Sends or confirms (or 5 in lists)</td></tr>
+              <tr><th scope="row">START</th><td>Goes back. Hold for 1 second to return to the main menu.</td></tr>
+              <tr><th scope="row">F1 to F4</th><td>Function keys</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="bed-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="bed-title">Bed Unit</h2>
+          <p class="lead">Answer with the digits.</p>
+        </header>
+        <div class="table-wrap qs-table">
+          <table class="spec">
+            <tbody>
+              <tr><th scope="row">1</th><td>YES or OK</td></tr>
+              <tr><th scope="row">2</th><td>NO</td></tr>
+              <tr><th scope="row">9</th><td>Please repeat</td></tr>
+              <tr><th scope="row">7</th><td>Ask for help, then the request number, then #</td></tr>
+              <tr><th scope="row">*</th><td>Back</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="manual-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="manual-title">Design manual</h2>
+          <p class="lead">This is the earlier design manual, written for firmware 3.1 to 4.3. The controls above are for firmware 4.6.</p>
+        </header>
+        <div class="btn-row qs-actions">
+          <a class="btn btn--primary" href="downloads/OptiLink_Design_Manual_A6_v2.pdf" download>Download the design manual (PDF)</a>
+          <a class="btn" href="contact/">Contact the team</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <nav aria-label="Learn">
+          <h2>Learn</h2>
+          <ul>
+            <li><a href="./">Overview</a></li>
+            <li><a href="why-optilink/">Why OptiLink</a></li>
+            <li><a href="technology/">Technology</a></li>
+            <li><a href="design/">Design</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Use">
+          <h2>Use</h2>
+          <ul>
+            <li><a href="guides/quick-start/">Quick start</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="About">
+          <h2>About</h2>
+          <ul>
+            <li><a href="team/">Team</a></li>
+            <li><a href="contact/">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-note">
+        <ul class="footer-team">
+          <li>Movindu Dissanayake, E/21/109, <a href="mailto:e21109@eng.pdn.ac.lk">e21109@eng.pdn.ac.lk</a></li>
+          <li>Thaariq Firdous, E/21/139, <a href="mailto:e21139@eng.pdn.ac.lk">e21139@eng.pdn.ac.lk</a></li>
+          <li>Oshadha Samarakoon, E/21/345, <a href="mailto:e21345@eng.pdn.ac.lk">e21345@eng.pdn.ac.lk</a></li>
+        </ul>
+        <p>EE356 Electronic Product Design and Manufacture, Department of Electrical and Electronic Engineering, University of Peradeniya.</p>
+        <p>OptiLink is a student prototype and is not a certified medical device. It supports, and does not replace, normal clinical care and the ward's nurse-call system.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

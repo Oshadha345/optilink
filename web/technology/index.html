@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../">
+  <title>Technology: OptiLink</title>
+  <meta name="description" content="How OptiLink carries a 12-bit phrase ID across an infrared link, checks every frame, and fits Sinhala, Tamil and English into a 32 KB processor.">
+  <meta name="theme-color" content="#0B0D10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Technology: OptiLink">
+  <meta property="og:description" content="How OptiLink carries a 12-bit phrase ID across an infrared link, checks every frame, and fits Sinhala, Tamil and English into a 32 KB processor.">
+  <link rel="icon" href="assets/img/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="shared/tokens.css">
+  <link rel="stylesheet" href="shared/base.css">
+  <link rel="stylesheet" href="shared/components.css">
+  <script src="shared/site.js" defer></script>
+  <style>
+    .tech-stack { display: grid; gap: var(--s-6); }
+    .tech-cols { display: grid; gap: var(--s-6); }
+    @media (min-width: 960px) { .tech-cols { grid-template-columns: 1fr 1fr; align-items: start; gap: var(--s-8); } }
+    .tech-cols > *, .tech-stack > * { min-width: 0; }
+    .tech-prose { display: grid; gap: var(--s-4); max-width: var(--measure); }
+    .tech-prose p, .tech-prose ul, .tech-prose ol, .tech-prose h3 { margin: 0; }
+    .tech-list { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--s-3); max-width: var(--measure); }
+    .tech-list li { border-top: 1px solid var(--line); padding-top: var(--s-3); color: var(--text-muted); }
+    .tech-list strong { color: var(--text); font-weight: 500; }
+    .phrase-flow { display: grid; gap: var(--s-4); }
+    @media (min-width: 960px) { .phrase-flow { grid-template-columns: 1fr 1fr 1fr; } }
+    .phrase-card { background: var(--graphite); border-radius: var(--r-md); padding: var(--s-5); display: grid; gap: var(--s-2); align-content: start; }
+    .phrase-card .mono, .figure-placeholder .mono { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--text-muted); margin: 0; }
+    .phrase-card p { margin: 0; }
+    .phrase-card .phrase { font-family: var(--font-display); font-size: var(--fs-md); color: var(--text); }
+    .phrase-card--link { border: 1px solid var(--line); background: transparent; text-align: center; align-content: center; }
+    .figure-placeholder { border: 1px dashed var(--line); border-radius: var(--r-md); padding: var(--s-8) var(--s-5); text-align: center; display: grid; gap: var(--s-2); background: var(--graphite); }
+    .figure-placeholder[hidden] { display: none; }
+    .figure-placeholder p { margin: 0; color: var(--text-muted); }
+    .figure img { width: 100%; height: auto; }
+    .figure img[hidden] { display: none; }
+    .figure-pair { display: grid; gap: var(--s-6); }
+    @media (min-width: 760px) { .figure-pair { grid-template-columns: 1fr 1fr; } }
+    .thumb { max-width: 460px; }
+    .photo-note { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--text-muted); }
+    .stat-row { display: grid; gap: var(--s-6); }
+    @media (min-width: 640px) { .stat-row { grid-template-columns: repeat(3, 1fr); } }
+    .zone-crit { color: var(--signal-red); }
+    table.spec td { overflow-wrap: anywhere; }
+    table.compare { min-width: 30rem; }
+  </style>
+</head>
+<body class="has-glow">
+  <a class="sr-only" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container site-nav" aria-label="Main">
+      <a class="brand" href="./" aria-label="OptiLink home">
+        <img src="assets/brand/optilink_lockup_on_dark.svg" alt="OptiLink" width="140" height="31">
+      </a>
+      <ul class="nav-links">
+        <li><a href="why-optilink/">Why OptiLink</a></li>
+        <li><a href="technology/" aria-current="page">Technology</a></li>
+        <li><a href="design/">Design</a></li>
+        <li>
+          <details class="nav-more">
+            <summary>More</summary>
+            <div class="nav-menu">
+              <a href="team/">Team</a>
+              <a href="contact/">Contact</a>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <a class="btn btn--primary nav-cta" href="guides/quick-start/">Get started</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">
+        <span class="sr-only">Menu</span>
+        <span aria-hidden="true"></span>
+      </button>
+    </nav>
+    <div class="nav-panel container" id="nav-panel">
+      <ul>
+        <li><a href="./">Overview</a></li>
+        <li><a href="why-optilink/">Why OptiLink</a></li>
+        <li><a href="technology/" aria-current="page">Technology</a></li>
+        <li><a href="design/">Design</a></li>
+        <li><a href="guides/quick-start/">Quick start</a></li>
+        <li><a href="team/">Team</a></li>
+        <li><a href="contact/">Contact</a></li>
+      </ul>
+      <a class="btn btn--primary" href="guides/quick-start/">Get started</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section section--tight" data-motion="section-reveal">
+      <div class="container">
+        <header class="title-block">
+          <h1>Technology</h1>
+          <p class="affiliation">How two hand-held units carry a question across a room, in two languages, with no network. Standard parts, a custom infrared link and firmware that fits a 32 KB processor.</p>
+        </header>
+      </div>
+    </section>
+    <section class="section" id="phrase-codes" data-motion="section-reveal" aria-labelledby="phrase-codes-h">
+      <div class="container">
+        <header class="section-head"><h2 id="phrase-codes-h">A number travels</h2><p class="lead">Each person reads their own language at the same moment.</p></header>
+        <div class="tech-stack" data-motion="phrase-to-code">
+          <div class="tech-prose">
+            <p>The two units never send words. They send a short phrase number, and each unit shows that phrase in its own language, from pre-drawn images held in its EEPROM.</p>
+          </div>
+          <div class="phrase-flow">
+            <div class="phrase-card"><p class="mono">Doctor Station, set to English</p><p class="phrase">Do you have pain?</p><p class="mono">The same unit set to Sinhala shows</p><p class="phrase" lang="si">ඔබට වේදනාවක් තිබේද?</p></div>
+            <div class="phrase-card phrase-card--link"><p class="mono">infrared, 38 kHz</p><p class="phrase">phrase ID</p><p class="mono">12 bits, a few bytes per frame</p></div>
+            <div class="phrase-card"><p class="mono">Bed Unit, set to Tamil</p><p class="phrase" lang="ta">உங்களுக்கு வலி இருக்கிறதா?</p><p>The patient presses 1 for YES and the answer returns as another code.</p></div>
+          </div>
+          <figure class="figure" data-figure="F01"><img src="assets/fig/F01.svg" alt="Flow diagram: a Doctor Station set to English sends a 12-bit phrase ID across the infrared link, and a Bed Unit set to Tamil shows the same phrase in Tamil." width="1600" height="900" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="figure-placeholder" hidden><p class="mono">F01 PHRASE-CODE FLOW</p><p>Doctor Station card, infrared 38 kHz phrase ID box, Bed Unit card.</p></div><figcaption>Phrase-code flow: the phrase leaves the Doctor Station as a number and is shown in the language the Bed Unit is set to.</figcaption></figure>
+          <ul class="tech-list">
+            <li><strong>Tiny messages.</strong> A slow, robust infrared link is fast enough.</li>
+            <li><strong>Identical translation.</strong> Every phrase is checked once in advance; nothing is translated on the fly.</li>
+            <li><strong>Complex scripts on a tiny screen.</strong> Sinhala and Tamil are stored as pre-drawn images, so the processor simply draws pictures.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="frame" data-motion="section-reveal" aria-labelledby="frame-h">
+      <div class="container">
+        <header class="section-head"><h2 id="frame-h">One small, checked frame</h2><p class="lead">32 bits of payload on a 2400-baud link.</p></header>
+        <div class="tech-cols">
+          <div class="tech-prose">
+            <p>Each frame is a preamble, a start byte, then destination, source and type (11 bits together), a sequence bit (1 bit), the phrase ID (12 bits) and a CRC-8 (8 bits): 32 bits of payload.</p>
+            <p>The light is a 940 nm LED on a 38 kHz carrier, received by a VS1838B. Data is 2400 baud serial, Manchester-coded for a balanced signal. The link is half duplex and each unit ignores its own transmission. The Doctor Station is address 0; Bed Units are 1 to 14.</p>
+            <h3>Seven frame types</h3>
+            <ul class="tech-list">
+              <li>Question or phrase</li><li>Acknowledgement</li><li>Answer</li><li>Request</li><li>Number for an instruction</li><li>Link check (heartbeat and battery report)</li><li>Typed text (length, then two characters per frame)</li>
+            </ul>
+          </div>
+          <figure class="figure" data-figure="F02"><img src="assets/fig/F02.svg" alt="Frame structure: preamble, start byte, destination, source and type (11 bits together), sequence (1 bit), phrase ID (12 bits) and CRC-8 (8 bits), with the last five bracketed as 32 bits of payload." width="1800" height="600" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="figure-placeholder" hidden><p class="mono">F02 FRAME STRUCTURE</p><p>Six labelled blocks with a bracket marking 32 bits of payload.</p></div><figcaption>Frame structure. Block widths are indicative, not to scale.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="reliability" data-motion="section-reveal" aria-labelledby="reliability-h">
+      <div class="container">
+        <header class="section-head"><h2 id="reliability-h">A blocked beam delays, not loses</h2><p class="lead">Every failure is visible and recoverable.</p></header>
+        <div class="tech-cols">
+          <div class="tech-prose">
+            <p>Infrared needs line of sight. Instead of hiding that, the protocol makes every failure visible and recoverable: the sender always knows whether the other unit received the message.</p>
+            <ul class="tech-list">
+              <li><strong>Acknowledge.</strong> Every frame is acknowledged; the sender shows Delivered, or NOT delivered, so the doctor can aim and resend.</li>
+              <li><strong>Retry.</strong> With no acknowledgement, up to 3 retries with a random back-off, so two beds do not collide again.</li>
+              <li><strong>Ignore repeats.</strong> A copy received within 8 s of the previous one is ignored, so a retry never doubles a message.</li>
+              <li><strong>Listen before talking.</strong> Bed Units listen before talking, and resend an unconfirmed request or answer every 3 s (1.5 s for Can't breathe).</li>
+              <li><strong>Beacon.</strong> Every 15 s the Doctor Station checks the selected bed: Link *** on the doctor, Link OK on the bed.</li>
+            </ul>
+          </div>
+          <figure class="figure" data-figure="F03"><img src="assets/fig/F03.svg" alt="Timeline of link reliability: acknowledge, retry with random back-off, ignore repeats, listen before talking, and the 15 second beacon." width="1400" height="1050" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="figure-placeholder" hidden><p class="mono">F03 LINK RELIABILITY</p><p>Five rows as a timeline: acknowledge, retry, ignore repeats, listen before talking, beacon.</p></div><figcaption>Link reliability: the sender always knows whether the other unit received the message.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="urgent" data-motion="section-reveal" aria-labelledby="urgent-h">
+      <div class="container">
+        <header class="section-head"><h2 id="urgent-h">Urgent means unmissable.</h2><p class="lead">Can't breathe repeats until someone answers.</p></header>
+        <div class="callout">
+          <p>A patient presses 7, then the request number, then #. The Doctor Station shows BED 3 REQUEST in the doctor's language. Can't breathe sounds a repeating alarm until the doctor acknowledges it, and the Bed Unit resends it every 1.5 s until confirmed.</p>
+          <p>OptiLink is an extra channel, not a safety-critical alarm. It supports, and does not replace, the ward's nurse-call system and monitors.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="content" data-motion="section-reveal" aria-labelledby="content-h">
+      <div class="container">
+        <header class="section-head"><h2 id="content-h">Written once. Drawn as images.</h2><p class="lead">How Sinhala and Tamil fit on a small screen.</p></header>
+        <div class="tech-stack">
+          <ol class="tech-list">
+            <li><strong>1.</strong> Every phrase is written once in a table: English, Sinhala and Tamil, with its ID and answer type.</li>
+            <li><strong>2.</strong> A Python tool renders Sinhala and Tamil with proper text shaping (Pillow with libraqm, Noto fonts).</li>
+            <li><strong>3.</strong> Each rendering becomes a run-length compressed 1-bit image.</li>
+            <li><strong>4.</strong> Images and an index load into each unit's EEPROM (content version 3).</li>
+            <li><strong>5.</strong> The firmware draws English with its own font and Sinhala or Tamil from images.</li>
+          </ol>
+          <figure class="figure" data-figure="F04"><img src="assets/fig/F04.svg" alt="Five-step content pipeline from a phrase table through rendering, compression and EEPROM to the firmware drawing the screen." width="1600" height="900" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="figure-placeholder" hidden><p class="mono">F04 CONTENT PIPELINE</p><p>Five steps, from phrase table to images in the EEPROM.</p></div><figcaption>Content pipeline: written once, drawn as images.</figcaption></figure>
+          <div class="tech-prose">
+            <h3>What the units hold</h3>
+            <p>26 entries in four groups (General, Pain, Symptoms, Care &amp; meds): 21 questions and 5 instructions with a number.</p>
+            <p>Answer types: yes/no, acknowledge, choose one, choose several (body parts), pain 0-10, a number.</p>
+            <p>Assessments (New patient, Breathing, Fever, Stomach, plus the pain sequence) each end in one English sentence, for example "Patient has pain in the chest, severity 6/10, for 1-3 days, constant."</p>
+            <p>Typed messages are English, up to 48 characters, both directions, with 6 ready phrases.</p>
+            <p>The patient report, kept when the unit is switched off, holds 24 entries and lists every answer and request as an English sentence, grouped by bed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="beds" data-motion="section-reveal" aria-labelledby="beds-h">
+      <div class="container">
+        <header class="section-head"><h2 id="beds-h">One station, fourteen beds</h2><p class="lead">Identical hardware, roles set by firmware.</p></header>
+        <div class="tech-cols">
+          <div class="tech-prose">
+            <p>One Doctor Station addresses up to 14 numbered Bed Units. It talks to one selected bed at a time but receives from every bed.</p>
+            <p>The firmware, not the hardware, decides the role, so spares are interchangeable.</p>
+            <figure class="media-frame thumb"><picture><source type="image/avif" srcset="assets/img/P02_pair_above-480.avif 480w, assets/img/P02_pair_above-960.avif 960w, assets/img/P02_pair_above-1440.avif 1440w" sizes="(min-width: 960px) 24rem, 90vw"><source type="image/webp" srcset="assets/img/P02_pair_above-480.webp 480w, assets/img/P02_pair_above-960.webp 960w, assets/img/P02_pair_above-1440.webp 1440w" sizes="(min-width: 960px) 24rem, 90vw"><img src="assets/img/P02_pair_above-1440.png" alt="A Doctor Station and a Bed Unit lying side by side on a dark surface." width="1440" height="960" loading="lazy"></picture></figure>
+          </div>
+          <figure class="figure" data-figure="F09"><img src="assets/fig/F09.svg" alt="One Doctor Station at address 0 linked to fourteen Bed Units numbered 1 to 14." width="1200" height="1200" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="figure-placeholder" hidden><p class="mono">F09 SEVERAL BEDS</p><p>One Doctor Station, address 0, and fourteen Bed Units, 1 to 14.</p></div><figcaption>One Doctor Station and up to 14 numbered Bed Units.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="hardware" data-motion="section-reveal" aria-labelledby="hardware-h">
+      <div class="container">
+        <header class="section-head"><h2 id="hardware-h">Standard parts, one board</h2><p class="lead">An ATmega328P with a screen, keypad, phrase memory and infrared link.</p></header>
+        <div class="tech-stack">
+          <figure class="figure" data-figure="F06"><img src="assets/fig/F06.svg" alt="Hardware block diagram: the ATmega328P at the centre, fed by the battery, switch and buck converter, connected to the infrared transmitter and receiver, the OLED, the EEPROM, the keypad, the buzzer and the low-battery light." width="1280" height="920" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="figure-placeholder" hidden><p class="mono">F06 HARDWARE BLOCK DIAGRAM</p><p>ATmega328P with power chain, infrared transmitter and receiver, OLED, EEPROM, keypad, buzzer and low-battery light.</p></div><figcaption>Hardware block diagram of one unit.</figcaption></figure>
+          <div class="table-wrap"><table class="spec"><tbody>
+            <tr><th scope="row">Controller</th><td>ATmega328P-PU, 16 MHz, Uno bootloader, socketed</td></tr>
+            <tr><th scope="row">Power</th><td>9 V PP3 NiMH, rocker switch, 1N5819, MP1584 buck at 5.0 V</td></tr>
+            <tr><th scope="row">IR transmitter</th><td>74HC04 + 74HC08, S8050, 940 nm LED, 33 ohm 1/2 W</td></tr>
+            <tr><th scope="row">IR receiver</th><td>VS1838B 38 kHz with RC supply filter</td></tr>
+            <tr><th scope="row">Display</th><td>1.3" SH1106 OLED, 128 x 64, I2C</td></tr>
+            <tr><th scope="row">Phrase memory</th><td>AT24C256 EEPROM, 32 KB</td></tr>
+            <tr><th scope="row">Input and alert</th><td>4 x 4 membrane keypad; 5 V buzzer on a second S8050</td></tr>
+          </tbody></table></div>
+          <div class="tech-cols">
+            <div class="tech-prose">
+              <h3>Transmitter, step by step</h3>
+              <ol class="tech-list">
+                <li>Timer2 makes a continuous 38 kHz square wave.</li>
+                <li>The serial TX line passes through a 74HC04 inverter and a 74HC08 AND gate with the carrier.</li>
+                <li>An S8050 drives the 940 nm LED: about 100 mA pulses.</li>
+                <li>A pull-up keeps the LED off if the processor is removed.</li>
+                <li>The VS1838B removes the carrier and returns clean serial data.</li>
+              </ol>
+              <p>Like a TV remote, the LED flashes at 38 kHz while a data bit is low, and stays dark otherwise.</p>
+              <figure class="media-frame thumb"><picture><source type="image/avif" srcset="assets/img/P16_open_unit-480.avif 480w, assets/img/P16_open_unit-960.avif 960w, assets/img/P16_open_unit-1440.avif 1440w" sizes="(min-width: 960px) 24rem, 90vw"><source type="image/webp" srcset="assets/img/P16_open_unit-480.webp 480w, assets/img/P16_open_unit-960.webp 960w, assets/img/P16_open_unit-1440.webp 1440w" sizes="(min-width: 960px) 24rem, 90vw"><img src="assets/img/P16_open_unit-1440.png" alt="The unit opened by hand, showing the circuit board with its processor chip, wiring, buzzer and 9 V battery." width="1440" height="960" loading="lazy"></picture></figure>
+              <p class="photo-note">Photo: prototype wiring</p>
+            </div>
+            <figure class="figure" data-figure="F08"><img src="assets/fig/F08.svg" alt="Two aligned waveforms: the inverted serial line, and the infrared LED flashing at 38 kHz while a data bit is low." width="1600" height="800" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="figure-placeholder" hidden><p class="mono">F08 TRANSMITTER WAVEFORM</p><p>Inverted TX pulses above the infrared LED carrier bursts.</p></div><figcaption>Transmitter waveform. Schematic, not a measurement.</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="battery" data-motion="section-reveal" aria-labelledby="battery-h">
+      <div class="container">
+        <header class="section-head"><h2 id="battery-h">Warns before it fails</h2><p class="lead">Two thresholds, one report to the doctor.</p></header>
+        <div class="tech-cols">
+          <div class="tech-prose">
+            <p>Each unit runs on a 9 V PP3 NiMH rechargeable battery, through a 1N5819 diode into an MP1584 buck converter at 5.0 V. A 100k / 47k divider feeds the processor.</p>
+            <div class="table-wrap"><table class="compare">
+              <thead><tr><th scope="col">Battery voltage</th><th scope="col">State</th><th scope="col">Indication</th></tr></thead>
+              <tbody>
+                <tr><td>Above 7.0 V</td><td>Normal</td><td>No warning</td></tr>
+                <tr><td>6.4 to 7.0 V</td><td>LOW</td><td>Red light blinks, one beep, a warning</td></tr>
+                <tr><td>Below 6.4 V</td><td class="zone-crit">CRITICAL</td><td>Light on, three beeps; a Bed Unit also alerts the Doctor Station</td></tr>
+              </tbody></table></div>
+            <p>A 0.2 V hysteresis stops flickering between levels. The screen sleeps after inactivity to save power.</p>
+            <figure class="media-frame thumb"><picture><source type="image/avif" srcset="assets/img/P05_battery_open-480.avif 480w, assets/img/P05_battery_open-960.avif 960w" sizes="(min-width: 960px) 24rem, 90vw"><source type="image/webp" srcset="assets/img/P05_battery_open-480.webp 480w, assets/img/P05_battery_open-960.webp 960w" sizes="(min-width: 960px) 24rem, 90vw"><img src="assets/img/P05_battery_open-960.png" alt="The battery compartment open, with the cover removed and a 9 V rechargeable battery sitting in the recess." width="960" height="720" loading="lazy"></picture></figure>
+            <p class="photo-note">Photo: 9 V NiMH battery in its recess</p>
+          </div>
+          <figure class="figure" data-figure="F07"><img src="assets/fig/F07.svg" alt="Vertical voltage bar with three zones: above 7.0 V normal, 6.4 to 7.0 V low, below 6.4 V critical." width="1000" height="1250" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="figure-placeholder" hidden><p class="mono">F07 BATTERY THRESHOLDS</p><p>Voltage bar with three zones at 7.0 V and 6.4 V.</p></div><figcaption>Battery monitor thresholds. No time scale is shown.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="pcb" data-motion="section-reveal" aria-labelledby="pcb-h">
+      <div class="container">
+        <header class="section-head"><h2 id="pcb-h">A board a workshop can make</h2><p class="lead">Compact, single-sided, checked twice.</p></header>
+        <div class="tech-stack">
+          <div class="stat-row">
+            <div class="stat"><p class="stat-value">Rev 1.7</p><p class="stat-label">103.3 x 70.1 mm, single-sided FR-4, 1.6 mm</p></div>
+            <div class="stat"><p class="stat-value">0.5 mm</p><p class="stat-label">minimum tracks and gaps</p></div>
+            <div class="stat"><p class="stat-value">8</p><p class="stat-label">insulated wire links, W1 to W8</p></div>
+          </div>
+          <div class="tech-prose">
+            <p>KiCad ERC and DRC report 0 violations, with an independent geometry check as well. The board has 1 oz copper, power tracks of 1.0 mm and 155 component holes.</p>
+          </div>
+          <div class="figure-pair"><figure class="figure" data-figure="F10a"><img src="assets/fig/F10a.svg" alt="Component side of PCB Rev 1.7 with part labels and eight coloured wire links." width="518" height="356" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="figure-placeholder" hidden><p class="mono">F10a PCB COMPONENT SIDE</p><p>Component side of PCB Rev 1.7 with eight insulated wire links.</p></div><figcaption>Component side, eight insulated wire links in colour</figcaption></figure><figure class="figure" data-figure="F10b"><img src="assets/fig/F10b.svg" alt="Copper side of PCB Rev 1.7 seen from below, with cleared tracks." width="518" height="356" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="figure-placeholder" hidden><p class="mono">F10b PCB COPPER SIDE</p><p>Copper side of PCB Rev 1.7.</p></div><figcaption>Copper side, seen from below</figcaption></figure></div>
+          <div class="tech-prose">
+            <h3>Evolution</h3>
+            <ul class="tech-list">
+              <li><strong>1.0</strong> double-sided, for a fab.</li>
+              <li><strong>1.2</strong> single-sided.</li>
+              <li><strong>1.4</strong> hand-etch rules, chip programmed off-board.</li>
+              <li><strong>1.6</strong> a pull-up keeps the IR LED off.</li>
+              <li><strong>1.7</strong> compacted for the enclosure.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="firmware" data-motion="section-reveal" aria-labelledby="firmware-h">
+      <div class="container">
+        <header class="section-head"><h2 id="firmware-h">Everything inside 32 KB</h2><p class="lead">Phrase images live in a separate memory chip.</p></header>
+        <div class="tech-stack">
+          <div class="stat-row">
+            <div class="stat"><p class="stat-value">99.6%</p><p class="stat-label">Doctor Station program: 32,128 of 32,256 bytes</p></div>
+            <div class="stat"><p class="stat-value">75.8%</p><p class="stat-label">Bed Unit program: about 24,460 bytes</p></div>
+            <div class="stat"><p class="stat-value">89.2%</p><p class="stat-label">Phrase images in EEPROM: 29,219 of 32,768 bytes (content version 3)</p></div>
+          </div>
+          <figure class="figure" data-figure="F05"><img src="assets/fig/F05.svg" alt="Three bars of memory used: Doctor Station program 99.6 per cent, Bed Unit program 75.8 per cent, phrase images in EEPROM 89.2 per cent." width="1600" height="700" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="figure-placeholder" hidden><p class="mono">F05 MEMORY USED</p><p>Three bars: Doctor Station program, Bed Unit program, phrase images.</p></div><figcaption>Memory used, firmware 4.6.</figcaption></figure>
+          <div class="tech-prose">
+            <p>Every stage stayed inside the ATmega328P's 32 KB. That discipline is why the phrase images moved to the EEPROM, and why the next step is a larger processor.</p>
+            <h3>Stages</h3>
+            <ul class="tech-list">
+              <li><strong>1</strong> Assessments, numbers in phrases, patient requests.</li>
+              <li><strong>2</strong> English report, multi-select body parts, new patient.</li>
+              <li><strong>3</strong> Typed English messages both ways.</li>
+              <li><strong>4</strong> Several beds, link indicator, urgent alarm, battery monitor, screen sleep.</li>
+              <li><strong>4.4</strong> Link improvements, one-second hold to go home.</li>
+              <li><strong>4.6</strong> Bed Unit on digits 0-9, * and # alone.</li>
+            </ul>
+            <p>Why 4.6: the A-D column of the membrane keypad proved unreliable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="limits" data-motion="section-reveal" aria-labelledby="limits-h">
+      <div class="container">
+        <header class="section-head"><h2 id="limits-h">What we have not proved.</h2><p class="lead">Stated first, each with the next step.</p></header>
+        <div class="table-wrap" tabindex="0">
+          <table class="compare">
+            <thead><tr><th scope="col">Open point</th><th scope="col">Next step</th></tr></thead>
+            <tbody>
+              <tr><td>Infrared needs line of sight. We use acknowledgements, 3 retries, background resend, a 15 s beacon, and Delivered and NOT delivered messages.</td><td>Measure working distance and angle across a real room.</td></tr>
+              <tr><td>Doctor program memory is 99.6% full.</td><td>A larger processor with an in-circuit programming header.</td></tr>
+              <tr><td>Typed messages are English only.</td><td>Typed Sinhala and Tamil from stored letter clusters.</td></tr>
+              <tr><td>Not yet tested with patients. Built and bench-tested in two units.</td><td>&mdash;</td></tr>
+              <tr><td>Working distance, link success rate and battery life are still being measured.</td><td>None is quoted until measured.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="next" data-motion="section-reveal" aria-labelledby="next-h">
+      <div class="container">
+        <header class="section-head"><h2 id="next-h">Take it further</h2><p class="lead">The quick-start guide and the design.</p></header>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="guides/quick-start/">Get started</a>
+          <a class="btn" href="design/">Design</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <nav aria-label="Learn">
+          <h2>Learn</h2>
+          <ul>
+            <li><a href="./">Overview</a></li>
+            <li><a href="why-optilink/">Why OptiLink</a></li>
+            <li><a href="technology/">Technology</a></li>
+            <li><a href="design/">Design</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Use">
+          <h2>Use</h2>
+          <ul>
+            <li><a href="guides/quick-start/">Quick start</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="About">
+          <h2>About</h2>
+          <ul>
+            <li><a href="team/">Team</a></li>
+            <li><a href="contact/">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-note">
+        <ul class="footer-team">
+          <li>Movindu Dissanayake, E/21/109, <a href="mailto:e21109@eng.pdn.ac.lk">e21109@eng.pdn.ac.lk</a></li>
+          <li>Thaariq Firdous, E/21/139, <a href="mailto:e21139@eng.pdn.ac.lk">e21139@eng.pdn.ac.lk</a></li>
+          <li>Oshadha Samarakoon, E/21/345, <a href="mailto:e21345@eng.pdn.ac.lk">e21345@eng.pdn.ac.lk</a></li>
+        </ul>
+        <p>EE356 Electronic Product Design and Manufacture, Department of Electrical and Electronic Engineering, University of Peradeniya.</p>
+        <p>OptiLink is a student prototype and is not a certified medical device. It supports, and does not replace, normal clinical care and the ward's nurse-call system.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
