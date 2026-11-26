@@ -2,3 +2,7 @@ node_modules/
 dist/
 .DS_Store
 Thumbs.db
+
+# private reference material (presentation PDF, prompt, raw pack)
+_refs/
+reference/

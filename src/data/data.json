@@ -1,0 +1,728 @@
+{
+ "_note": "Prices approximate, checked November 2026 (team verification review). Rs = Sri Lankan rupees. Do not change numbers; add new ones only with a source.",
+ "currency": {
+  "code": "LKR",
+  "symbol": "Rs",
+  "usd_rate": 332.4
+ },
+ "bom_per_unit": {
+  "total": 7876,
+  "items": [
+   {
+    "name": "Electronics",
+    "rs": 2661
+   },
+   {
+    "name": "3D-printed enclosure (PLA+ at Rs 14/g)",
+    "rs": 2170
+   },
+   {
+    "name": "PCB (JLCPCB)",
+    "rs": 1600
+   },
+   {
+    "name": "Battery and consumables",
+    "rs": 1445
+   }
+  ],
+  "largest_parts": [
+   {
+    "name": "NiMH 9 V battery",
+    "rs": 1250
+   },
+   {
+    "name": "1.3\" OLED display",
+    "rs": 960
+   },
+   {
+    "name": "ATmega328P with bootloader",
+    "rs": 750
+   },
+   {
+    "name": "MP1584 buck converter",
+    "rs": 230
+   },
+   {
+    "name": "4x4 keypad with extension",
+    "rs": 210
+   },
+   {
+    "name": "AT24C256 phrase memory",
+    "rs": 80
+   }
+  ],
+  "sources": [
+   "Tronic.lk",
+   "Alphatronic.lk",
+   "Daraz.lk",
+   "Ciphertecx (printing)",
+   "JLCPCB (PCB)"
+  ]
+ },
+ "pair": {
+  "units": 2,
+  "charger_rs": 1450,
+  "total_rs": 17202,
+  "total_usd": 51.75
+ },
+ "ward_kit": {
+  "doctor_stations": 1,
+  "bed_units": 10,
+  "chargers": 6,
+  "units_rs": 86636,
+  "chargers_rs": 8700,
+  "total_rs": 95336,
+  "per_bed_rs": 9534,
+  "comparison": "Two Samsung Galaxy Tab A9 tablets: Rs 83,880, covering 2 beds"
+ },
+ "proposed_price": {
+  "per_unit_rs": [
+   11500,
+   12500
+  ],
+  "per_pair_with_charger_rs": [
+   24000,
+   26000
+  ],
+  "label": "Proposed selling price"
+ },
+ "cost_per_bed": [
+  {
+   "option": "OptiLink (10-bed ward kit)",
+   "min": 9534,
+   "max": 9534,
+   "has_content": true,
+   "highlight": true,
+   "note": "1 station + 10 beds + 6 chargers"
+  },
+  {
+   "option": "Wireless call button",
+   "min": 2062,
+   "max": 6637,
+   "has_content": false,
+   "note": "one-way 'come' only"
+  },
+  {
+   "option": "Tablet with an app",
+   "min": 24249,
+   "max": 126666,
+   "has_content": true,
+   "note": "no-name Android to iPad"
+  },
+  {
+   "option": "Hospital nurse-call system",
+   "min": 46536,
+   "max": 216060,
+   "has_content": false,
+   "note": "USD 140–650 per bed, plus installation and 8–15% a year maintenance"
+  },
+  {
+   "option": "Proloquo2Go with an iPad",
+   "min": 209666,
+   "max": 226666,
+   "has_content": true,
+   "note": "app USD 249.99–299.99 plus iPad Rs 126,666; no Sinhala or Tamil"
+  },
+  {
+   "option": "Tobii Dynavox speech device",
+   "min": 1300000,
+   "max": 3300000,
+   "has_content": true,
+   "note": "GBP 3,199–7,950; show as off-scale"
+  }
+ ],
+ "alternatives": [
+  {
+   "name": "Talking at the bedside or through glass",
+   "price": "None",
+   "strength": "No equipment",
+   "falls_short": "Exposure in isolation; PPE muffles speech; still needs a shared language"
+  },
+  {
+   "name": "Wireless call button (433 MHz)",
+   "price": "Rs 2,062–6,637 single; Rs 8,431–9,541 two-button; Rs 49,537 for a 10-bed kit",
+   "strength": "Cheap, no wiring",
+   "falls_short": "One-way 'come' only: no content, no reply, no language"
+  },
+  {
+   "name": "Walkie-talkie, intercom, baby monitor",
+   "price": "Rs 2,475–6,884 a pair; intercoms Rs 5,000–20,000",
+   "strength": "Natural speech",
+   "falls_short": "Muffled by masks and glass; no translation; no written record"
+  },
+  {
+   "name": "Tablet with Google Translate or video call",
+   "price": "Rs 24,249 (no-name) to Rs 41,940 (Galaxy Tab A9) or Rs 126,666 (iPad) per bed",
+   "strength": "Familiar; Translate is free, supports Sinhala and Tamil, and downloaded languages can work offline",
+   "falls_short": "A device per bed; cleaning, charging, logins, theft; unchecked medical translation; no alert to staff"
+  },
+  {
+   "name": "Cboard (free AAC app)",
+   "price": "Free app plus a tablet per bed (Rs 24,000+)",
+   "strength": "Supports Sinhala and Tamil",
+   "falls_short": "One-way: no clinician station, no alert, no reply, no record"
+  },
+  {
+   "name": "Avaz AAC",
+   "price": "About USD 199.99 lifetime (Rs 66,400) plus a tablet",
+   "strength": "Supports Tamil",
+   "falls_short": "No Sinhala; built for long-term disability; one-way"
+  },
+  {
+   "name": "Proloquo2Go",
+   "price": "USD 249.99–299.99 (Rs 83,000–100,000), iPad only",
+   "strength": "Mature AAC app",
+   "falls_short": "English, Spanish, French and Dutch only: no Sinhala or Tamil"
+  },
+  {
+   "name": "Tobii Dynavox speech devices",
+   "price": "GBP 3,199–7,950 (about Rs 1.3–3.3 million)",
+   "strength": "Powerful for long-term speech loss",
+   "falls_short": "Built for one long-term user; no Sinhala or Tamil symbol sets"
+  },
+  {
+   "name": "Vidatak EZ Board and VidaTalk",
+   "price": "About USD 28 per board (Rs 9,300); app USD 300 a month per ICU unit",
+   "strength": "Designed for ICU patients",
+   "falls_short": "No Sinhala or Tamil board listed; the app is a monthly tablet subscription"
+  },
+  {
+   "name": "Hospital nurse-call (Ascom, Rauland, Hillrom)",
+   "price": "USD 140–650 per bed: Rs 4.6–21.6 million per 100 beds, plus 8–15% a year",
+   "strength": "Integrated and reliable",
+   "falls_short": "Carries no message content and no language; needs cabling and installation"
+  },
+  {
+   "name": "Human or phone interpreter",
+   "price": "Staff time",
+   "strength": "Most accurate",
+   "falls_short": "Rarely available, especially at night; must be near or on a network"
+  }
+ ],
+ "needs_matrix": {
+  "columns": [
+   "OptiLink",
+   "Tablet / video call",
+   "Translator app",
+   "AAC app or device",
+   "Intercom / nurse-call",
+   "Communication board"
+  ],
+  "rows": [
+   {
+    "need": "Usable from across the room",
+    "values": [
+     "yes",
+     "yes",
+     "no",
+     "no",
+     "yes",
+     "no"
+    ]
+   },
+   {
+    "need": "Works with no network",
+    "values": [
+     "yes",
+     "no",
+     "partly (offline packs)",
+     "yes",
+     "partly (wired install)",
+     "yes"
+    ]
+   },
+   {
+    "need": "Sinhala and Tamil",
+    "values": [
+     "yes",
+     "partly (speech only)",
+     "yes",
+     "partly (Cboard only)",
+     "no",
+     "partly"
+    ]
+   },
+   {
+    "need": "Each person reads their own language",
+    "values": [
+     "yes",
+     "no",
+     "partly",
+     "no",
+     "no",
+     "no"
+    ]
+   },
+   {
+    "need": "Works for a patient who cannot speak",
+    "values": [
+     "yes",
+     "no",
+     "no",
+     "yes",
+     "no",
+     "yes"
+    ]
+   },
+   {
+    "need": "Checked clinical phrases and an English record",
+    "values": [
+     "yes",
+     "no",
+     "no",
+     "no",
+     "no",
+     "no"
+    ]
+   },
+   {
+    "need": "Alert to staff and confirmed delivery",
+    "values": [
+     "yes",
+     "no",
+     "no",
+     "no",
+     "partly (alert only)",
+     "no"
+    ]
+   },
+   {
+    "need": "Cost per bed (Rs)",
+    "values": [
+     "about 9,500",
+     "24,000+",
+     "a phone per bed",
+     "24,000 to 3.3 million",
+     "46,000–216,000",
+     "very low"
+    ]
+   }
+  ]
+ },
+ "positioning_map": {
+  "x_axis": "Needs network, devices, installation or cost per bed",
+  "y_axis": "Carries a checked message, two ways, in each person's language",
+  "points": [
+   {
+    "name": "OptiLink",
+    "x": 0.1,
+    "y": 0.85,
+    "highlight": true
+   },
+   {
+    "name": "Tablet with Translate or video",
+    "x": 0.7,
+    "y": 0.68
+   },
+   {
+    "name": "AAC apps and devices",
+    "x": 0.82,
+    "y": 0.52
+   },
+   {
+    "name": "Walkie-talkie, intercom",
+    "x": 0.48,
+    "y": 0.42
+   },
+   {
+    "name": "Communication board",
+    "x": 0.11,
+    "y": 0.38
+   },
+   {
+    "name": "Talking through glass",
+    "x": 0.2,
+    "y": 0.24
+   },
+   {
+    "name": "Wireless call button",
+    "x": 0.12,
+    "y": 0.15
+   },
+   {
+    "name": "Hospital nurse-call",
+    "x": 0.86,
+    "y": 0.22
+   }
+  ],
+  "caption": "Positions are the team's judgement from the comparison, not measurements."
+ },
+ "payback": {
+  "pair_price_rs": 25000,
+  "ppe_cost_per_entry_rs": 600,
+  "entries_avoided_per_day": 3,
+  "ppe_prices_rs": {
+   "isolation_gown": [
+    495,
+    590
+   ],
+   "nitrile_gloves_pair": [
+    15,
+    40
+   ],
+   "n95_3m_8210": 430,
+   "coverall": [
+    890,
+    990
+   ]
+  },
+  "examples": [
+   {
+    "case": "Retail PPE",
+    "per_entry": 600,
+    "per_day": 3,
+    "days": 14
+   },
+   {
+    "case": "Half retail (bulk tender)",
+    "per_entry": 300,
+    "per_day": 3,
+    "days": 28
+   }
+  ]
+ },
+ "evidence_stats": [
+  {
+   "value": "25.6%",
+   "text": "of Sri Lankans belong to mainly Tamil-speaking communities",
+   "source": "Census 2024 (24.6% in 2012)"
+  },
+  {
+   "value": "82.2%",
+   "text": "of Sinhalese doctors rate their own Tamil as poor",
+   "source": "Ranasinghe et al. 2016 (753 doctors)"
+  },
+  {
+   "value": "44.2%",
+   "text": "of those doctors met second-language barriers on Medicine wards",
+   "source": "Ranasinghe et al. 2016"
+  },
+  {
+   "value": "2x",
+   "text": "adverse-event rate in isolated patients (31 vs 15 per 1,000 days), mostly preventable",
+   "source": "Stelfox et al., JAMA 2003"
+  },
+  {
+   "value": "1/2",
+   "text": "as many health-worker entries into contact-isolation rooms",
+   "source": "Kirkland and Weinstein, Lancet 1999"
+  },
+  {
+   "value": "49.1%",
+   "text": "of adverse events caused physical harm in limited-English patients (29.5% otherwise)",
+   "source": "Divi et al. 2007"
+  }
+ ],
+ "market": {
+  "public_beds": 91159,
+  "inpatient_beds": 83949,
+  "public_hospitals": 688,
+  "adult_icu_beds": 832,
+  "source": "Annual Health Bulletin 2024; MoH bed data 2025",
+  "beachhead": [
+   {
+    "name": "National Institute of Infectious Diseases (Angoda)",
+    "beds": 300
+   },
+   {
+    "name": "National Hospital for Respiratory Diseases (Welisara)",
+    "beds": 632
+   }
+  ],
+  "pilot_region": "Kandy (National Hospital Kandy: 2,707 inpatient beds)"
+ },
+ "hardware": [
+  {
+   "block": "Controller",
+   "parts": "ATmega328P-PU, 16 MHz crystal, Arduino Uno bootloader, socketed",
+   "role": "Runs the firmware, keypad scanning, display and link"
+  },
+  {
+   "block": "Power",
+   "parts": "9 V PP3 NiMH, rocker switch, 1N5819 diode, MP1584 buck at 5.0 V",
+   "role": "Reverse-polarity protection and an efficient 5 V supply"
+  },
+  {
+   "block": "IR transmitter",
+   "parts": "74HC04 + 74HC08, S8050 driver, 940 nm LED, 33 ohm ½ W",
+   "role": "Turns serial data into 38 kHz light bursts (about 100 mA pulses)"
+  },
+  {
+   "block": "IR receiver",
+   "parts": "VS1838B with RC supply filter",
+   "role": "Demodulates 38 kHz light back into serial data"
+  },
+  {
+   "block": "Display",
+   "parts": "1.3\" SH1106 OLED, 128 x 64, I2C (0x3C)",
+   "role": "Menus, phrases and status"
+  },
+  {
+   "block": "Phrase memory",
+   "parts": "AT24C256 EEPROM, 32 KB, I2C (0x50)",
+   "role": "29,219 bytes of pre-drawn Sinhala, Tamil and English phrase images"
+  },
+  {
+   "block": "Input",
+   "parts": "4x4 membrane keypad on an 8-way extension",
+   "role": "Number and function keys"
+  },
+  {
+   "block": "Battery monitor",
+   "parts": "100k / 47k divider, red LED",
+   "role": "Low-battery warning on the unit and to the Doctor Station"
+  },
+  {
+   "block": "Alert",
+   "parts": "5 V active buzzer, second S8050",
+   "role": "Beeps for new messages, requests and alarms"
+  }
+ ],
+ "link": {
+  "light": "940 nm LED on a 38 kHz carrier; VS1838B receiver",
+  "rate": "2400 baud serial, Manchester-coded",
+  "direction": "Half duplex; each unit ignores its own transmission",
+  "addresses": "Doctor Station 0; Bed Units 1 to 14",
+  "frame": [
+   {
+    "field": "preamble",
+    "size": "sync"
+   },
+   {
+    "field": "start",
+    "size": "1 byte"
+   },
+   {
+    "field": "destination, source, type",
+    "size": "11 bits together"
+   },
+   {
+    "field": "sequence",
+    "size": "1 bit"
+   },
+   {
+    "field": "phrase ID",
+    "size": "12 bits"
+   },
+   {
+    "field": "CRC-8",
+    "size": "8 bits"
+   }
+  ],
+  "frame_types": [
+   "question or phrase",
+   "acknowledgement",
+   "answer",
+   "patient request",
+   "number for an instruction",
+   "link check (heartbeat and battery report)",
+   "typed text (length, then two characters per frame)"
+  ],
+  "reliability": [
+   "Every frame acknowledged: Delivered or NOT delivered!",
+   "Up to 3 retries with a random back-off",
+   "Repeats within 8 s ignored",
+   "Bed Units listen before talking; resend every 3 s (1.5 s for Can't breathe)",
+   "Beacon every 15 s drives the link indicator"
+  ]
+ },
+ "battery": [
+  {
+   "range": "above 7.0 V",
+   "state": "Normal"
+  },
+  {
+   "range": "6.4–7.0 V",
+   "state": "LOW: red light blinks, one beep, warning on screen"
+  },
+  {
+   "range": "below 6.4 V",
+   "state": "CRITICAL: light on, three beeps; a Bed Unit also alerts the Doctor Station"
+  }
+ ],
+ "memory": [
+  {
+   "name": "Doctor Station program",
+   "used": 32128,
+   "total": 32256
+  },
+  {
+   "name": "Bed Unit program",
+   "used": 24460,
+   "total": 32256,
+   "approx": true
+  },
+  {
+   "name": "Phrase images (EEPROM)",
+   "used": 29219,
+   "total": 32768
+  }
+ ],
+ "controls": [
+  {
+   "function": "Answer",
+   "doctor": "—",
+   "bed": "1 = YES or OK, 2 = NO"
+  },
+  {
+   "function": "Send / confirm",
+   "doctor": "STOP (or 5 in lists)",
+   "bed": "#"
+  },
+  {
+   "function": "Back",
+   "doctor": "START",
+   "bed": "* (in number entry and typing it deletes first)"
+  },
+  {
+   "function": "Home screen",
+   "doctor": "hold START 1 s: main menu",
+   "bed": "hold * 1 s: waiting screen"
+  },
+  {
+   "function": "Please repeat",
+   "doctor": "—",
+   "bed": "9 on the question screen"
+  },
+  {
+   "function": "Request menu",
+   "doctor": "—",
+   "bed": "7 (waiting or question screen)"
+  },
+  {
+   "function": "Type a message",
+   "doctor": "F2 (main menu or language screen)",
+   "bed": "8 on the waiting screen, 0 on the language screen"
+  },
+  {
+   "function": "Language screen",
+   "doctor": "0 on the main menu",
+   "bed": "0 on the waiting or question screen"
+  },
+  {
+   "function": "Shortcuts",
+   "doctor": "F1 recent questions, F2 type, F3 next bed, F4 last answer",
+   "bed": "—"
+  },
+  {
+   "function": "Lists",
+   "doctor": "2 / 8 move, 5 or STOP open",
+   "bed": "item number chooses or ticks, 0 = next page"
+  },
+  {
+   "function": "Pain 0–10 / numbers",
+   "doctor": "digits for instructions",
+   "bed": "digits (1 then 0 = 10), # sends"
+  },
+  {
+   "function": "Service menu",
+   "doctor": "9 on the language screen",
+   "bed": "9 on the language screen"
+  }
+ ],
+ "requests": [
+  "I have pain",
+  "Water",
+  "Toilet",
+  "Can't breathe",
+  "Feel sick",
+  "Call nurse",
+  "Call family"
+ ],
+ "assessments": [
+  "New patient",
+  "Breathing",
+  "Fever",
+  "Stomach",
+  "Pain sequence"
+ ],
+ "pcb_revisions": [
+  {
+   "rev": "1.0",
+   "text": "double-sided 100 x 70 mm board for a fabrication service"
+  },
+  {
+   "rev": "1.2",
+   "text": "first single-sided version (120 x 80 mm) with wire links instead of vias"
+  },
+  {
+   "rev": "1.4",
+   "text": "larger holes and pads, 0.5 mm rules for hand etching, chip programmed off-board"
+  },
+  {
+   "rev": "1.6",
+   "text": "pull-up keeps the IR LED off without the processor; fewer wire links"
+  },
+  {
+   "rev": "1.7",
+   "text": "compacted to 103.3 x 70.1 mm to fit the final enclosure"
+  }
+ ],
+ "firmware_stages": [
+  {
+   "stage": "1",
+   "added": "Assessments, numbers in phrases, patient requests"
+  },
+  {
+   "stage": "2",
+   "added": "English patient report, multi-select body parts, report log, new patient"
+  },
+  {
+   "stage": "3",
+   "added": "Typed English messages in both directions"
+  },
+  {
+   "stage": "4",
+   "added": "Several beds, link indicator, urgent alarm and nurse reply, battery monitor, screen sleep, report kept after switch-off, recent questions, quick phrases, service menu"
+  },
+  {
+   "stage": "4.4",
+   "added": "Link improvements; one-second hold to go home"
+  },
+  {
+   "stage": "4.6",
+   "added": "Bed Unit uses only 0–9, * and #"
+  }
+ ],
+ "timeline": [
+  "Concept and requirements",
+  "Proteus simulation of both processors",
+  "Breadboard prototype",
+  "Firmware stages 1 to 4.6",
+  "PCB revisions 1.0 to 1.7",
+  "Three-part printed enclosure",
+  "Documentation",
+  "Packaging and website"
+ ],
+ "team": [
+  {
+   "name": "Movindu Dissanayake",
+   "reg": "E/21/109"
+  },
+  {
+   "name": "Thaariq Firdous",
+   "reg": "E/21/139"
+  },
+  {
+   "name": "Oshadha Samarakoon",
+   "reg": "E/21/345"
+  }
+ ],
+ "roadmap": [
+  "Clinical feedback sessions with ward staff and patients",
+  "Larger phrase memory (diabetes, wound care, post-surgery) and more languages",
+  "Typed Sinhala and Tamil messages",
+  "Time-stamped reports with a real-time clock",
+  "A larger processor with an in-circuit programming header",
+  "Picture symbols and voice prompts for patients who cannot read"
+ ],
+ "placeholders": {
+  "contact_email": "{{CONTACT_EMAIL}}",
+  "demo_video_url": "{{DEMO_VIDEO_URL}}",
+  "measured_range": "{{MEASURED_RANGE}}",
+  "measured_battery_life": "{{MEASURED_BATTERY_LIFE}}",
+  "user_manual_pdf": "{{USER_MANUAL_PDF}}",
+  "manufacturing_manual_pdf": "{{MANUFACTURING_MANUAL_PDF}}",
+  "project_overview_pdf": "{{PROJECT_OVERVIEW_PDF}}"
+ }
+}

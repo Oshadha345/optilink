@@ -1,0 +1,15 @@
+{
+  "_help": "Fill the {{PLACEHOLDER}} values below. A value left as {{...}} or empty is treated as 'not provided': measured values show 'being measured', and the video and download blocks are hidden.",
+  "siteUrl": "https://oshadha345.github.io/optilink/",
+  "basePath": "/optilink/",
+  "repoUrl": "https://github.com/Oshadha345/optilink",
+  "contactEmail": "{{CONTACT_EMAIL}}",
+  "demoVideoUrl": "{{DEMO_VIDEO_URL}}",
+  "measuredRange": "{{MEASURED_RANGE}}",
+  "measuredBatteryLife": "{{MEASURED_BATTERY_LIFE}}",
+  "downloads": [
+    { "id": "user-manual", "title": "User manual", "detail": "12-page trilingual A6 guide: every instruction in English, Sinhala and Tamil.", "file": "user-manual.pdf" },
+    { "id": "manufacturing-manual", "title": "Design and manufacturing manual", "detail": "8-page A6 manual: block schematic, connections, PCB drawings, BOM, assembly and test.", "file": "manufacturing-manual.pdf" },
+    { "id": "project-overview", "title": "Project overview", "detail": "Overview of the OptiLink project.", "file": "project-overview.pdf" }
+  ]
+}
